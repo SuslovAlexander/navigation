@@ -1,0 +1,7 @@
+.black {
+    filter: invert(1);
+}
+
+.white {
+    filter: none;
+}
