@@ -1,9 +1,9 @@
 import {FC, useState} from "react";
 
 import ContentScreen from "./Content/ContentScreen";
-import {CONTENT_LIST, IContentItem} from "./data/content-list";
-import {LIST_ITEMS} from "./data/list-items";
 import SideNavigation from "./NavBar/SideNavigation/SideNavigation";
+import {CONTENT_LIST, IContentItem} from "./shared/constants/content-list";
+import {LIST_ITEMS} from "./shared/constants/list-items";
 
 import classes from './App.module.css';
 

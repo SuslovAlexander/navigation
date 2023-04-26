@@ -1,4 +1,4 @@
-import {IListItem} from "../../data/list-items";
+import {IListItem} from "../../shared/interfaces/IListItem";
 
 export interface ISideNavigationProps {
     listItems: IListItem[];

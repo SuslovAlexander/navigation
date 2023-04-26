@@ -1,7 +1,7 @@
-.black {
-    filter: invert(1);
+.black svg path {
+    fill: #000000;
 }
 
-.white {
-    filter: none;
+.white svg path {
+    fill: #ffffff;
 }

@@ -6,7 +6,8 @@ import {INavItemProps} from "./INavItemProps";
 
 import styles from './NavItem.module.css'
 
-const NavItem: FC<INavItemProps> = ({id, text, selected, url, onSelect}) => {
+const NavItem: FC<INavItemProps> = ({item, onSelect}) => {
+    const {id, text, selected, url} = item;
     const navItem = `${styles.item} ${selected ? styles.selected : ""}`;
 
     const handleClick = () => {

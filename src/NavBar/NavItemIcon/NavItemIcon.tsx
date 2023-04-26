@@ -5,7 +5,7 @@ import {INavItemIcon} from "./INavItemIcon";
 import styles from './NavItemIcon.module.css'
 
 const NavItemIcon: FC<INavItemIcon> = ({color, url}) => {
-    return <img src={url} className={`${(color === "white") ? styles.white : styles.black}`}/>
+    return (<div className={`${color === "white" ? styles.white : styles.black}`}>{url}</div>)
 }
 export default NavItemIcon;
 
