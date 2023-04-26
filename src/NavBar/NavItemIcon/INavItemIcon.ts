@@ -1,4 +1,4 @@
 export interface INavItemIcon {
-    url: string;
+    url: JSX.Element;
     color: "white" | "black";
 }

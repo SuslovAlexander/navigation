@@ -10,7 +10,7 @@ const NavItem: FC<INavItemProps> = ({item, onSelect}) => {
     const {id, text, selected, url} = item;
     const navItem = `${styles.item} ${selected ? styles.selected : ""}`;
 
-    const handleClick = () => {
+    const handleClick = (): void => {
         onSelect(id)
     }
 
