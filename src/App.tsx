@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {FC, useState} from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import ContentScreen from "./Content/ContentScreen";
+import SideNavigation from "./NavBar/SideNavigation/SideNavigation";
+import {CONTENT_LIST, IContentItem} from "./shared/constants/content-list";
+import {LIST_ITEMS} from "./shared/constants/list-items";
+
+import classes from './App.module.css';
+
+
+const App: FC = () => {
+
+    const [showContent, setShowContent] = useState<IContentItem | undefined>({id: 1, content: "Content for id===1"});
+    const handleSetContent = (id: number): void => {
+        const temp = CONTENT_LIST.find(el => el.id === id);
+        setShowContent(temp);
+    }
+
+    return (
+        <div className={classes.container}>
+            <section className={classes.app}>
+                <SideNavigation onSetContent={handleSetContent} listItems={LIST_ITEMS}/>
+                <ContentScreen content={showContent}/>
+            </section>
+        </div>
+    )
 }
 
 export default App;
