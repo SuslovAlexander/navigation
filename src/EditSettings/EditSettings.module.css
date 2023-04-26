@@ -1,0 +1,13 @@
+.wrap {
+  background: #ffffff;
+  height: 100vh;
+  padding: 40px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+}
+
+.content {
+}

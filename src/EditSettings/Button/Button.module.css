@@ -1,0 +1,16 @@
+.btn {
+  all: unset;
+  padding: 8px 20px;
+  width: 272px;
+  height: 48px;
+  border-radius: 4px;
+  color: #37393d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clicked {
+  color: #ffffff;
+  background: #c06ecc;
+}
