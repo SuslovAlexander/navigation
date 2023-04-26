@@ -1,0 +1,15 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    gap: 24px;
+
+    width: 1007px;
+    height: 872px;
+
+    background: #FFFFFF;
+    box-shadow: -5px 1px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 24px 24px 0px 0px;
+}
