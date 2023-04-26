@@ -2,7 +2,7 @@ export interface INavItem {
     id: number;
     text: string;
     selected: boolean;
-    url: string;
+    url: JSX.Element;
     name: string;
 }
 

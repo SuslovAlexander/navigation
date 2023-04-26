@@ -3,5 +3,5 @@ export interface IListItem {
     text: string;
     selected: boolean;
     name: string;
-    url: JSX.Element | any;
+    url: JSX.Element;
 }
