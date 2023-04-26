@@ -1,0 +1,13 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #37393d;
+}
+
+.title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
