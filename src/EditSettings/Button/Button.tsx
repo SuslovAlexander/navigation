@@ -1,7 +1,9 @@
-import styles from "./Button.module.css";
 import { useState } from "react";
 import { FC } from "react";
+
 import { IButtonProps } from "./IButtonProps";
+
+import styles from "./Button.module.css";
 
 const Button: FC<IButtonProps> = ({ isActive, onBtnClick, children }) => {
   const [isClicked, setIsClicked] = useState(isActive);
