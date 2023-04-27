@@ -6,6 +6,7 @@ import PrevBtn from "./Actios/PrevBtn/PrevBtn";
 import ShowPageAmount from "./Actios/ShowPageAmount/ShowPageAmount";
 import TableBtn from "./Actios/TableBtn/TableBtn";
 import Row from "./Row/Row";
+import SelectedAlert from "./SelectedAlert/SelectedAlert";
 
 import styles from "./Table.module.css";
 
@@ -13,7 +14,7 @@ const Table: FC = () => {
   return (
     <div className={styles.table}>
       <div className={styles.head}>
-        <ShowPageAmount amount={10}/>
+        <ShowPageAmount amount={10} />
         <PageFromPages from={2} />
         <div className={styles.actions}>
           <PrevBtn />
@@ -79,6 +80,9 @@ const Table: FC = () => {
           products="Крем"
           cashback="20%"
         />
+      </div>
+      <div className={styles.popup}>
+        <SelectedAlert points={[1, 2, 3, 5]} />
       </div>
     </div>
   );

@@ -10,7 +10,12 @@ const ShowPageAmount: FC<IShowPageAmountProps> = ({ amount }) => {
   return (
     <div className={styles.wrap}>
       <span className={styles.text}>Показывать</span>
-      <Select pageAmount={amount} onSelect={(val: any) => {console.log(val)}}/>
+      <Select
+        pageAmount={amount}
+        onSelect={(val: any) => {
+          console.log(val);
+        }}
+      />
     </div>
   );
 };
