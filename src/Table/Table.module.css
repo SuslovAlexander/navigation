@@ -6,6 +6,11 @@
   padding: 144px 24px 0 24px;
   width: 100%;
 }
+.popup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 .head {
   display: flex;
