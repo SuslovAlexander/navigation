@@ -1,0 +1,14 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.text {
+  text-transform: capitalize;
+  color: #434652;
+  font-size: 14px;
+  line-height: 20px;
+}
+.from {
+  color: #bcbfcc;
+}

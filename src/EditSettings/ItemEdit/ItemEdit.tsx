@@ -1,8 +1,11 @@
-import styles from "./ItemEdit.module.css";
-import Select from "../Select/Select";
-import Input from "../Input/Input";
 import { FC } from "react";
+
+import Input from "../Input/Input";
+import Select from "../Select/Select";
+
 import { IItemEditprops, VariantEnum } from "./IItemEditProps";
+
+import styles from "./ItemEdit.module.css";
 
 const ItemEdit: FC<IItemEditprops> = ({
   variant,

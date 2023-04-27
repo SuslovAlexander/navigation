@@ -1,16 +1,23 @@
-import Button from "./Button/Button";
-import styles from "./EditSettings.module.css";
-import ItemEdit from "./ItemEdit/ItemEdit";
+import { FC } from "react";
+
 import { SELECT_VALUES } from "../shared/constants/select-values";
 
-const EditSettings = () => {
+import Button from "./Button/Button";
+import ItemEdit from "./ItemEdit/ItemEdit";
+
+import styles from "./EditSettings.module.css";
+
+const hadleFake = (): boolean => {
+  return true;
+};
+const EditSettings: FC = () => {
   return (
     <div className={styles.wrap}>
       <div className={styles.actions}>
-        <Button isActive={false} onBtnClick={() => {}}>
+        <Button isActive={false} onBtnClick={hadleFake}>
           Удалить
         </Button>
-        <Button isActive={true} onBtnClick={() => {}}>
+        <Button isActive={true} onBtnClick={hadleFake}>
           Сохранить
         </Button>
       </div>
@@ -23,6 +30,7 @@ const EditSettings = () => {
         {SELECT_VALUES.map((item) => {
           return (
             <ItemEdit
+              key={item.title}
               variant={"dropdown"}
               title={item.title}
               values={item.select}

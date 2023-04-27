@@ -1,0 +1,12 @@
+.text {
+  display: flex;
+  justify-content: flex-start;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  text-overflow: -o-ellipsis-lastline;
+  width: inherit;
+  padding-left: 24px;
+}
