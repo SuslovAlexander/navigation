@@ -1,0 +1,27 @@
+.li {
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 185px;
+  height: 56px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.selected {
+  background: #c06ecc;
+  color: #fff;
+}

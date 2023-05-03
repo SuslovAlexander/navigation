@@ -1,5 +1,7 @@
 .btn {
-  all: unset;
+  outline: none;
+  border: none;
+  background: #fff;
   padding: 8px 20px;
   width: 272px;
   height: 48px;
@@ -8,9 +10,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
-.clicked {
+.btn:hover {
   color: #ffffff;
   background: #c06ecc;
 }

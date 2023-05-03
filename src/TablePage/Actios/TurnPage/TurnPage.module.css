@@ -1,0 +1,23 @@
+.btn {
+  box-sizing: border-box;
+  border: 1px solid #d0d3da;
+  border-radius: 0px 4px 4px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 8px;
+  gap: 8px;
+  width: 32px;
+  height: 32px;
+  background: #f8f8fa url(/src/public/assets/images/en-arrow-right.svg) center
+    no-repeat;
+  cursor: pointer;
+}
+.prev {
+  transform: rotate(180deg);
+  z-index: 10;
+}
+.btn:hover {
+  filter: brightness(1.1);
+}

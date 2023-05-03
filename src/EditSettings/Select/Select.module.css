@@ -1,4 +1,5 @@
 select {
+  outline: none;
   background: none;
   box-sizing: border-box;
   height: 40px;
