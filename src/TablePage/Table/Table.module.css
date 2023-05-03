@@ -1,0 +1,25 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-bottom: none;
+  color: #737680;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.table td {
+  border-bottom: 1px solid #ebecef;
+}
+
+.table tr {
+  height: 68px;
+  width: 100%;
+}
+
+.table thead {
+  background: #f8f8fa;
+}
+.table thead .tr {
+  height: 44px;
+}

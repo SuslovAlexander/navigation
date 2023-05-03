@@ -1,22 +1,12 @@
-import { useState } from "react";
 import { FC } from "react";
 
 import { IButtonProps } from "./IButtonProps";
 
 import styles from "./Button.module.css";
 
-const Button: FC<IButtonProps> = ({ isActive, onBtnClick, children }) => {
-  const [isClicked, setIsClicked] = useState(isActive);
-  const handleClick = () => {
-    setIsClicked(!isClicked);
-    onBtnClick();
-  };
-
+const Button: FC<IButtonProps> = ({ onBtnClick, children }) => {
   return (
-    <button
-      className={`${styles.btn} ${isClicked ? styles.clicked : ""}`}
-      onClick={handleClick}
-    >
+    <button className={styles.btn} onClick={() => onBtnClick()}>
       {children}
     </button>
   );

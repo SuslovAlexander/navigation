@@ -3,38 +3,33 @@ import { FC } from "react";
 import { SELECT_VALUES } from "../shared/constants/select-values";
 
 import Button from "./Button/Button";
+import Input from "./Input/Input";
 import ItemEdit from "./ItemEdit/ItemEdit";
+import Select from "./Select/Select";
 
 import styles from "./EditSettings.module.css";
 
-const hadleFake = (): boolean => {
-  return true;
-};
 const EditSettings: FC = () => {
+  const handleFake = (): boolean => {
+    return true;
+  };
+
   return (
     <div className={styles.wrap}>
       <div className={styles.actions}>
-        <Button isActive={false} onBtnClick={hadleFake}>
-          Удалить
-        </Button>
-        <Button isActive={true} onBtnClick={hadleFake}>
-          Сохранить
-        </Button>
+        <Button onBtnClick={handleFake}>Удалить</Button>
+        <Button onBtnClick={handleFake}>Сохранить</Button>
       </div>
       <div className={styles.content}>
-        <ItemEdit
-          variant={"text"}
-          title={"Начисление кешбека с покупки"}
-          placeholder={"20%"}
-        />
+        <ItemEdit title="Начисление кешбека с покупки">
+          <Input placeholder="20%" />
+        </ItemEdit>
+
         {SELECT_VALUES.map((item) => {
           return (
-            <ItemEdit
-              key={item.title}
-              variant={"dropdown"}
-              title={item.title}
-              values={item.select}
-            />
+            <ItemEdit title={item.title} key={item.title}>
+              <Select values={item.select} />
+            </ItemEdit>
           );
         })}
       </div>
