@@ -1,0 +1,15 @@
+.select {
+  box-sizing: border-box;
+  padding: 6px 8px;
+  width: 47px;
+  height: 32px;
+  color: #414348;
+  border: 1px solid #d0d3da;
+  border-radius: 4px;
+  outline: none;
+  font-size: 13px;
+  line-height: 20px;
+  appearance: none;
+  background: url("../../../public/assets/images/dropdown.svg") no-repeat 80%
+    50%;
+}

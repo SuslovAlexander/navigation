@@ -7,8 +7,12 @@ import { ISelectedAlertProps } from "./ISelectedAlertProps";
 
 import styles from "./SelectedAlert.module.css";
 
-const SelectedAlert: FC<ISelectedAlertProps> = ({ points, isOpen, onClose }) => {
-  const selectedAmount = points.length;
+const SelectedAlert: FC<ISelectedAlertProps> = ({
+  selectedAmount,
+  isOpen,
+  onClose,
+  onDeleteRows,
+}) => {
   if (!isOpen) {
     return <></>;
   }
@@ -17,9 +21,9 @@ const SelectedAlert: FC<ISelectedAlertProps> = ({ points, isOpen, onClose }) => 
       <p>Количество выбранных позиций: {selectedAmount}</p>
       <button className={styles.btn}>
         <BtnRemove />
-        <span>Удалить</span>
+        <span onClick={onDeleteRows}>Удалить</span>
       </button>
-      <div className={styles.remove} onClick={onClose}> 
+      <div className={styles.remove} onClick={onClose}>
         <Remove />
       </div>
     </div>

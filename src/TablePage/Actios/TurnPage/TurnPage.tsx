@@ -6,7 +6,8 @@ import styles from "./TurnPage.module.css";
 
 const TurnPage: FC<ITurnPageProps> = ({ direction, onBtnClick }) => {
   return (
-    <button onClick={onBtnClick}
+    <button
+      onClick={onBtnClick}
       className={`${styles.btn} ${
         direction === DirectionEnum.Prev ? styles.prev : ""
       }`}

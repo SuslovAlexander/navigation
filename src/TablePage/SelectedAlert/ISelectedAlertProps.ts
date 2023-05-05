@@ -1,5 +1,6 @@
 export interface ISelectedAlertProps {
-  points: any[];
+  selectedAmount: number;
   isOpen: boolean;
   onClose: () => void;
+  onDeleteRows: any;
 }

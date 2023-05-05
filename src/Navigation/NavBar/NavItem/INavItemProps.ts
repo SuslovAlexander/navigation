@@ -1,5 +1,4 @@
 export interface INavItem {
-  id: number;
   text: string;
   selected: boolean;
   pic: JSX.Element;
@@ -9,6 +8,4 @@ export interface INavItem {
 
 export interface INavItemProps {
   item: INavItem;
-  onSelect: (id: number) => void;
 }
-
