@@ -1,0 +1,13 @@
+.select {
+  background-color: #fff;
+  outline: none;
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid #d0d3da;
+  border-radius: 8px;
+  width: 100%;
+  appearance: none;
+  background: url("../../../public/assets/images/dropdown.svg") no-repeat 98%
+    50%;
+}

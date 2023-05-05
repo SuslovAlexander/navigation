@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import Select from "../../Select/Select";
+import PageSelect from "../../../components/UI/PageSelect/PageSelect";
 
 import { IShowPageAmountProps } from "./IShowPageAmountProps";
 
@@ -10,7 +10,10 @@ const ShowPageAmount: FC<IShowPageAmountProps> = ({ amount, onSetAmount }) => {
   return (
     <div className={styles.wrap}>
       <span className={styles.text}>Показывать</span>
-      <Select pageAmount={amount} onSelect={(val: any) => onSetAmount(val)} />
+      <PageSelect
+        pageAmount={amount}
+        onSelect={(val: any) => onSetAmount(+val)}
+      />
     </div>
   );
 };

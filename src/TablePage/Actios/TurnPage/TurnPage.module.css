@@ -13,11 +13,12 @@
   background: #f8f8fa url(/src/public/assets/images/en-arrow-right.svg) center
     no-repeat;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 .prev {
   transform: rotate(180deg);
   z-index: 10;
 }
 .btn:hover {
-  filter: brightness(1.1);
+  background-color: #fff;
 }

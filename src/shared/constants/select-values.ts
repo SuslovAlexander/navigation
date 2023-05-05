@@ -2,15 +2,15 @@ import { ISelectedValue } from "../interfaces/ISelectValues";
 
 export const SELECT_VALUES: ISelectedValue[] = [
   {
-    title: "Начисление кешбека с покупки",
+    title: "Категория",
     select: ["Категория", "Первая", "Вторая", "Третья"],
   },
   {
-    title: "Начисление кешбека с покупки",
+    title: "Подкатегория",
     select: ["Категория", "Первая", "Вторая", "Третья"],
   },
   {
-    title: "Начисление кешбека с покупки",
+    title: "Бренд",
     select: ["Категория", "Первая", "Вторая", "Третья"],
   },
 ];

@@ -1,0 +1,25 @@
+p {
+  color: #37393d;
+  margin: 0;
+  padding: 0;
+}
+
+.small {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.large {
+  font-size: 44px;
+}
+
+.standart {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
