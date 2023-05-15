@@ -1,0 +1,23 @@
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 12px;
+  gap: 9px;
+  height: 28px;
+  background: #f7ecf8;
+  border-radius: 4px;
+}
+
+.name {
+  font-size: 13px;
+  line-height: 20px;
+  color: #37393d;
+}
+
+.remove {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}

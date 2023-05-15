@@ -1,17 +1,24 @@
 import { FC, useState } from "react";
 import { createPortal } from "react-dom";
 
-import EditSettings from "../../../../EditSettings/EditSettings";
 import { RANDOM } from "../../../../helpers/random-id";
+import EditProduct from "../../../Products/EditProduct/EditProduct";
 import Modal from "../../Modal/Modal";
 import TableTr from "../TableTr/TableTr";
 
 const TBody: FC<any> = ({
+  product,
   tableBodyData,
   onSelect,
   selectedItems,
+  onTrClick,
 }) => {
   const [showModal, setShowModal] = useState(false);
+
+  const handleOnTrClick = (id: string): void => {
+    setShowModal(true);
+    onTrClick(id);
+  };
 
   return (
     <tbody>
@@ -22,14 +29,14 @@ const TBody: FC<any> = ({
             onSelect={onSelect}
             data={row}
             key={RANDOM.id}
-            onTrClick={() => setShowModal(true)}
+            onTrClick={(val) => handleOnTrClick(val)}
           />
         );
       })}
       {showModal &&
         createPortal(
           <Modal active={showModal} setActive={() => setShowModal(false)}>
-            <EditSettings />
+            <EditProduct product={product} />
           </Modal>,
           document.body
         )}

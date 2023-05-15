@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 
-export interface IItemEditprops {
+export interface INoteProps {
   children: ReactNode;
-  title: string;
 }

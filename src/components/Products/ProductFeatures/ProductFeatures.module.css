@@ -1,0 +1,18 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.heading {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #37393d;
+}
+
+.note {
+  font-size: 12px;
+  line-height: 20px;
+  color: #737680;
+}

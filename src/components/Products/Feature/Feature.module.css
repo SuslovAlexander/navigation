@@ -1,0 +1,11 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bright,
+.pale {
+  display: flex;
+  gap: 8px;
+}

@@ -11,15 +11,12 @@ const THead: FC<ITHeadProps> = ({ tableHeadData, onSelectAll }) => {
     <thead>
       <tr style={{ height: "44px" }}>
         <td>
-          <Checkbox
-            id={RANDOM.id}
-            onSelect={onSelectAll}
-          />
+          <Checkbox id={RANDOM.id} onSelect={onSelectAll} />
         </td>
-        {tableHeadData.map((item: any, i: any) => {
+        {tableHeadData.map((item:any) => {
           return (
-            <td key={i}>
-              <RowTextItem>{item[0]}</RowTextItem>
+            <td key={RANDOM.id}>
+              <RowTextItem>{item}</RowTextItem>
             </td>
           );
         })}

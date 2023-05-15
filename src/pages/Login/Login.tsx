@@ -36,7 +36,7 @@ const Login: FC = () => {
               <PTag>Запомнить меня</PTag>
             </div>
             <div className={styles.actions}>
-              <Button >Войти</Button>
+              <Button>Войти</Button>
               <Anchor
                 onAnchorClick={() => navigate("/auth/register")}
                 color="#C06ECC"

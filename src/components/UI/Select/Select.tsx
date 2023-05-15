@@ -4,9 +4,10 @@ import { ISelectProps } from "./ISelectProps";
 
 import styles from "./Select.module.css";
 
-const Select: FC<ISelectProps> = ({ values }) => {
+const Select: FC<ISelectProps> = ({ values, isPale = false }) => {
+  const selectStyles = `${styles.select} ${isPale ? styles.pale : ""}`;
   return (
-    <select name="test" className={styles.select}>
+    <select name="test" className={selectStyles}>
       {values.map((value: any) => {
         return (
           <option value={value} key={value}>

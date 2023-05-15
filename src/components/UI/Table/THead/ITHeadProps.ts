@@ -1,6 +1,7 @@
 import { TtableData } from "../../../../TablePage/ITablePageProps";
 
 export interface ITHeadProps {
-  tableHeadData: TtableData;
+  /* tableHeadData: TtableData; */
+  tableHeadData: any;
   onSelectAll: () => void;
 }
