@@ -13,7 +13,7 @@ const THead: FC<ITHeadProps> = ({ tableHeadData, onSelectAll }) => {
         <td>
           <Checkbox id={RANDOM.id} onSelect={onSelectAll} />
         </td>
-        {tableHeadData.map((item:any) => {
+        {tableHeadData.map((item: any) => {
           return (
             <td key={RANDOM.id}>
               <RowTextItem>{item}</RowTextItem>

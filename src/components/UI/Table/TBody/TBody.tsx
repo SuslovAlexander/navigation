@@ -16,7 +16,7 @@ const TBody: FC<any> = ({
   const [showModal, setShowModal] = useState(false);
 
   const handleOnTrClick = (id: string): void => {
-    setShowModal(true);
+    //setShowModal(true);
     onTrClick(id);
   };
 

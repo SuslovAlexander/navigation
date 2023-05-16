@@ -1,5 +1,5 @@
 export interface IProductFeatures {
-  title: string;
+  title?: string;
   maxFeatures: number;
   features: any[];
 }

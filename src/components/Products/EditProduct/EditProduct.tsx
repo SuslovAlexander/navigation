@@ -59,7 +59,7 @@ const EditProduct: FC<IEditProductProps> = ({ product }) => {
                 <TitledContent heading="Артикул">
                   <Input type="text" placeholder={feature} />
                 </TitledContent>
-              )
+              );
             }
           })()
         )}

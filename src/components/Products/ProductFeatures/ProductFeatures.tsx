@@ -18,7 +18,7 @@ const ProductFeatures: FC<IProductFeatures> = ({
       <p className={styles.heading}>{title}</p>
       <div className={styles.content}>
         {features.map((feature) => (
-          <Feature key={RANDOM.id} />
+          <Feature key={RANDOM.id} data={feature}/>
         ))}
       </div>
       <p className={styles.note}>{`Максимум ${maxFeatures} характеристик`}</p>

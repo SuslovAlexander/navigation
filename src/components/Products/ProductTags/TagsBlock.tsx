@@ -1,9 +1,8 @@
 import { FC } from "react";
 
-import { RANDOM } from "../../../helpers/random-id";
 import Tag from "../Tag/Tag";
 
-import { ITagsBlock } from "./ITagsBlockprops";
+import { ITag, ITagsBlock } from "./ITagsBlockprops";
 
 import styles from "./TagsBlock.module.css";
 
@@ -13,9 +12,8 @@ const ProductTags: FC<ITagsBlock> = ({ title, maxTags, tags }) => {
       <p className={styles.heading}>{title}</p>
       <div className={styles.content}>
         {tags.map((tag) => (
-          <Tag name={tag} key={RANDOM.id} />
+          <Tag name={tag.name} key={tag.id} />
         ))}
-      
       </div>
       <p className={styles.note}>{`Максимум ${maxTags} тэгов`}</p>
     </div>

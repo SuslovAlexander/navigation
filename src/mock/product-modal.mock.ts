@@ -1,16 +1,65 @@
 export const PRODUCT_MODAL = {
   id: "6ee9ef45-57b1-4372-a3af-5ac3f241b8e1",
+  nameFrom1C: "AGT BIO Восстановление и обновление 5мл",
   name: "AGT BIO Восстановление и обновление, 5 мл",
+  brand: [
+    {
+      id: "129b7d00-4a7a-45ed-8eda-d96cbcb52770",
+      name: "AGT Bio",
+      icon: "0f7fe3e9-98fb-478c-a84d-0883ed245a7d.jpg",
+    },
+    {
+      id: "016eedd1-9a42-40d2-ad1c-c03ed8f36d1c",
+      name: "Лантановая косметика",
+      icon: "50ff8f8c-acec-40a5-8786-e8ca3fed0abe.jpg",
+    },
+  ],
+  codeFrom1C: "УТ000001350",
   description:
     "Препарат предназначен для молодой кожи в целях профилактики старения, устранения сухости, увлажнения кожи вокруг глаз, для уменьшения «гусиных лапок», синевы под глазами, повышения иммунного статуса кожи, снятия отечности и пастозности лица, антиоксидантная защита, восстановление кожи после избыточной инсоляции, подготовка и реабилитация после лазерных процедур.\n\nПоказания к применению: Морщины периорбитальной и периоральной зоны, молодая, тонкая и обезвоженная кожа, сниженный тургор, кожа склонная к пастозности, мелкоморщинистый тип старения, ТАЭ, купероз, чувствительная кожа, нарушенный эпидермальный барьер.\n\nСостав: гиалуронат натрия 0,8% (1100-1300 кДа), трегалоза, маннитол, буферный раствор.\n\nСтерильно, апирогенно, нетоксично.",
+  images: [
+    "https://drive.google.com/uc?export=view&id=1OZcJHRACGwkj4-rE0ZfIoi9ngKUj75_y",
+    "https://drive.google.com/uc?export=view&id=16d-yUL2pEo2FLPyTwRHQEPQ6JQYugwnp",
+  ],
   image:
     '["https://drive.google.com/uc?export=view&id=1OZcJHRACGwkj4-rE0ZfIoi9ngKUj75_y","https://drive.google.com/uc?export=view&id=16d-yUL2pEo2FLPyTwRHQEPQ6JQYugwnp"]',
-  nameFrom1C: "AGT BIO Восстановление и обновление 5мл",
-  codeFrom1C: "УТ000001350",
   price: 2000,
+  catalog_product: [
+    {
+      id: "e0c27048-b304-4e76-8a8e-65ab197d33ad",
+      name: "Биорепаранты/биоревитализанты",
+      position: 2,
+    },
+    {
+      id: "e0c27048-n78t-4e76-7a8e-65ab197d33ad",
+      name: "Биорепаранты",
+      position: 2,
+    },
+    {
+      id: "o4r27048-b304-4e76-8a8e-65ab197d33ad",
+      name: "Биорепаранты/биоревитализант",
+      position: 2,
+    },
+  ],
+  sub_catalog_product: [
+    {
+      id: "fcfpc920-558b-47ac-81a2-f11d4e7c54a1",
+      name: "Биоревитализанты",
+      position: 0,
+    },
+    {
+      id: "ocfec920-558b-47ac-81a2-f11d4e7c54a1",
+      name: "Биоревитализанты",
+      position: 1,
+    },
+    {
+      id: "fmfec920-558b-47ac-81a2-f11d4e7c54a1",
+      name: "Биоревитализанты",
+      position: 2,
+    },
+  ],
   estimation: 0,
   purpose: "Проф",
-  volume: "5 мл",
   isReady: true,
   isRetailAllowed: false,
   product_in_warehouse_info: [
@@ -18,6 +67,7 @@ export const PRODUCT_MODAL = {
       id: "ac9a591d-f266-41a8-bc9c-e7a633358ca8",
       amount: 14,
       prevAmount1C: 14,
+      volume: "5 мл",
       warehouseId: "8ccaa361-08c7-4cd1-9f3b-ed79e41acdf2",
       productId: "6ee9ef45-57b1-4372-a3af-5ac3f241b8e1",
     },
@@ -64,21 +114,6 @@ export const PRODUCT_MODAL = {
       productId: "6ee9ef45-57b1-4372-a3af-5ac3f241b8e1",
     },
   ],
-  brand: [{
-    id: "129b7d00-4a7a-45ed-8eda-d96cbcb52770",
-    name: "AGT Bio",
-    icon: "0f7fe3e9-98fb-478c-a84d-0883ed245a7d.jpg",
-  }],
-  sub_catalog_product: {
-    id: "fcfec920-558b-47ac-81a2-f11d4e7c54a1",
-    name: "Биоревитализанты",
-    position: 0,
-  },
-  catalog_product: {
-    id: "e0c27048-b304-4e76-8a8e-65ab197d33ad",
-    name: "Биорепаранты/биоревитализанты",
-    position: 2,
-  },
   characteristics: [
     {
       id: "9033b2fd-a2f4-4ade-9e5e-61e01af7e832",
@@ -111,10 +146,6 @@ export const PRODUCT_MODAL = {
   ],
   productRatings: [],
   estimationCount: 0,
-  images: [
-    "https://drive.google.com/uc?export=view&id=1OZcJHRACGwkj4-rE0ZfIoi9ngKUj75_y",
-    "https://drive.google.com/uc?export=view&id=16d-yUL2pEo2FLPyTwRHQEPQ6JQYugwnp",
-  ],
   variations: [],
   similars: [],
   protocols: [],

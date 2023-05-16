@@ -4,7 +4,7 @@ import Select from "../../UI/Select/Select";
 
 import { IBrightSelectProps } from "./IBrightSelectProps";
 
-import styles from './BrightSelect.module.css';
+import styles from "./BrightSelect.module.css";
 
 const BrightSelect: FC<IBrightSelectProps> = ({ values }) => {
   return (
