@@ -1,6 +1,6 @@
 export interface ITableTrProps {
   data: Record<string, any>;
-  onTrClick: () => void;
+  onTrClick: (val: string) => void;
   onSelect: (val: string) => void;
   selectedItems: string[];
 }

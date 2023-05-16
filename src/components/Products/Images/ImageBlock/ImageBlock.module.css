@@ -1,0 +1,32 @@
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 17px;
+  height: fit-content;
+}
+
+.remove {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-block {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background: #fafafa;
+}
+
+.url {
+  font-size: 14px;
+  line-height: 20px;
+  color: #37393d;
+}

@@ -19,6 +19,7 @@
   border: 1px solid #d0d3da;
   border-radius: 8px;
   width: 100%;
+  color: #37393d;
 }
 
 .input::placeholder {
@@ -26,4 +27,18 @@
   font-size: 14px;
   line-height: 20px;
   color: #737680;
+}
+
+.disabled {
+  pointer-events: none;
+  background: #f8f8fa;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 16px;
+  cursor: pointer;
 }

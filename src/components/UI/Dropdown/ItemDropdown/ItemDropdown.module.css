@@ -1,0 +1,18 @@
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 10px;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.item:hover,
+.selected {
+  background: #f7ecf8;
+  justify-content: center;
+  border-radius: 8px;
+}

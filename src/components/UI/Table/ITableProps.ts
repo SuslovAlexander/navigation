@@ -5,4 +5,6 @@ export interface ITableProps {
   tableData: TtableData;
   onSelect: any;
   onSelectAll: () => void;
+  onTrClick?: (id: string) => void;
+  [propName: string]: any;
 }

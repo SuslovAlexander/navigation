@@ -11,3 +11,8 @@
   background: url("../../../public/assets/images/dropdown.svg") no-repeat 98%
     50%;
 }
+
+.pale {
+  background-color: #f8f8fa;
+  color: #aaafbd;
+}

@@ -1,0 +1,33 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  gap: 4px;
+}
+
+.heading {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #37393d;
+}
+
+.content {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 6px 12px;
+  border: 1px solid #d0d3da;
+  border-radius: 8px;
+}
+
+.note {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #737680;
+}
+
+.remove {
+}

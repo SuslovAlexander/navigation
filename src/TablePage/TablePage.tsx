@@ -1,11 +1,22 @@
 import { FC, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
+import EditProduct from "../components/Products/EditProduct/EditProduct";
 import Button from "../components/UI/Button/Button";
+import Modal from "../components/UI/Modal/Modal";
 import Table from "../components/UI/Table/Table";
+import {
+  leadDataToCorrect,
+  leaveUsedValues,
+} from "../helpers/lead-data-to-correct";
+import { PRODUCT_MODAL } from "../mock/product-modal.mock";
+import { PROD_ADDITIVE } from "../shared/shape/product-additive";
 
 import PageFromPages from "./Actios/PageFromPages/PageFromPages";
 import ShowPageAmount from "./Actios/ShowPageAmount/ShowPageAmount";
 import TurnPage from "./Actios/TurnPage/TurnPage";
+import Edit from "./Editor/Editor";
+import Editor from "./Editor/Editor";
 import SelectedAlert from "./SelectedAlert/SelectedAlert";
 import { ITablePageProps, TtableData } from "./ITablePageProps";
 
@@ -23,8 +34,9 @@ const TablePage: FC<ITablePageProps> = ({ data }) => {
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const totalAmount = tableData.length;
   const fromPages = Math.ceil(totalAmount / showAmount);
-
   const [toggleSelectAll, setToggleSelectAll] = useState(true);
+
+  const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     setEnd(showAmount);
@@ -40,7 +52,7 @@ const TablePage: FC<ITablePageProps> = ({ data }) => {
 
   const handleDelete = (): void => {
     const updatedTableData = tableData.filter(
-      (item: Record<string, any>) => !selected.includes(item.email)
+      (item: Record<string, any>) => !selected.includes(item.id)
     );
     setSelected([]);
     setTableData(updatedTableData);
@@ -77,38 +89,66 @@ const TablePage: FC<ITablePageProps> = ({ data }) => {
     setToggleSelectAll(!toggleSelectAll);
     setSelectAll(!selectAll);
     const updatedSelected = toggleSelectAll
-      ? tableData.map((item: any) => item.email)
+      ? tableData.map((item: any) => item.id)
       : [];
     setSelected(updatedSelected);
   };
-  
+
+  const usedValues = [
+    "nameFrom1C",
+    "name",
+    "brand",
+    "codeFrom1C",
+    "description",
+    "images",
+    "price",
+    "catalog_product",
+    "sub_catalog_product",
+    "volume",
+    "characteristics",
+    "tags",
+  ];
+  const usedData = leaveUsedValues(PRODUCT_MODAL, usedValues);
+  const correctProduct = leadDataToCorrect(usedData, PROD_ADDITIVE);
+
+  const prodFeatures = Object.values(correctProduct);
 
   return (
-    <div className={styles.table}>
-      <div className={styles.head}>
-        <ShowPageAmount amount={totalAmount} onSetAmount={setShowAmount} />
-        <PageFromPages from={fromPages} current={currentPage} />
-        <div className={styles.actions}>
-          <TurnPage direction="prev" onBtnClick={handlePrev} />
-          <TurnPage direction="next" onBtnClick={handleNext} />
+    <>
+      <div className={styles.table}>
+        <div className={styles.head}>
+          <ShowPageAmount amount={totalAmount} onSetAmount={setShowAmount} />
+          <PageFromPages from={fromPages} current={currentPage} />
+          <div className={styles.actions}>
+            <TurnPage direction="prev" onBtnClick={handlePrev} />
+            <TurnPage direction="next" onBtnClick={handleNext} />
+          </div>
+        </div>
+        <Button>Добавить акцию</Button>
+        <Table
+          onTrClick={() => setShowModal(true)}
+          selectedItems={selected}
+          tableData={currentSlice}
+          onSelect={handleSelect}
+          onSelectAll={handleToggleSelectAll}
+        />
+        <div className={styles.popup}>
+          <SelectedAlert
+            onDeleteRows={handleDelete}
+            selectedAmount={selected.length}
+            isOpen={showAlert}
+            onClose={() => setShowAlert(false)}
+          />
         </div>
       </div>
-      <Button>Добавить акцию</Button>
-      <Table
-        selectedItems={selected}
-        tableData={currentSlice}
-        onSelect={handleSelect}
-        onSelectAll={handleToggleSelectAll}
-      />
-      <div className={styles.popup}>
-        <SelectedAlert
-          onDeleteRows={handleDelete}
-          selectedAmount={selected.length}
-          isOpen={showAlert}
-          onClose={() => setShowAlert(false)}
-        />
-      </div>
-    </div>
+      {showModal &&
+        createPortal(
+          <Modal active={showModal} setActive={() => setShowModal(false)}>
+            <Editor items={prodFeatures} />
+          </Modal>,
+          document.body
+        )}
+    </>
   );
 };
 
