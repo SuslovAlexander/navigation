@@ -24,7 +24,7 @@ const Editor: FC<any> = ({ items }) => {
           Сохранить
         </Button>
       </div>
-      {items.map((item: any) => (
+      {items?.map((item: any) => (
         <TitledContent key={RANDOM.id} heading={item.showName}>
           {(() => {
             if (item.type === "input")

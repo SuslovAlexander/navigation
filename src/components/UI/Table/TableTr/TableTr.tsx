@@ -1,5 +1,6 @@
 import { FC } from "react";
 
+import { leaveUsedValues } from "../../../../helpers/lead-data-to-correct";
 import RowTextItem from "../../../../TablePage/RowTextItem/RowTextItem";
 import Checkbox from "../../Checkbox/Checkbox";
 
@@ -12,6 +13,7 @@ const TableTr: FC<ITableTrProps> = ({
   data,
   onTrClick,
   onSelect,
+  used,
 }) => {
   const handleClick = (): void => {
     onTrClick(data.id);
@@ -32,15 +34,12 @@ const TableTr: FC<ITableTrProps> = ({
       </td>
       {Object.keys(data).map((keyName, i) => {
         if (typeof data[keyName] === "object") return;
-        if (keyName !== "name") {
-          if (keyName !== "codeFrom1C") return;
-        }
-
-        return (
-          <td key={i} onClick={handleClick}>
-            <RowTextItem>{data[keyName]}</RowTextItem>
-          </td>
-        );
+        if (used.includes(keyName))
+          return (
+            <td key={i} onClick={handleClick}>
+              <RowTextItem>{data[keyName]}</RowTextItem>
+            </td>
+          );
       })}
     </tr>
   );

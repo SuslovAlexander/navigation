@@ -1,29 +1,26 @@
 import { FC, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-import EditProduct from "../components/Products/EditProduct/EditProduct";
-import Button from "../components/UI/Button/Button";
 import Modal from "../components/UI/Modal/Modal";
 import Table from "../components/UI/Table/Table";
-import {
-  leadDataToCorrect,
-  leaveUsedValues,
-} from "../helpers/lead-data-to-correct";
-import { PRODUCT_MODAL } from "../mock/product-modal.mock";
-import { PROD_ADDITIVE } from "../shared/shape/product-additive";
 
 import PageFromPages from "./Actios/PageFromPages/PageFromPages";
 import ShowPageAmount from "./Actios/ShowPageAmount/ShowPageAmount";
 import TurnPage from "./Actios/TurnPage/TurnPage";
-import Edit from "./Editor/Editor";
 import Editor from "./Editor/Editor";
 import SelectedAlert from "./SelectedAlert/SelectedAlert";
 import { ITablePageProps, TtableData } from "./ITablePageProps";
 
 import styles from "./TablePage.module.css";
 
-const TablePage: FC<ITablePageProps> = ({ data }) => {
-  const [tableData, setTableData] = useState(data.data);
+const TablePage: FC<ITablePageProps> = ({
+  data,
+  features,
+  tableHeading,
+  children,
+  used,
+}) => {
+  const [tableData, setTableData] = useState(data);
   const [showAmount, setShowAmount] = useState<number>(1);
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState<number>(showAmount);
@@ -94,25 +91,6 @@ const TablePage: FC<ITablePageProps> = ({ data }) => {
     setSelected(updatedSelected);
   };
 
-  const usedValues = [
-    "nameFrom1C",
-    "name",
-    "brand",
-    "codeFrom1C",
-    "description",
-    "images",
-    "price",
-    "catalog_product",
-    "sub_catalog_product",
-    "volume",
-    "characteristics",
-    "tags",
-  ];
-  const usedData = leaveUsedValues(PRODUCT_MODAL, usedValues);
-  const correctProduct = leadDataToCorrect(usedData, PROD_ADDITIVE);
-
-  const prodFeatures = Object.values(correctProduct);
-
   return (
     <>
       <div className={styles.table}>
@@ -124,8 +102,10 @@ const TablePage: FC<ITablePageProps> = ({ data }) => {
             <TurnPage direction="next" onBtnClick={handleNext} />
           </div>
         </div>
-        <Button>Добавить акцию</Button>
+        {children}
         <Table
+          used={used}
+          heading={tableHeading}
           onTrClick={() => setShowModal(true)}
           selectedItems={selected}
           tableData={currentSlice}
@@ -144,7 +124,7 @@ const TablePage: FC<ITablePageProps> = ({ data }) => {
       {showModal &&
         createPortal(
           <Modal active={showModal} setActive={() => setShowModal(false)}>
-            <Editor items={prodFeatures} />
+            <Editor items={features} />
           </Modal>,
           document.body
         )}

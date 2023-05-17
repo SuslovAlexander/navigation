@@ -1,11 +1,11 @@
-/* export interface ITablePageProps {
-  data: Record<string, any>;
-}
-
-export type TtableData = Record<string, any>[]; */
+import { ReactNode } from "react";
 
 export interface ITablePageProps {
   data: any;
+  features: any;
+  tableHeading: any;
+  children?: ReactNode;
+  used?: any;
 }
 
 export type TtableData = Record<string, any>[];

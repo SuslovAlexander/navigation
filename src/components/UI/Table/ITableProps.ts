@@ -1,6 +1,7 @@
 import { TtableData } from "../../../TablePage/ITablePageProps";
 
 export interface ITableProps {
+  heading: any;
   selectedItems: string[];
   tableData: TtableData;
   onSelect: any;
