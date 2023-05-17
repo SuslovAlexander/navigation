@@ -33,7 +33,7 @@ const TablePage: FC<ITablePageProps> = ({
   const fromPages = Math.ceil(totalAmount / showAmount);
   const [toggleSelectAll, setToggleSelectAll] = useState(true);
 
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setEnd(showAmount);

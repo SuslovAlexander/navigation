@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 export interface ITablePageProps {
   data: any;
-  features: any;
+  features?: any;
   tableHeading: any;
   children?: ReactNode;
   used?: any;

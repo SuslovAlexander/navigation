@@ -1,13 +1,7 @@
 import { FC } from "react";
 
-import {
-  leadDataToCorrect,
-  leaveUsedValues,
-} from "../../helpers/lead-data-to-correct";
 import { RANDOM } from "../../helpers/random-id";
-import { PRODUCT_MODAL } from "../../mock/product-modal.mock";
 import { USERS } from "../../mock/users.mock";
-import { PROD_ADDITIVE } from "../../shared/shape/product-additive";
 import TablePage from "../../TablePage/TablePage";
 
 const Clients: FC = () => {
@@ -28,13 +22,10 @@ const Clients: FC = () => {
     return resObj;
   });
 
-  return (
-    <TablePage
-      data={res}
-      tableHeading={heading}
-      used={usedValues}
-    />
-  );
+  return <TablePage data={res} tableHeading={heading} used={usedValues} />;
 };
 
 export default Clients;
+
+
+const prodFeatures = Object.values(correctProduct);
