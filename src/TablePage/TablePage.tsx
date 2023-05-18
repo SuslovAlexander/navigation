@@ -14,13 +14,13 @@ import { ITablePageProps, TtableData } from "./ITablePageProps";
 import styles from "./TablePage.module.css";
 
 const TablePage: FC<ITablePageProps> = ({
-  data,
+  tableBody,
   features,
   tableHeading,
   children,
-  used,
+  idName
 }) => {
-  const [tableData, setTableData] = useState(data);
+  const [tableData, setTableData] = useState(tableBody);
   const [showAmount, setShowAmount] = useState<number>(1);
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState<number>(showAmount);
@@ -49,7 +49,7 @@ const TablePage: FC<ITablePageProps> = ({
 
   const handleDelete = (): void => {
     const updatedTableData = tableData.filter(
-      (item: Record<string, any>) => !selected.includes(item.id)
+      (item: Record<string, any>) => !selected.includes(item[idName])
     );
     setSelected([]);
     setTableData(updatedTableData);
@@ -86,7 +86,7 @@ const TablePage: FC<ITablePageProps> = ({
     setToggleSelectAll(!toggleSelectAll);
     setSelectAll(!selectAll);
     const updatedSelected = toggleSelectAll
-      ? tableData.map((item: any) => item.id)
+      ? tableData.map((item: any) => item[idName])
       : [];
     setSelected(updatedSelected);
   };
@@ -104,7 +104,7 @@ const TablePage: FC<ITablePageProps> = ({
         </div>
         {children}
         <Table
-          used={used}
+          idName={idName}
           heading={tableHeading}
           onTrClick={() => setShowModal(true)}
           selectedItems={selected}

@@ -1,18 +1,12 @@
 import { FC } from "react";
 
-import {
-  leadDataToCorrect,
-  leaveUsedValues,
-} from "../../helpers/lead-data-to-correct";
 import { RANDOM } from "../../helpers/random-id";
-import { PRODUCT_MODAL } from "../../mock/product-modal.mock";
 import { USERS } from "../../mock/users.mock";
-import { PROD_ADDITIVE } from "../../shared/shape/product-additive";
 import TablePage from "../../TablePage/TablePage";
 
 const Clients: FC = () => {
-  const usedValues = ["name", "email", "phone"] as any;
   const heading = ["ФИ", "Почта", "Телефон"];
+  const body = ["name", "email", "phone"] as any;
 
   const transformedUsers: any = USERS.data.map((item) => {
     let modified = {};
@@ -22,19 +16,13 @@ const Clients: FC = () => {
 
   const res = transformedUsers.map((item: any) => {
     const resObj: any = {};
-    for (let i = 0; i < usedValues.length; i++) {
-      if (usedValues[i] in item) resObj[usedValues[i]] = item[usedValues[i]];
+    for (let i = 0; i < body.length; i++) {
+      if (body[i] in item) resObj[body[i]] = item[body[i]];
     }
     return resObj;
   });
 
-  return (
-    <TablePage
-      data={res}
-      tableHeading={heading}
-      used={usedValues}
-    />
-  );
+  return <TablePage tableBody={res} tableHeading={heading} idName="email" />;
 };
 
 export default Clients;

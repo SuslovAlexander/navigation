@@ -49,10 +49,10 @@ const prodFeatures = Object.values(correctProduct);
 const Products: FC = () => {
   return (
     <TablePage
-      data={res}
+      tableBody={res}
       tableHeading={heading}
-      used={usedValues}
       features={prodFeatures}
+      idName="codeFrom1C"
     />
   );
 };

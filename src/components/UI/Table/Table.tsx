@@ -14,7 +14,7 @@ const Table: FC<ITableProps> = ({
   onSelect,
   onSelectAll,
   onTrClick,
-  used
+  idName,
 }) => {
   return (
     <table className={styles.table}>
@@ -25,7 +25,7 @@ const Table: FC<ITableProps> = ({
         selectedItems={selectedItems}
         tableBodyData={tableData}
         onSelect={onSelect}
-        used={used}
+        idName={idName}
       />
     </table>
   );

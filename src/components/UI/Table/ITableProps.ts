@@ -8,4 +8,5 @@ export interface ITableProps {
   onSelectAll: () => void;
   onTrClick?: (id: string) => void;
   [propName: string]: any;
+  idName: string;
 }
