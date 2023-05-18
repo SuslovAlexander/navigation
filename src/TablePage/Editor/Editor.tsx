@@ -24,7 +24,7 @@ const Editor: FC<any> = ({ items }) => {
           Сохранить
         </Button>
       </div>
-      {items.map((item: any) => (
+      {items?.map((item: any) => (
         <TitledContent key={RANDOM.id} heading={item.showName}>
           {(() => {
             if (item.type === "input")
@@ -38,7 +38,8 @@ const Editor: FC<any> = ({ items }) => {
             if (item.type === "dropdown")
               return <DropWrap options={item.value.map((i: any) => i.name)} />;
             if (item.type === "images") return <Images urlList={item.value} />;
-            if (item.type === "textarea") return <Textarea />;
+            if (item.type === "textarea")
+              return <Textarea value={item.value}/>;
             if (item.type === "tags")
               return <ProductTags maxTags={120} tags={item.value} />;
             if (item.type === "feature")

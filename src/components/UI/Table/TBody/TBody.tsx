@@ -12,6 +12,7 @@ const TBody: FC<any> = ({
   onSelect,
   selectedItems,
   onTrClick,
+  idName,
 }) => {
   const [showModal, setShowModal] = useState(false);
 
@@ -25,6 +26,7 @@ const TBody: FC<any> = ({
       {tableBodyData.map((row: any) => {
         return (
           <TableTr
+            idName={idName}
             selectedItems={selectedItems}
             onSelect={onSelect}
             data={row}

@@ -9,7 +9,9 @@ import styles from "./Tag.module.css";
 const Tag: FC<ITag> = ({ name, onRemove }) => {
   return (
     <div className={styles.wrap}>
-      <span className={styles.name}>{name}</span>
+      <div>
+        <span className={styles.name}>{name}</span>
+      </div>
       <div className={styles.remove} onClick={onRemove}>
         <Remove />
       </div>

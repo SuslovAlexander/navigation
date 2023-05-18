@@ -1,5 +1,6 @@
 .wrap {
   display: flex;
+  flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
   padding: 4px 12px;
@@ -7,6 +8,8 @@
   height: 28px;
   background: #f7ecf8;
   border-radius: 4px;
+  position: relative;
+  z-index: 30;
 }
 
 .name {
