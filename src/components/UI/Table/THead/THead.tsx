@@ -6,13 +6,20 @@ import Checkbox from "../../Checkbox/Checkbox";
 
 import { ITHeadProps } from "./ITHeadProps";
 
-const THead: FC<ITHeadProps> = ({ tableHeadData, onSelectAll }) => {
+const THead: FC<ITHeadProps> = ({
+  tableHeadData,
+  onSelectAll,
+  hasCheckbox,
+}) => {
   return (
     <thead>
       <tr style={{ height: "44px" }}>
-        <td>
-          <Checkbox id={RANDOM.id} onSelect={onSelectAll} />
-        </td>
+        {hasCheckbox && (
+          <td>
+            <Checkbox id={RANDOM.id} onSelect={onSelectAll} />
+          </td>
+        )}
+
         {tableHeadData.map((item: any) => {
           return (
             <td key={RANDOM.id}>

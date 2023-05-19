@@ -8,5 +8,5 @@
   text-overflow: ellipsis;
   text-overflow: -o-ellipsis-lastline;
   width: inherit;
-  padding-left: 24px;
+  /* padding-left: 24px; */
 }

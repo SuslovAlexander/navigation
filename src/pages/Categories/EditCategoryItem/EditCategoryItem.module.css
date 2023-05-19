@@ -1,0 +1,28 @@
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  height: 68px;
+  align-items: center;
+  border-bottom: 1px solid #ebecef;
+  font-size: 14px;
+  line-height: 20px;
+  color: #434652;
+  cursor: default;
+  padding: 8px;
+}
+
+.text {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  height: 100%;
+}
+
+.actions {
+  display: flex;
+  gap: 26px;
+}
+
+.action {
+  cursor: pointer;
+}

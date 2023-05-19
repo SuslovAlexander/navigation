@@ -16,10 +16,10 @@ const Input: FC<IInputProps> = ({
   const [inputValue, setInputValue] = useState("");
   const [inputType, setInputType] = useState(type);
 
-  useEffect(() => {
+/*   useEffect(() => {
     if (!placeholder) return;
     setInputValue(placeholder);
-  }, []);
+  }, []); */
 
   const inputStyles = `${styles.input} ${disabled ? styles.disabled : ""}`;
   let inputStyle = {};

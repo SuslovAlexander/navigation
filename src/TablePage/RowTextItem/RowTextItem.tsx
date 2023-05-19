@@ -5,7 +5,11 @@ import { IRowTextItemProps } from "./IRowTextItemProps";
 import styles from "./RowTextItem.module.css";
 
 const RowTextItem: FC<IRowTextItemProps> = ({ children }) => {
-  return <span className={styles.text}>{children}</span>;
+  return (
+    <span className={styles.text} title={`${children ? children : ""}`}>
+      {children}
+    </span>
+  );
 };
 
 export default RowTextItem;

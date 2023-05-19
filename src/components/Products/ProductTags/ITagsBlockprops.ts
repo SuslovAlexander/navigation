@@ -1,10 +1,7 @@
-export interface ITag {
-  id: string;
-  name: string;
-}
+import { ITag } from "../Tag/ITagProps";
 
 export interface ITagsBlock {
   title?: string;
   maxTags: number;
-  tags: any[];
+  tags: ITag[];
 }

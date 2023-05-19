@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 
 import { RANDOM } from "../../../helpers/random-id";
+import { TTag } from "../../../shared/types/TTag";
 import Tag from "../Tag/Tag";
 
 import { ITagsBlock } from "./ITagsBlockprops";
@@ -37,7 +38,7 @@ const ProductTags: FC<ITagsBlock> = ({ title, maxTags, tags }) => {
     <div className={styles.wrap} onClick={handleEditable}>
       <p className={styles.heading}>{title}</p>
       <div className={styles.content}>
-        {insideTags?.map((tag: any) => (
+        {insideTags?.map((tag: TTag) => (
           <Tag name={tag.name} key={tag.id} />
         ))}
         <input
