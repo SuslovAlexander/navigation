@@ -1,24 +1,18 @@
-import { FC, useState } from "react";
-import { createPortal } from "react-dom";
+import { FC } from "react";
 
 import { RANDOM } from "../../../../helpers/random-id";
-import EditProduct from "../../../Products/EditProduct/EditProduct";
-import Modal from "../../Modal/Modal";
 import TableTr from "../TableTr/TableTr";
 
 const TBody: FC<any> = ({
-  product,
   tableBodyData,
   onSelect,
   selectedItems,
   onTrClick,
   idName,
+  hasCheckbox,
 }) => {
-  const [showModal, setShowModal] = useState(false);
-
   const handleOnTrClick = (id: string): void => {
-    //setShowModal(true);
-    onTrClick(id);
+    onTrClick();
   };
 
   return (
@@ -31,17 +25,12 @@ const TBody: FC<any> = ({
             onSelect={onSelect}
             data={row}
             key={RANDOM.id}
-            onTrClick={(val) => handleOnTrClick(val)}
+            /*  onTrClick={(val) => handleOnTrClick(val)} */
+            onTrClick={onTrClick}
+            hasCheckbox={hasCheckbox}
           />
         );
       })}
-      {showModal &&
-        createPortal(
-          <Modal active={showModal} setActive={() => setShowModal(false)}>
-            <EditProduct product={product} />
-          </Modal>,
-          document.body
-        )}
     </tbody>
   );
 };

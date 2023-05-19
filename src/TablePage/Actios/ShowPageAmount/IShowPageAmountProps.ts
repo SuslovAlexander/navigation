@@ -1,4 +1,4 @@
 export interface IShowPageAmountProps {
   amount: number;
-  onSetAmount: any;
+  onSetAmount: (val: number) => void;
 }

@@ -1,6 +1,5 @@
 import { FC } from "react";
 
-import { leaveUsedValues } from "../../../../helpers/lead-data-to-correct";
 import RowTextItem from "../../../../TablePage/RowTextItem/RowTextItem";
 import Checkbox from "../../Checkbox/Checkbox";
 
@@ -14,10 +13,11 @@ const TableTr: FC<ITableTrProps> = ({
   onTrClick,
   onSelect,
   idName,
+  hasCheckbox,
 }) => {
   const handleClick = (): void => {
-    onTrClick(data[idName]);
-
+    onTrClick();
+    // onTrClick(data[idName]);
     //do something when cell is clicked
   };
 
@@ -25,20 +25,22 @@ const TableTr: FC<ITableTrProps> = ({
 
   return (
     <tr className={styles.tr} style={{ borderColor: "red" }}>
-      <td className={styles.td}>
-        <Checkbox
-          checked={checked}
-          id={data[idName]}
-          onSelect={(id) => onSelect(id)}
-        />
-      </td>
-      {Object.keys(data).map((keyName, i) => {
-        if (typeof data[keyName] === "object") return;
-          return (
-            <td key={i} onClick={handleClick}>
-              <RowTextItem>{data[keyName]}</RowTextItem>
-            </td>
-          );
+      {hasCheckbox && (
+        <td className={styles.td}>
+          <Checkbox
+            checked={checked}
+            id={data[idName]}
+            onSelect={(id) => onSelect(id)}
+          />
+        </td>
+      )}
+      {Object.values(data).map((values, i) => {
+        if (typeof values === "object") return;
+        return (
+          <td key={i} onClick={handleClick}>
+            <RowTextItem>{values}</RowTextItem>
+          </td>
+        );
       })}
     </tr>
   );

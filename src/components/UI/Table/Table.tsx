@@ -8,24 +8,28 @@ import styles from "./Table.module.css";
 
 const Table: FC<ITableProps> = ({
   heading,
-  product,
   selectedItems,
   tableData,
   onSelect,
   onSelectAll,
   onTrClick,
   idName,
+  hasCheckbox,
 }) => {
   return (
     <table className={styles.table}>
-      <THead tableHeadData={heading} onSelectAll={onSelectAll} />
+      <THead
+        tableHeadData={heading}
+        onSelectAll={onSelectAll}
+        hasCheckbox={hasCheckbox}
+      />
       <TBody
-        product={product}
         onTrClick={onTrClick}
         selectedItems={selectedItems}
         tableBodyData={tableData}
         onSelect={onSelect}
         idName={idName}
+        hasCheckbox={hasCheckbox}
       />
     </table>
   );

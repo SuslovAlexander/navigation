@@ -1,12 +1,13 @@
+import { IHeadTable } from "../../../shared/types/IHeadTable";
 import { TtableData } from "../../../TablePage/ITablePageProps";
 
 export interface ITableProps {
-  heading: any;
+  heading: IHeadTable;
   selectedItems: string[];
   tableData: TtableData;
-  onSelect: any;
+  onSelect: (val: string) => void;
   onSelectAll: () => void;
   onTrClick?: (id: string) => void;
-  [propName: string]: any;
   idName: string;
+  hasCheckbox: boolean;
 }

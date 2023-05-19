@@ -12,7 +12,7 @@ const ShowPageAmount: FC<IShowPageAmountProps> = ({ amount, onSetAmount }) => {
       <span className={styles.text}>Показывать</span>
       <PageSelect
         pageAmount={amount}
-        onSelect={(val: any) => onSetAmount(+val)}
+        onSelect={(val: string) => onSetAmount(+val)}
       />
     </div>
   );

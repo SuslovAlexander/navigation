@@ -1,13 +1,10 @@
 import { FC, useEffect, useState } from "react";
-import { createPortal } from "react-dom";
 
-import Modal from "../components/UI/Modal/Modal";
 import Table from "../components/UI/Table/Table";
 
 import PageFromPages from "./Actios/PageFromPages/PageFromPages";
 import ShowPageAmount from "./Actios/ShowPageAmount/ShowPageAmount";
 import TurnPage from "./Actios/TurnPage/TurnPage";
-import Editor from "./Editor/Editor";
 import SelectedAlert from "./SelectedAlert/SelectedAlert";
 import { ITablePageProps, TtableData } from "./ITablePageProps";
 
@@ -15,10 +12,11 @@ import styles from "./TablePage.module.css";
 
 const TablePage: FC<ITablePageProps> = ({
   tableBody,
-  features,
   tableHeading,
   children,
-  idName
+  idName,
+  hasCheckbox,
+  onAction,
 }) => {
   const [tableData, setTableData] = useState(tableBody);
   const [showAmount, setShowAmount] = useState<number>(1);
@@ -32,8 +30,6 @@ const TablePage: FC<ITablePageProps> = ({
   const totalAmount = tableData.length;
   const fromPages = Math.ceil(totalAmount / showAmount);
   const [toggleSelectAll, setToggleSelectAll] = useState(true);
-
-  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setEnd(showAmount);
@@ -94,6 +90,7 @@ const TablePage: FC<ITablePageProps> = ({
   return (
     <>
       <div className={styles.table}>
+        {/* вынести */}
         <div className={styles.head}>
           <ShowPageAmount amount={totalAmount} onSetAmount={setShowAmount} />
           <PageFromPages from={fromPages} current={currentPage} />
@@ -102,15 +99,17 @@ const TablePage: FC<ITablePageProps> = ({
             <TurnPage direction="next" onBtnClick={handleNext} />
           </div>
         </div>
+        {/* вынести */}
         {children}
         <Table
-          idName={idName}
           heading={tableHeading}
-          onTrClick={() => setShowModal(true)}
-          selectedItems={selected}
           tableData={currentSlice}
+          idName={idName}
+          selectedItems={selected}
+          onTrClick={onAction}
           onSelect={handleSelect}
           onSelectAll={handleToggleSelectAll}
+          hasCheckbox={hasCheckbox}
         />
         <div className={styles.popup}>
           <SelectedAlert
@@ -121,13 +120,6 @@ const TablePage: FC<ITablePageProps> = ({
           />
         </div>
       </div>
-      {showModal &&
-        createPortal(
-          <Modal active={showModal} setActive={() => setShowModal(false)}>
-            <Editor items={features} />
-          </Modal>,
-          document.body
-        )}
     </>
   );
 };

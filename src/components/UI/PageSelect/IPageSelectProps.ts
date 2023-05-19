@@ -1,4 +1,4 @@
 export interface IPageSelectProps {
   pageAmount: number;
-  onSelect: (val: any) => void;
+  onSelect: (val: string) => void;
 }

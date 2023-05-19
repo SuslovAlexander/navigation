@@ -1,31 +1,15 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import { createPortal } from "react-dom";
 
-import {
-  leadDataToCorrect,
-  leaveUsedValues,
-} from "../../helpers/lead-data-to-correct";
-import { RANDOM } from "../../helpers/random-id";
+import Modal from "../../components/UI/Modal/Modal";
+import { getFeatures } from "../../helpers/getFeatures";
+import { transformData } from "../../helpers/transform-data";
 import { GOODS_MOCK } from "../../mock/goods.mock";
 import { PRODUCT_MODAL } from "../../mock/product-modal.mock";
 import { PROD_ADDITIVE } from "../../shared/shape/product-additive";
+import { productsShape } from "../../shared/shape/shape-of-products";
+import Editor from "../../TablePage/Editor/Editor";
 import TablePage from "../../TablePage/TablePage";
-
-const usedValues = ["name", "codeFrom1C"] as any;
-const heading = ["Название", "Артикул"];
-
-const transformedUsers: any = GOODS_MOCK.data.map((item) => {
-  let modified = {};
-  modified = { ...item, id: RANDOM.id };
-  return modified;
-});
-
-const res = transformedUsers.map((item: any) => {
-  const resObj: any = {};
-  for (let i = 0; i < usedValues.length; i++) {
-    if (usedValues[i] in item) resObj[usedValues[i]] = item[usedValues[i]];
-  }
-  return resObj;
-});
 
 const usedVals = [
   "nameFrom1C",
@@ -42,18 +26,30 @@ const usedVals = [
   "tags",
 ];
 
-const usedData = leaveUsedValues(PRODUCT_MODAL, usedVals);
-const correctProduct = leadDataToCorrect(usedData, PROD_ADDITIVE);
-const prodFeatures = Object.values(correctProduct);
+const prodFeatures = getFeatures(PRODUCT_MODAL, usedVals, PROD_ADDITIVE);
+
+const { head, body } = transformData<any, any, any>(GOODS_MOCK, productsShape);
 
 const Products: FC = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+
   return (
-    <TablePage
-      tableBody={res}
-      tableHeading={heading}
-      features={prodFeatures}
-      idName="codeFrom1C"
-    />
+    <>
+      <TablePage
+        tableBody={body}
+        tableHeading={head}
+        idName="codeFrom1C"
+        hasCheckbox={true}
+        onAction={() => setShowModal(true)}
+      />
+      {showModal &&
+        createPortal(
+          <Modal active={showModal} setActive={() => setShowModal(false)}>
+            <Editor items={prodFeatures} />
+          </Modal>,
+          document.body
+        )}
+    </>
   );
 };
 

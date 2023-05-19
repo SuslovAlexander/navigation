@@ -4,4 +4,5 @@ export interface ITHeadProps {
   /* tableHeadData: TtableData; */
   tableHeadData: any;
   onSelectAll: () => void;
+  hasCheckbox: boolean;
 }
