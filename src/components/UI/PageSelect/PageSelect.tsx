@@ -7,7 +7,7 @@ import styles from "./PageSelect.module.css";
 const PageSelect: FC<IPageSelectProps> = ({ pageAmount, onSelect }) => {
   const selectOptions = [];
   if (pageAmount) {
-    for (let i = 1; i <= pageAmount; i++) {
+    for (let i = 10; i <= pageAmount; i += 10) {
       selectOptions.push(i);
     }
   }

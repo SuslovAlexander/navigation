@@ -1,12 +1,17 @@
 import { FC, useEffect, useState } from "react";
 
-import Button from "../../components/UI/Button/Button";
-import Input from "../../components/UI/Input/Input";
+import { RANDOM } from "../../helpers/random-id";
 import { CATEGORY } from "../../mock/categoty.mock";
 import { SUB_CATEGORY } from "../../mock/sub_category.mock";
 import { ReactComponent as Arrow } from "../../public/assets/images/arrow-right.svg";
+import {
+  CATEGORY_TEXT,
+  SUBCATEGORY_TEXT,
+} from "../../shared/constants/category-text-ui";
+import { TCategory } from "../../shared/types/TCategory";
 
-import EditCategoryItem from "./EditCategoryItem/EditCategoryItem";
+import Category from "./Category/Category";
+import { TEditParams } from "./EditCategoryItem/IEditCategoryProps";
 import Placeholder from "./Placeholder/Placeholder";
 
 import styles from "./Categories.module.css";
@@ -54,64 +59,71 @@ const Categories: FC = () => {
     setSubCategoryId("");
   };
 
+  const createCategory = (value: string): TCategory => {
+    const newCategory: TCategory = {
+      id: RANDOM.id,
+      name: value,
+      position: 0,
+    };
+    return newCategory;
+  };
+
+  const handleAddCategory = (val: string): void => {
+    if (val.trim() === "") return;
+    const categoryToAdd = createCategory(val);
+    setCategories([categoryToAdd, ...categories]);
+  };
+
+  const handleAddSubCategory = (val: string): void => {
+    if (val.trim() === "") return;
+    const categoryToAdd = createCategory(val);
+    setSubcategories([categoryToAdd, ...subcategories]);
+  };
+
+  const handleOnEditCat = (val: TEditParams): void => {
+    if (val.id.trim() === "") return;
+    const hasInCategories = categories.find((item: any) => item.id === val.id);
+    if (hasInCategories) {
+      hasInCategories.name = val.name;
+    }
+  };
+
+  const handleOnEditSubCat = (val: TEditParams): void => {
+    if (val.id.trim() === "") return;
+    const hasInCategories = subcategories.find(
+      (item: any) => item.id === val.id
+    );
+    if (hasInCategories) {
+      hasInCategories.name = val.name;
+    }
+  };
+
   return (
     <div className={styles.wrap}>
-      <div className={styles["category-column"]}>
-        <div className={styles.head}>
-          <Input placeholder="Введите название категори" type="text" />
-          <Button>Добавить категорию</Button>
-          <div className={styles.title}>Название категории</div>
-        </div>
-        <ul className={styles.content}>
-          <li>
-            {categories?.map((category: any) => (
-              <EditCategoryItem
-                data={category}
-                key={category.id}
-                onEdit={console.log}
-                onRemove={handleRemoveFromCat}
-                onClick={handleClickCategory}
-                isActive={category.id === categoryId ? true : false}
-              />
-            ))}
-          </li>
-        </ul>
-        {!categories?.length && (
-          <p className={styles.empty}>Здесь пока нет категорий</p>
-        )}
-      </div>
+      <Category
+        itemId={categoryId}
+        items={categories}
+        onHandleBlure={handleAddCategory}
+        onHandleClick={handleClickCategory}
+        onRemove={handleRemoveFromCat}
+        onEdit={handleOnEditCat}
+        textUi={CATEGORY_TEXT}
+      />
       <div className={styles.arrows}>
         <Arrow />
         <Arrow />
       </div>
       {!categoryId && <Placeholder text="Выберите категорию" />}
       {categoryId && (
-        <div className={styles["category-column"]}>
-          <div className={styles.head}>
-            <Input placeholder="Введите название подкатегории" type="text" />
-            <Button>Добавить подкатегорию</Button>
-            <div className={styles.title}>Название подкатегории</div>
-          </div>
-          <ul className={styles.content}>
-            <li>
-              {subcategories?.map((subcategory: any) => (
-                <EditCategoryItem
-                  data={subcategory}
-                  key={subcategory.id}
-                  onEdit={(val) => {
-                    const fake = val;
-                  }}
-                  onRemove={handleRemoveFromSubCat}
-                  onClick={handleClickSubCategory}
-                  isActive={subcategory.id === subCategoryId ? true : false}
-                />
-              ))}
-            </li>
-          </ul>
-          {!subcategories?.length && categoryId && (
-            <p className={styles.empty}>Здесь пока нет подкатегорий</p>
-          )}
-        </div>
+        <Category
+          itemId={subCategoryId}
+          items={subcategories}
+          onHandleBlure={handleAddSubCategory}
+          onHandleClick={handleClickSubCategory}
+          onRemove={handleRemoveFromSubCat}
+          onEdit={handleOnEditSubCat}
+          textUi={SUBCATEGORY_TEXT}
+        />
       )}
     </div>
   );

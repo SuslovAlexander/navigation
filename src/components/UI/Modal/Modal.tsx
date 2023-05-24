@@ -4,7 +4,7 @@ import { IModalProps } from "./IModalProps";
 
 import styles from "./Modal.module.css";
 
-const Modal: FC<IModalProps> = ({ active, setActive, children }) => {
+const Modal: FC<IModalProps> = ({ active, setActive, align, children }) => {
   const handleEsc = (e: KeyboardEvent): void => {
     if (e.key === "Escape") {
       setActive(false);
@@ -20,7 +20,9 @@ const Modal: FC<IModalProps> = ({ active, setActive, children }) => {
 
   return (
     <div
-      className={`${styles.modal} ${active ? styles.active : ""}`}
+      className={`${styles.modal} ${styles[align]} ${
+        active ? styles.active : ""
+      }`}
       onClick={() => setActive(false)}
     >
       <div className={styles.content} onClick={(e) => e.stopPropagation()}>

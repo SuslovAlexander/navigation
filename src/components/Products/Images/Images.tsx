@@ -1,6 +1,7 @@
 import { FC } from "react";
 
 import { RANDOM } from "../../../helpers/random-id";
+import { ReactComponent as Link } from "../../../public/assets/images/link.svg";
 import Input from "../../UI/Input/Input";
 
 import ImageBlock from "./ImageBlock/ImageBlock";
@@ -18,6 +19,7 @@ const Images: FC<IImagesProps> = ({ urlList }) => {
         type="text"
         variant="link"
         placeholder="Вставьте ссылку на Google Drive"
+        iconImg={<Link />}
       />
     </div>
   );

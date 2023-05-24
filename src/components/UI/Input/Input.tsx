@@ -12,14 +12,12 @@ const Input: FC<IInputProps> = ({
   placeholder,
   disabled = false,
   variant,
+  onInputBlur,
+  onInputChange,
+  iconImg,
 }) => {
   const [inputValue, setInputValue] = useState("");
   const [inputType, setInputType] = useState(type);
-
-/*   useEffect(() => {
-    if (!placeholder) return;
-    setInputValue(placeholder);
-  }, []); */
 
   const inputStyles = `${styles.input} ${disabled ? styles.disabled : ""}`;
   let inputStyle = {};
@@ -43,6 +41,20 @@ const Input: FC<IInputProps> = ({
     </div>
   );
 
+  const handleInputBlur = (): void => {
+    if (onInputBlur) {
+      onInputBlur(inputValue);
+      setInputValue("");
+    }
+  };
+
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> | undefined = (
+    e
+  ): void => {
+    setInputValue(e.target.value);
+    if (onInputChange) onInputChange(e.target.value);
+  };
+
   return (
     <div className={styles.wrap}>
       <input
@@ -51,12 +63,14 @@ const Input: FC<IInputProps> = ({
         style={inputStyle}
         placeholder={placeholder}
         value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={handleChange}
+        onBlur={handleInputBlur}
       />
       {type === "password" && passwordIcon}
       {variant === "link" && (
         <div className={styles.link}>
-          <Link />
+          {iconImg}
+          {/*  <Link /> */}
         </div>
       )}
     </div>

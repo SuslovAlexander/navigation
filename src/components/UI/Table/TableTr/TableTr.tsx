@@ -2,6 +2,8 @@ import { FC } from "react";
 
 import RowTextItem from "../../../../TablePage/RowTextItem/RowTextItem";
 import Checkbox from "../../Checkbox/Checkbox";
+import EditButton from "../../RemoveButton/ EditButton/EditButton";
+import RemoveButton from "../../RemoveButton/RemoveButton";
 
 import { ITableTrProps } from "./ITableTr";
 
@@ -14,6 +16,10 @@ const TableTr: FC<ITableTrProps> = ({
   onSelect,
   idName,
   hasCheckbox,
+  canBeDeleted,
+  canBeEdit,
+  onRemove,
+  onEdit,
 }) => {
   const handleClick = (): void => {
     onTrClick();
@@ -21,7 +27,7 @@ const TableTr: FC<ITableTrProps> = ({
     //do something when cell is clicked
   };
 
-  const checked = selectedItems.includes(data[idName]) ? true : false;
+  const checked = selectedItems?.includes(data[idName]) ? true : false;
 
   return (
     <tr className={styles.tr} style={{ borderColor: "red" }}>
@@ -30,7 +36,7 @@ const TableTr: FC<ITableTrProps> = ({
           <Checkbox
             checked={checked}
             id={data[idName]}
-            onSelect={(id) => onSelect(id)}
+            onSelect={(id: string) => onSelect(id)}
           />
         </td>
       )}
@@ -42,6 +48,16 @@ const TableTr: FC<ITableTrProps> = ({
           </td>
         );
       })}
+      {canBeEdit && (
+        <td className={styles.edit} onClick={() => onEdit(data[idName])}>
+          <EditButton />
+        </td>
+      )}
+      {canBeDeleted && (
+        <td className={styles.remove} onClick={() => onRemove(data[idName])}>
+          <RemoveButton />
+        </td>
+      )}
     </tr>
   );
 };

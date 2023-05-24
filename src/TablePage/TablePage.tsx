@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 
+import SearchInput from "../components/UI/SearchInput/SearchInput";
 import Table from "../components/UI/Table/Table";
 
 import PageFromPages from "./Actios/PageFromPages/PageFromPages";
@@ -13,13 +14,12 @@ import styles from "./TablePage.module.css";
 const TablePage: FC<ITablePageProps> = ({
   tableBody,
   tableHeading,
-  children,
   idName,
   hasCheckbox,
   onAction,
 }) => {
   const [tableData, setTableData] = useState(tableBody);
-  const [showAmount, setShowAmount] = useState<number>(1);
+  const [showAmount, setShowAmount] = useState<number>(10);
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState<number>(showAmount);
   const [currentSlice, setCurrentSlice] = useState<TtableData>(tableData);
@@ -100,7 +100,7 @@ const TablePage: FC<ITablePageProps> = ({
           </div>
         </div>
         {/* вынести */}
-        {children}
+
         <Table
           heading={tableHeading}
           tableData={currentSlice}
@@ -110,6 +110,7 @@ const TablePage: FC<ITablePageProps> = ({
           onSelect={handleSelect}
           onSelectAll={handleToggleSelectAll}
           hasCheckbox={hasCheckbox}
+          emptyText="Здесь пока нет товаров"
         />
         <div className={styles.popup}>
           <SelectedAlert

@@ -6,8 +6,6 @@
   top: 0;
   left: 0;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   opacity: 0;
   pointer-events: none;
   transition: all 0.5s;
@@ -22,4 +20,16 @@
 .content {
   overflow-y: auto;
   height: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
 }

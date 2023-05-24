@@ -11,7 +11,8 @@ const ImageBlock: FC<IImageBlockProps> = ({ url }) => {
     <div className={styles.wrap}>
       <div className={styles["image-block"]}>
         <div className={styles.image}>
-          <Image />
+          {url && <img src={url} width={80} height={80} />}
+          {!url && <Image />}
         </div>
         <p className={styles.url}>{url}</p>
       </div>

@@ -6,6 +6,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+  position: relative;
 }
 
 .table td {
@@ -22,4 +23,10 @@
 }
 .table thead .tr {
   height: 44px;
+}
+
+.body {
+  position: absolute;
+  border: 1px solid;
+  width: 100%;
 }

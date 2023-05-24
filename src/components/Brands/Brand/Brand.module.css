@@ -1,0 +1,40 @@
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 45px;
+  width: 100%;
+  height: 130px;
+  padding: 10px;
+  border-bottom: 1px solid #ebecef;
+}
+
+.image-wrap {
+  display: flex;
+  flex-grow: 0;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 111px;
+  height: 111px;
+  background: #fafafa;
+}
+
+.text {
+  color: #100f11;
+  flex: 1 1 0px;
+}
+
+.actions {
+  display: flex;
+  gap: 45px;
+  flex: 1 1 0px;
+  justify-content: flex-end;
+}
+
+.action {
+  cursor: pointer;
+}
