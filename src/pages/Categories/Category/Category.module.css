@@ -1,0 +1,30 @@
+.arrows {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.category-column {
+  display: flex;
+  flex-direction: column;
+  width: inherit;
+  gap: 16px;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  background: #f8f8fa;
+  height: 44px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #737680;
+  padding: 8px;
+}

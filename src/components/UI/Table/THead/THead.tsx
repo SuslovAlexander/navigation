@@ -10,6 +10,8 @@ const THead: FC<ITHeadProps> = ({
   tableHeadData,
   onSelectAll,
   hasCheckbox,
+  canBeDeleted,
+  firsTrWidth,
 }) => {
   return (
     <thead>
@@ -22,11 +24,13 @@ const THead: FC<ITHeadProps> = ({
 
         {tableHeadData.map((item: any) => {
           return (
-            <td key={RANDOM.id}>
+            <td key={RANDOM.id} style={{ width: firsTrWidth }}>
+              {(firsTrWidth = "")}
               <RowTextItem>{item}</RowTextItem>
             </td>
           );
         })}
+        {canBeDeleted && <td />}
       </tr>
     </thead>
   );

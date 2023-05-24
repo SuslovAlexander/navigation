@@ -1,0 +1,13 @@
+.wrap {
+  display: flex;
+  gap: 8px;
+}
+
+.action {
+  flex: 1 1 0px;
+}
+
+.vertical {
+  flex: 1 1 0px;
+  flex-direction: column;
+}

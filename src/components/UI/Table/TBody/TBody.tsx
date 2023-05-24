@@ -1,7 +1,10 @@
 import { FC } from "react";
 
 import { RANDOM } from "../../../../helpers/random-id";
+import EmptyParagraph from "../../EmptyParagraph/EmptyParagraph";
 import TableTr from "../TableTr/TableTr";
+
+import styles from "./TBody.module.css";
 
 const TBody: FC<any> = ({
   tableBodyData,
@@ -10,10 +13,22 @@ const TBody: FC<any> = ({
   onTrClick,
   idName,
   hasCheckbox,
+  canBeDeleted,
+  canBeEdit,
+  onRemove,
+  onEdit,
+  emptyText,
 }) => {
   const handleOnTrClick = (id: string): void => {
     onTrClick();
   };
+
+  if (!tableBodyData.length)
+    return (
+      <div className={styles.empty}>
+        <EmptyParagraph text={emptyText} />
+      </div>
+    );
 
   return (
     <tbody>
@@ -28,9 +43,14 @@ const TBody: FC<any> = ({
             /*  onTrClick={(val) => handleOnTrClick(val)} */
             onTrClick={onTrClick}
             hasCheckbox={hasCheckbox}
+            canBeDeleted={canBeDeleted}
+            canBeEdit={canBeEdit}
+            onRemove={onRemove}
+            onEdit={onEdit}
           />
         );
       })}
+
     </tbody>
   );
 };

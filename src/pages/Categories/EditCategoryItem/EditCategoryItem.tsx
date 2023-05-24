@@ -17,6 +17,9 @@ const EditCategoryItem: FC<IEditCategoryProps> = ({
   onClick,
 }) => {
   const [editable, setEditable] = useState<boolean>(false);
+  const [inputValue, setInputValue] = useState<string>("");
+
+  const canEdit = editable && onEdit && inputValue.trim().length;
 
   const handleEdit = (): void => {
     setEditable(!editable);
@@ -27,7 +30,7 @@ const EditCategoryItem: FC<IEditCategoryProps> = ({
   };
 
   const handleClickEdit = (): void => {
-    if (onEdit) onEdit(data.id);
+    if (canEdit) onEdit({ id: data.id, name: inputValue });
     handleEdit();
   };
 
@@ -38,7 +41,13 @@ const EditCategoryItem: FC<IEditCategoryProps> = ({
   return (
     <div className={styles.wrap} style={isActive ? { color: "#BD68CA" } : {}}>
       <div className={styles.text} onClick={handleClick}>
-        {editable && <Input type="text" placeholder={data.name} />}
+        {editable && (
+          <Input
+            type="text"
+            placeholder={data.name}
+            onInputBlur={(val) => setInputValue(val)}
+          />
+        )}
         {!editable && <RowTextItem>{data.name}</RowTextItem>}
       </div>
       <div className={styles.actions}>

@@ -1,4 +1,6 @@
-const Protocols = () => {
+import { FC } from "react";
+
+const Protocols: FC = () => {
   return <h1>Протоколы</h1>;
 };
 

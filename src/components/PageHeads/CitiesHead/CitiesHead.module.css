@@ -1,0 +1,17 @@
+.wrap {
+  color: #434652;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.action {
+  flex: 1 1 0px;
+}

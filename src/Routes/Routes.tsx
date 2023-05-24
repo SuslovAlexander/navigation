@@ -1,3 +1,4 @@
+import Banners from "../pages/Banners/Banners";
 import Brands from "../pages/Brands/Brands";
 import Categories from "../pages/Categories/Categories";
 import Cities from "../pages/Cities/Cities";
@@ -18,7 +19,7 @@ export const ROUTES = [
   { path: "brands", element: <Brands /> },
   { path: "protocols", element: <Protocols /> },
   { path: "orders", element: <Orders /> },
-  { path: "banners", element: <Brands /> },
+  { path: "banners", element: <Banners /> },
   { path: "seminars", element: <Seminars /> },
   { path: "promocode", element: <Promocode /> },
   /*   { path: "auth/register", element: <Register /> },

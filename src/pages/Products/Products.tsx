@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { createPortal } from "react-dom";
 
+import Button from "../../components/UI/Button/Button";
 import Modal from "../../components/UI/Modal/Modal";
 import { getFeatures } from "../../helpers/getFeatures";
 import { transformData } from "../../helpers/transform-data";
@@ -36,15 +37,19 @@ const Products: FC = () => {
   return (
     <>
       <TablePage
-        tableBody={body}
         tableHeading={head}
+        tableBody={body}
         idName="codeFrom1C"
         hasCheckbox={true}
         onAction={() => setShowModal(true)}
       />
       {showModal &&
         createPortal(
-          <Modal active={showModal} setActive={() => setShowModal(false)}>
+          <Modal
+            active={showModal}
+            setActive={() => setShowModal(false)}
+            align="left"
+          >
             <Editor items={prodFeatures} />
           </Modal>,
           document.body
