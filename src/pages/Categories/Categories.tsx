@@ -3,18 +3,10 @@ import { FC, useEffect, useState } from "react";
 import { RANDOM } from "../../helpers/random-id";
 import { CATEGORY } from "../../mock/categoty.mock";
 import { SUB_CATEGORY } from "../../mock/sub_category.mock";
-import { ReactComponent as Arrow } from "../../public/assets/images/arrow-right.svg";
-import {
-  CATEGORY_TEXT,
-  SUBCATEGORY_TEXT,
-} from "../../shared/constants/category-text-ui";
 import { TCategory } from "../../shared/types/TCategory";
 
-import Category from "./Category/Category";
+import CategoryPair from "./CategoryPair/CategoryPair";
 import { TEditParams } from "./EditCategoryItem/IEditCategoryProps";
-import Placeholder from "./Placeholder/Placeholder";
-
-import styles from "./Categories.module.css";
 
 const Categories: FC = () => {
   const [categoryId, setCategoryId] = useState<string>();
@@ -99,33 +91,20 @@ const Categories: FC = () => {
   };
 
   return (
-    <div className={styles.wrap}>
-      <Category
-        itemId={categoryId}
-        items={categories}
-        onHandleBlure={handleAddCategory}
-        onHandleClick={handleClickCategory}
-        onRemove={handleRemoveFromCat}
-        onEdit={handleOnEditCat}
-        textUi={CATEGORY_TEXT}
-      />
-      <div className={styles.arrows}>
-        <Arrow />
-        <Arrow />
-      </div>
-      {!categoryId && <Placeholder text="Выберите категорию" />}
-      {categoryId && (
-        <Category
-          itemId={subCategoryId}
-          items={subcategories}
-          onHandleBlure={handleAddSubCategory}
-          onHandleClick={handleClickSubCategory}
-          onRemove={handleRemoveFromSubCat}
-          onEdit={handleOnEditSubCat}
-          textUi={SUBCATEGORY_TEXT}
-        />
-      )}
-    </div>
+    <CategoryPair
+      categories={categories}
+      categoryId={categoryId}
+      handleAddCategory={handleAddCategory}
+      handleAddSubCategory={handleAddSubCategory}
+      handleClickCategory={handleClickCategory}
+      handleClickSubCategory={handleClickSubCategory}
+      handleOnEditCat={handleOnEditCat}
+      handleOnEditSubCat={handleOnEditSubCat}
+      handleRemoveFromCat={handleRemoveFromCat}
+      handleRemoveFromSubCat={handleRemoveFromSubCat}
+      subCategoryId={subCategoryId}
+      subcategories={subcategories}
+    />
   );
 };
 
