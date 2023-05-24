@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 export interface IInputProps {
+  isClear?: boolean;
   variant?: "link";
   type: "password" | "text";
   placeholder?: string;

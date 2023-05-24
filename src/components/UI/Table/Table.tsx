@@ -1,7 +1,5 @@
 import { FC } from "react";
 
-import { RANDOM } from "../../../helpers/random-id";
-
 import TBody from "./TBody/TBody";
 import THead from "./THead/THead";
 import { ITableProps } from "./ITableProps";

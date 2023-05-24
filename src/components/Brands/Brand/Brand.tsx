@@ -51,6 +51,8 @@ const Brand: FC<IBrandProps> = ({ url, text, id, onEdit, onRemove }) => {
             <ConfirmAlert
               header="Вы действительно хотите удалить бренд"
               text={text}
+              onConfirm={onRemove?.bind(null, id)}
+              onCancel={() => setShowModal(false)}
             />
           </Modal>,
           document.body

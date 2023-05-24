@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from "react";
 
-import { ReactComponent as Link } from "../../../public/assets/images/link.svg";
 import { ReactComponent as Password } from "../../../public/assets/images/password.svg";
 
 import { IInputProps } from "./IInputProps";
@@ -8,6 +7,7 @@ import { IInputProps } from "./IInputProps";
 import styles from "./Input.module.css";
 
 const Input: FC<IInputProps> = ({
+  isClear,
   type,
   placeholder,
   disabled = false,

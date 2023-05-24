@@ -1,4 +1,6 @@
-const Banners = () => {
+import { FC } from "react";
+
+const Banners: FC = () => {
   return <h1>Банеры</h1>;
 };
 

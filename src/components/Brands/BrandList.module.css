@@ -5,3 +5,11 @@
   width: 100%;
   position: absolute;
 }
+
+.placeholder {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-top: 24px;
+  position: absolute;
+}
