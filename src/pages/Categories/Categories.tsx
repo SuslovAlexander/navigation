@@ -3,6 +3,10 @@ import { FC, useEffect, useState } from "react";
 import { RANDOM } from "../../helpers/random-id";
 import { CATEGORY } from "../../mock/categoty.mock";
 import { SUB_CATEGORY } from "../../mock/sub_category.mock";
+import {
+  CATEGORY_TEXT,
+  SUBCATEGORY_TEXT,
+} from "../../shared/constants/category-text-ui";
 import { TCategory } from "../../shared/types/TCategory";
 
 import CategoryPair from "./CategoryPair/CategoryPair";
@@ -104,6 +108,9 @@ const Categories: FC = () => {
       handleRemoveFromSubCat={handleRemoveFromSubCat}
       subCategoryId={subCategoryId}
       subcategories={subcategories}
+      textUiLeft={CATEGORY_TEXT}
+      textUiRight={SUBCATEGORY_TEXT}
+      hasInputs={{ first: true, second: true }}
     />
   );
 };

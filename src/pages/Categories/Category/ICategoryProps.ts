@@ -9,8 +9,10 @@ export interface ICategoryProps {
   onHandleBlure: any;
   onRemove: (val: string) => void;
   onEdit: any;
-  onHandleClick: any;
+  onHandleClick?: any;
   items: any;
   itemId: any;
   textUi: TTextUi;
+  hasInput: any;
+  onBtnClick?: any;
 }

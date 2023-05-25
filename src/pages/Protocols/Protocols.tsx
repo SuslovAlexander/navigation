@@ -1,9 +1,18 @@
 import { FC, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
+import Modal from "../../components/UI/Modal/Modal";
 import { RANDOM } from "../../helpers/random-id";
 import { PROTOL_CATEGORY } from "../../mock/protocol_category.mock";
 import { PROTOCOLS } from "../../mock/protocols.mock";
+import { PROTOCOLS_MODAL } from "../../mock/protocols-modal";
+import {
+  PROTOTOCOL_TEXT,
+  SUBPROTOCOL_TEXT,
+} from "../../shared/constants/protocol-text-ui";
 import CategoryPair from "../Categories/CategoryPair/CategoryPair";
+
+import AddProtocol from "./AddProtocol/AddProtocol";
 
 const Protocols: FC = () => {
   const [categoryId, setCategoryId] = useState<string>();
@@ -11,8 +20,16 @@ const Protocols: FC = () => {
   const [categories, setCategories] = useState<any>();
   const [subcategories, setSubcategories] = useState<any>();
 
+  const [showModal, setShowModal] = useState<boolean>(false);
+
   const SUB_CATEGORY = PROTOCOLS.map((protocol) => {
-    const res = { id: protocol.protocol_category.id, name: protocol.name };
+    const res = {
+      protocol_category: {
+        id: protocol.protocol_category.id,
+      },
+      name: protocol.name,
+      id: protocol.id,
+    };
     return res;
   });
 
@@ -25,7 +42,10 @@ const Protocols: FC = () => {
   };
 
   useEffect(() => {
-    const showSubCat = SUB_CATEGORY.filter((sub: any) => sub.id === categoryId);
+    const showSubCat = SUB_CATEGORY.filter(
+      (sub: any) => sub.protocol_category.id === categoryId
+    );
+
     if (showSubCat) {
       setSubcategories(showSubCat);
     }
@@ -70,7 +90,6 @@ const Protocols: FC = () => {
     const categoryToAdd = createCategory(val);
     setSubcategories([categoryToAdd, ...subcategories]);
   };
-
   const handleOnEditCat = (val: any): void => {
     if (val.id.trim() === "") return;
     const hasInCategories = categories.find((item: any) => item.id === val.id);
@@ -89,21 +108,56 @@ const Protocols: FC = () => {
     }
   };
 
+  const prodFeatures = [
+    {
+      disabled: false,
+      showName: "Название*",
+      type: "input",
+      value: PROTOL_CATEGORY.find((item) => item.id === categoryId)?.name,
+    },
+    {
+      disabled: false,
+      showName: "Бренд*",
+      type: "dropdown",
+      value: ["sdsd", "ds"],
+    },
+    { disabled: false, showName: "Описание*", type: "textarea", value: "" },
+    { disabled: true, showName: "Категория", type: "input", value: "" },
+  ];
+
   return (
-    <CategoryPair
-      categories={categories}
-      categoryId={categoryId}
-      handleAddCategory={handleAddCategory}
-      handleAddSubCategory={handleAddSubCategory}
-      handleClickCategory={handleClickCategory}
-      handleClickSubCategory={handleClickSubCategory}
-      handleOnEditCat={handleOnEditCat}
-      handleOnEditSubCat={handleOnEditSubCat}
-      handleRemoveFromCat={handleRemoveFromCat}
-      handleRemoveFromSubCat={handleRemoveFromSubCat}
-      subCategoryId={subCategoryId}
-      subcategories={subcategories}
-    />
+    <>
+      <CategoryPair
+        categories={categories}
+        categoryId={categoryId}
+        handleAddCategory={handleAddCategory}
+        handleAddSubCategory={handleAddSubCategory}
+        handleClickCategory={handleClickCategory}
+        handleClickSubCategory={handleClickSubCategory}
+        handleOnEditCat={handleOnEditCat}
+        handleOnEditSubCat={handleOnEditSubCat}
+        handleRemoveFromCat={handleRemoveFromCat}
+        handleRemoveFromSubCat={handleRemoveFromSubCat}
+        subCategoryId={subCategoryId}
+        subcategories={subcategories}
+        textUiLeft={PROTOTOCOL_TEXT}
+        textUiRight={SUBPROTOCOL_TEXT}
+        hasInputs={{ first: true, second: false }}
+        onBtnClick={() => setShowModal(true)}
+      />
+
+      {showModal &&
+        createPortal(
+          <Modal
+            active={showModal}
+            setActive={() => setShowModal(false)}
+            align="left"
+          >
+            <AddProtocol items={prodFeatures} />
+          </Modal>,
+          document.body
+        )}
+    </>
   );
 };
 
