@@ -1,0 +1,16 @@
+.wrap {
+  width: 620px;
+  min-height: 100vh;
+  padding: 40px;
+  background-color: #fff;
+  gap: 34px;
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  width: 560px;
+  padding-bottom: 27px;
+}

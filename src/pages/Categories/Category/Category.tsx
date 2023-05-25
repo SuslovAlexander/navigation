@@ -18,20 +18,28 @@ const Category: FC<ICategoryProps> = ({
   items,
   itemId,
   textUi,
+  hasInput,
+  onBtnClick,
 }) => {
   const handleEdit = (val: TEditParams): void => {
     onEdit(val);
   };
 
+  const handleAction = (): void => {
+    if (!hasInput) onBtnClick();
+  }
+
   return (
     <div className={styles["category-column"]}>
       <div className={styles.head}>
-        <Input
-          placeholder={textUi.inputText}
-          type="text"
-          onInputBlur={onHandleBlure}
-        />
-        <Button>{textUi.buttonCatText}</Button>
+        {hasInput && (
+          <Input
+            placeholder={textUi.inputText}
+            type="text"
+            onInputBlur={onHandleBlure}
+          />
+        )}
+        <Button onBtnClick={handleAction}>{textUi.buttonCatText}</Button>
         <div className={styles.title}>{textUi.titleCatText}</div>
       </div>
       <ul className={styles.content}>

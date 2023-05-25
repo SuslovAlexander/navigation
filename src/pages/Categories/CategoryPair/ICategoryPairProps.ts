@@ -11,4 +11,8 @@ export interface ICategoryPair {
   handleRemoveFromSubCat: any;
   handleClickSubCategory: any;
   handleOnEditSubCat: any;
+  textUiLeft?: any;
+  textUiRight?: any;
+  hasInputs: any;
+  onBtnClick?: any;
 }

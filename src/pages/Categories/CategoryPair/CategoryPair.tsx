@@ -1,10 +1,6 @@
 import { FC } from "react";
 
 import { ReactComponent as Arrow } from "../../../public/assets/images/arrow-right.svg";
-import {
-  CATEGORY_TEXT,
-  SUBCATEGORY_TEXT,
-} from "../../../shared/constants/category-text-ui";
 import Category from "../Category/Category";
 import Placeholder from "../Placeholder/Placeholder";
 
@@ -25,6 +21,10 @@ const CategoryPair: FC<ICategoryPair> = ({
   handleRemoveFromSubCat,
   handleClickSubCategory,
   handleOnEditSubCat,
+  textUiLeft,
+  textUiRight,
+  hasInputs,
+  onBtnClick,
 }) => {
   return (
     <div className={styles.wrap}>
@@ -35,7 +35,8 @@ const CategoryPair: FC<ICategoryPair> = ({
         onHandleClick={handleClickCategory}
         onRemove={handleRemoveFromCat}
         onEdit={handleOnEditCat}
-        textUi={CATEGORY_TEXT}
+        textUi={textUiLeft}
+        hasInput={hasInputs.first}
       />
       <div className={styles.arrows}>
         <Arrow />
@@ -50,7 +51,9 @@ const CategoryPair: FC<ICategoryPair> = ({
           onHandleClick={handleClickSubCategory}
           onRemove={handleRemoveFromSubCat}
           onEdit={handleOnEditSubCat}
-          textUi={SUBCATEGORY_TEXT}
+          textUi={textUiRight}
+          hasInput={hasInputs.second}
+          onBtnClick={onBtnClick}
         />
       )}
     </div>
