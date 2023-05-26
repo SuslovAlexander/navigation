@@ -11,6 +11,27 @@
 .actions {
   display: flex;
   gap: 16px;
-  width: 560px;
   padding-bottom: 27px;
+}
+
+.addition {
+  display: flex;
+  flex-direction: column;
+  padding-top: 32px;
+  gap: 6px;
+}
+
+.title-add {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #37393d;
+}
+
+.action-add {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #c06ecc;
+  cursor: pointer;
 }

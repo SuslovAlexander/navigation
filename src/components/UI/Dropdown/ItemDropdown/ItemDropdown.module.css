@@ -13,6 +13,5 @@
 .item:hover,
 .selected {
   background: #f7ecf8;
-  justify-content: center;
   border-radius: 8px;
 }

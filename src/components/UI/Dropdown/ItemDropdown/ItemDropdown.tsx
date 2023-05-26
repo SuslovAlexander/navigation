@@ -10,7 +10,7 @@ const ItemDropdown: FC<IItemDropdownProps> = ({
   setSelected,
   setIsActive,
 }) => {
-  const itemSteles = `${styles.item} ${
+  const itemStyles = `${styles.item} ${
     option === selected ? styles.selected : ""
   }`;
 
@@ -20,7 +20,7 @@ const ItemDropdown: FC<IItemDropdownProps> = ({
   };
 
   return (
-    <div className={itemSteles} onClick={handleItemClick}>
+    <div className={itemStyles} onClick={handleItemClick}>
       {option}
     </div>
   );

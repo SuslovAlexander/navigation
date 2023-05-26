@@ -24,6 +24,12 @@
   color: #37393d;
 }
 
+.input:focus {
+  border: 1px solid #8a3597;
+  box-shadow: -2px -2px 0px #eed9f2, 2px 2px 0px #eed9f2, -2px 2px 0px #eed9f2,
+    2px -2px 0px #eed9f2;
+}
+
 .input::placeholder {
   font-weight: 400;
   font-size: 14px;

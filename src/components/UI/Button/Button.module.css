@@ -24,6 +24,10 @@
   border-radius: 4px;
 }
 
+.flex {
+  height: 48px;
+}
+
 .highlighted {
   background: #c06ecc;
   border: 1px solid #bd68ca;

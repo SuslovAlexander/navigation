@@ -13,4 +13,5 @@ export const PROTOL_CATEGORY = [
     name: "Для проблемной кожи с постакне",
   },
   { id: "3f74a88c-5a7d-41ef-bf9a-f25b9a76e388", name: "Для сухой кожи" },
+  { id: "f0db730e-69d3-4c3c-bd23-0ca06f0e27e1", name: "Для зада" },
 ];
