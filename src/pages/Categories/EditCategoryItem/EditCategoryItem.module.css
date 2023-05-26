@@ -9,6 +9,12 @@
   color: #434652;
   cursor: default;
   padding: 8px;
+  gap: 6px;
+}
+.wrap:hover {
+  color: "#BD68CA";
+  background: #f8f8fa;
+  border-bottom: 1px solid #ebecef;
 }
 
 .text {

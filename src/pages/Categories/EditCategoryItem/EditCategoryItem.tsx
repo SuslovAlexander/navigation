@@ -39,7 +39,18 @@ const EditCategoryItem: FC<IEditCategoryProps> = ({
   };
 
   return (
-    <div className={styles.wrap} style={isActive ? { color: "#BD68CA" } : {}}>
+    <div
+      className={styles.wrap}
+      style={
+        isActive
+          ? {
+              color: "#BD68CA",
+              background: "#F8F8FA",
+              borderBottom: "1px solid #EBECEF",
+            }
+          : {}
+      }
+    >
       <div className={styles.text} onClick={handleClick}>
         {editable && (
           <Input

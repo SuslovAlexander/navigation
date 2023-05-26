@@ -11,10 +11,10 @@ import styles from "./Dropdown.module.css";
 const Dropdown: FC<IDropdownProps> = ({ options, selected, setSelected }) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
-  useEffect(() => {
+/*   useEffect(() => {
     if (!options.length) return;
     setSelected(options[0]);
-  }, []);
+  }, []); */
 
   return (
     <div className={styles.wrap}>
@@ -25,7 +25,10 @@ const Dropdown: FC<IDropdownProps> = ({ options, selected, setSelected }) => {
         </div>
       </div>
       {isActive && (
-        <div className={styles.content}>
+        <div
+          className={styles.content}
+
+        >
           {options.map((option) => (
             <ItemDropdown
               selected={selected}

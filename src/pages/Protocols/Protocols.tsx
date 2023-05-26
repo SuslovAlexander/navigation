@@ -3,9 +3,9 @@ import { createPortal } from "react-dom";
 
 import Modal from "../../components/UI/Modal/Modal";
 import { RANDOM } from "../../helpers/random-id";
+import { BRANDS } from "../../mock/brands.mock";
 import { PROTOL_CATEGORY } from "../../mock/protocol_category.mock";
 import { PROTOCOLS } from "../../mock/protocols.mock";
-import { PROTOCOLS_MODAL } from "../../mock/protocols-modal";
 import {
   PROTOTOCOL_TEXT,
   SUBPROTOCOL_TEXT,
@@ -119,10 +119,21 @@ const Protocols: FC = () => {
       disabled: false,
       showName: "Бренд*",
       type: "dropdown",
-      value: ["sdsd", "ds"],
+      value: [{ name: "Выберите бренд" }, ...BRANDS.data],
     },
-    { disabled: false, showName: "Описание*", type: "textarea", value: "" },
-    { disabled: true, showName: "Категория", type: "input", value: "" },
+    {
+      disabled: false,
+      showName: "Описание*",
+      type: "textarea",
+      value: "",
+      placeholder: "Опишите товар",
+    },
+    {
+      disabled: true,
+      showName: "Категория",
+      type: "input",
+      value: PROTOL_CATEGORY.find((item) => item.id === categoryId)?.name,
+    },
   ];
 
   return (
@@ -153,7 +164,10 @@ const Protocols: FC = () => {
             setActive={() => setShowModal(false)}
             align="left"
           >
-            <AddProtocol items={prodFeatures} />
+            <AddProtocol
+              items={prodFeatures}
+              onAddProtocol={(val: any) => console.log(val)}
+            />
           </Modal>,
           document.body
         )}
