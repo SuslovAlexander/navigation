@@ -23,7 +23,7 @@ const TableTr: FC<ITableTrProps> = ({
 }) => {
   const handleClick = (): void => {
     onTrClick();
-    // onTrClick(data[idName]);
+    onTrClick(data[idName]);
     //do something when cell is clicked
   };
 

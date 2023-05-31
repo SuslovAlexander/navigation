@@ -30,7 +30,7 @@ const Head: FC<IHeadProps> = ({
           onInputBlur={handleAction}
         />
       )}
-      <Button onBtnClick={handleAction}>{textUi.buttonCatText}</Button>
+      <Button onClick={handleAction}>{textUi.buttonCatText}</Button>
       <div className={styles.title}>{textUi.titleCatText}</div>
     </div>
   );

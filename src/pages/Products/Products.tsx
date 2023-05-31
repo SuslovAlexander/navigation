@@ -34,6 +34,8 @@ const { head, body } = transformData<any, any, any>(GOODS_MOCK, productsShape);
 const Products: FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
 
+  console.log(prodFeatures);
+
   return (
     <>
       <TablePage

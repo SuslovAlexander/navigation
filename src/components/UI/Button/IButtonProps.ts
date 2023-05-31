@@ -4,5 +4,5 @@ export interface IButtonProps {
   highlighted?: boolean;
   size?: "static" | "flex";
   children: ReactNode;
-  onBtnClick?: () => void;
+  onClick?: () => void;
 }

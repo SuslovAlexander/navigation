@@ -8,7 +8,7 @@ const Button: FC<IButtonProps> = ({
   children,
   highlighted = true,
   size,
-  onBtnClick,
+  onClick,
   ...props
 }) => {
   return (
@@ -17,7 +17,7 @@ const Button: FC<IButtonProps> = ({
       className={`${styles.btn} ${size ? styles[size] : ""} ${
         highlighted ? styles.highlighted : ""
       }`}
-      onClick={onBtnClick}
+      onClick={onClick}
     >
       {children}
     </button>

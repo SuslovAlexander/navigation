@@ -30,6 +30,7 @@ const Table: FC<ITableProps> = ({
         onSelectAll={onSelectAll}
         hasCheckbox={hasCheckbox}
         canBeDeleted={canBeDeleted}
+        canBeEdit={canBeEdit}
         firsTrWidth={firsTrWidth}
       />
       {children && children}

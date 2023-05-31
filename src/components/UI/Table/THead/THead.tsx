@@ -11,6 +11,7 @@ const THead: FC<ITHeadProps> = ({
   onSelectAll,
   hasCheckbox,
   canBeDeleted,
+  canBeEdit,
   firsTrWidth,
 }) => {
   return (
@@ -31,6 +32,7 @@ const THead: FC<ITHeadProps> = ({
           );
         })}
         {canBeDeleted && <td />}
+        {canBeEdit && <td />}
       </tr>
     </thead>
   );

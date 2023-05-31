@@ -4,14 +4,21 @@ import { ITextareaProps } from "./ITextareaProps";
 
 import styles from "./Textarea.module.css";
 
-const Textarea: FC<ITextareaProps> = ({ placeholder, value, onChange }) => {
+const Textarea: FC<ITextareaProps> = ({
+  placeholder,
+  value,
+  onChange,
+  disabled,
+}) => {
   return (
     <textarea
-      onChange={() => onChange(value)}
+      tabIndex={0}
+      onChange={(e) => onChange(e.target.value)}
       className={styles.textarea}
       placeholder={placeholder}
-      defaultValue={value}
-    ></textarea>
+      value={value}
+      disabled={disabled}
+    />
   );
 };
 

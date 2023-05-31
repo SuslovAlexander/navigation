@@ -19,6 +19,13 @@
   border-radius: 8px;
   cursor: pointer;
   position: relative;
+  outline: none;
+}
+
+.action:focus {
+  border: 1px solid #8a3597;
+  box-shadow: -2px -2px 0px #eed9f2, 2px 2px 0px #eed9f2, -2px 2px 0px #eed9f2,
+    2px -2px 0px #eed9f2;
 }
 
 .active {

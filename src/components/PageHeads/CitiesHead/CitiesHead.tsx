@@ -34,18 +34,18 @@ const CitiesHead: FC<ICitiesHeadProps> = ({ onAddCity }) => {
           <Input
             type="text"
             placeholder="Ввведите название города"
-            onInputChange={handleCityChange}
+            onChange={handleCityChange}
           />
         </div>
         <div className={styles.action}>
           <Input
             type="text"
             placeholder="Ввведите адрес"
-            onInputChange={handleAddressChange}
+            onChange={handleAddressChange}
           />
         </div>
         <div className={styles.action}>
-          <Button onBtnClick={handleAddCity}>Добавить город</Button>
+          <Button onClick={handleAddCity}>Добавить город</Button>
         </div>
       </div>
     </div>
