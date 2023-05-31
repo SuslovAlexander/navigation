@@ -1,5 +1,6 @@
 export interface IDropdownProps {
-  options: string[];
-  selected: string;
-  setSelected: (option: string) => void;
+  placeholder?: string;
+  options: string[] | undefined;
+  value: string;
+  onChange: (option: string) => void;
 }

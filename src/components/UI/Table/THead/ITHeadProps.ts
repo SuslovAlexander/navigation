@@ -6,5 +6,6 @@ export interface ITHeadProps {
   onSelectAll?: () => void;
   hasCheckbox: boolean;
   canBeDeleted?: boolean;
+  canBeEdit?: boolean;
   firsTrWidth?: string;
 }

@@ -14,8 +14,8 @@ const DropWrap: FC<any> = ({ options, onChange }) => {
     <>
       <Dropdown
         options={options}
-        selected={selected}
-        setSelected={handleSelected}
+        value={selected}
+        onChange={handleSelected}
       />
     </>
   );

@@ -19,10 +19,6 @@ const TBody: FC<any> = ({
   onEdit,
   emptyText,
 }) => {
-  const handleOnTrClick = (id: string): void => {
-    onTrClick();
-  };
-
   if (!tableBodyData.length)
     return (
       <div className={styles.empty}>
@@ -40,7 +36,6 @@ const TBody: FC<any> = ({
             onSelect={onSelect}
             data={row}
             key={RANDOM.id}
-            /*  onTrClick={(val) => handleOnTrClick(val)} */
             onTrClick={onTrClick}
             hasCheckbox={hasCheckbox}
             canBeDeleted={canBeDeleted}
@@ -50,7 +45,6 @@ const TBody: FC<any> = ({
           />
         );
       })}
-
     </tbody>
   );
 };

@@ -8,32 +8,49 @@ import { IDropdownProps } from "./IDropdownProps";
 
 import styles from "./Dropdown.module.css";
 
-const Dropdown: FC<IDropdownProps> = ({ options, selected, setSelected }) => {
+const Dropdown: FC<IDropdownProps> = ({
+  placeholder,
+  options,
+  value,
+  onChange,
+}) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
-/*   useEffect(() => {
-    if (!options.length) return;
-    setSelected(options[0]);
-  }, []); */
+  const closeDropdown = (): void => {
+    setIsActive(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("click", closeDropdown);
+  }, [closeDropdown]);
+
+  const handleActive = (): void => {
+    closeDropdown();
+    setIsActive(!isActive);
+  };
 
   return (
-    <div className={styles.wrap}>
-      <div className={styles.action} onClick={() => setIsActive(!isActive)}>
-        <p className={styles.active}>{selected}</p>
+    <div className={styles.wrap} onClick={(e) => e.stopPropagation()}>
+      <div
+        tabIndex={0}
+        className={styles.action}
+        onKeyDown={(e) => {
+          if (e.code == "Space") handleActive();
+        }}
+        onClick={handleActive}
+      >
+        <p className={styles.active}>{value || placeholder}</p>
         <div className={styles.arrow}>
           <Drop />
         </div>
       </div>
       {isActive && (
-        <div
-          className={styles.content}
-
-        >
-          {options.map((option) => (
+        <div className={styles.content}>
+          {options?.map((option) => (
             <ItemDropdown
-              selected={selected}
+              selected={value}
               option={option}
-              setSelected={setSelected}
+              setSelected={onChange}
               setIsActive={setIsActive}
               key={RANDOM.id}
             />

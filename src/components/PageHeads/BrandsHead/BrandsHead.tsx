@@ -30,7 +30,7 @@ const BrandsHead: FC<any> = ({ onAddBrand }) => {
         <Input
           type="text"
           placeholder="Введите название бренда"
-          onInputChange={(name) => setInputName(name)}
+          onChange={(name) => setInputName(name)}
           isClear={clearInput}
         />
       </div>
@@ -45,7 +45,7 @@ const BrandsHead: FC<any> = ({ onAddBrand }) => {
         <Note>Размер логотипа 500*500 px PNG, JPG, JPEG</Note>
       </div>
       <div className={styles.action}>
-        <Button onBtnClick={handleAddBrand}>Добавить бренд</Button>
+        <Button onClick={handleAddBrand}>Добавить бренд</Button>
       </div>
     </div>
   );

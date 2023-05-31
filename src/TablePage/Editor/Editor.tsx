@@ -17,10 +17,10 @@ const Editor: FC<any> = ({ items }) => {
   return (
     <div className={styles.wrap}>
       <div className={styles.actions}>
-        <Button highlighted={false} size="static" onBtnClick={() => true}>
+        <Button highlighted={false} size="static" onClick={() => true}>
           Удалить
         </Button>
-        <Button size="static" onBtnClick={() => true}>
+        <Button size="static" onClick={() => true}>
           Сохранить
         </Button>
       </div>

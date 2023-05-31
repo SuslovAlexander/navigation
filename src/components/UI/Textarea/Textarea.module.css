@@ -7,6 +7,12 @@
   border: 1px solid #d0d3da;
   border-radius: 8px;
   overflow: auto;
+  outline: none;
+}
+.textarea:focus {
+  border: 1px solid #8a3597;
+  box-shadow: -2px -2px 0px #eed9f2, 2px 2px 0px #eed9f2, -2px 2px 0px #eed9f2,
+    2px -2px 0px #eed9f2;
 }
 
 .textarea::placeholder {

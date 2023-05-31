@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 
 import { ReactComponent as Password } from "../../../public/assets/images/password.svg";
 
@@ -7,16 +7,15 @@ import { IInputProps } from "./IInputProps";
 import styles from "./Input.module.css";
 
 const Input: FC<IInputProps> = ({
-  isClear,
+  value,
   type,
   placeholder,
   disabled = false,
   variant,
   onInputBlur,
-  onInputChange,
+  onChange,
   iconImg,
 }) => {
-  const [inputValue, setInputValue] = useState("");
   const [inputType, setInputType] = useState(type);
 
   const inputStyles = `${styles.input} ${disabled ? styles.disabled : ""}`;
@@ -42,17 +41,15 @@ const Input: FC<IInputProps> = ({
   );
 
   const handleInputBlur = (): void => {
-    if (onInputBlur) {
-      onInputBlur(inputValue);
-      setInputValue("");
+    if (onInputBlur && value) {
+      onInputBlur(value);
     }
   };
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> | undefined = (
     e
   ): void => {
-    setInputValue(e.target.value);
-    if (onInputChange) onInputChange(e.target.value);
+    if (onChange) onChange(e.target.value);
   };
 
   return (
@@ -62,17 +59,12 @@ const Input: FC<IInputProps> = ({
         className={inputStyles}
         style={inputStyle}
         placeholder={placeholder}
-        value={inputValue}
+        value={value}
         onChange={handleChange}
         onBlur={handleInputBlur}
       />
       {type === "password" && passwordIcon}
-      {variant === "link" && (
-        <div className={styles.link}>
-          {iconImg}
-          {/*  <Link /> */}
-        </div>
-      )}
+      {variant === "link" && <div className={styles.link}>{iconImg}</div>}
     </div>
   );
 };

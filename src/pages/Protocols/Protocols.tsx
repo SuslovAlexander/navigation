@@ -10,6 +10,7 @@ import {
   PROTOTOCOL_TEXT,
   SUBPROTOCOL_TEXT,
 } from "../../shared/constants/protocol-text-ui";
+import { IProtocol } from "../../shared/interfaces/IProtocol";
 import CategoryPair from "../Categories/CategoryPair/CategoryPair";
 
 import AddProtocol from "./AddProtocol/AddProtocol";
@@ -20,9 +21,25 @@ const Protocols: FC = () => {
   const [categories, setCategories] = useState<any>();
   const [subcategories, setSubcategories] = useState<any>();
 
+  const [targetProtocol, setTargetProtocol] = useState<any>({});
+
+  const [products, setProducts] = useState([]);
+
   const [showModal, setShowModal] = useState<boolean>(false);
 
-  const SUB_CATEGORY = PROTOCOLS.map((protocol) => {
+  const [protocols, setProtocols] = useState<any>(PROTOCOLS);
+
+  const [target, setTarget] = useState<any>({});
+  //console.log(protocols)
+
+  useEffect(() => {
+    const protocol = protocols.find(
+      (item: any) => item.protocol_category.id === categoryId
+    );
+    setTargetProtocol(protocol);
+  }, [protocols]);
+
+  const SUB_CATEGORY = protocols.map((protocol: any) => {
     const res = {
       protocol_category: {
         id: protocol.protocol_category.id,
@@ -39,6 +56,11 @@ const Protocols: FC = () => {
 
   const handleClickSubCategory = (id: string): void => {
     if (id) setSubCategoryId(id);
+
+    const temp = protocols.find((item: any) => item.id === id);
+    setTarget(temp);
+
+    /////////////////////////////////ПО ЭТОМУ ID  НАХОЖУ ПРОТОКОЛ В targetProtocol
   };
 
   useEffect(() => {
@@ -49,7 +71,7 @@ const Protocols: FC = () => {
     if (showSubCat) {
       setSubcategories(showSubCat);
     }
-  }, [categoryId]);
+  }, [categoryId, protocols]);
 
   useEffect(() => {
     setCategories(PROTOL_CATEGORY);
@@ -108,33 +130,25 @@ const Protocols: FC = () => {
     }
   };
 
-  const prodFeatures = [
-    {
-      disabled: false,
-      showName: "Название*",
-      type: "input",
-      value: PROTOL_CATEGORY.find((item) => item.id === categoryId)?.name,
-    },
-    {
-      disabled: false,
-      showName: "Бренд*",
-      type: "dropdown",
-      value: [{ name: "Выберите бренд" }, ...BRANDS.data],
-    },
-    {
-      disabled: false,
-      showName: "Описание*",
-      type: "textarea",
-      value: "",
-      placeholder: "Опишите товар",
-    },
-    {
-      disabled: true,
-      showName: "Категория",
-      type: "input",
-      value: PROTOL_CATEGORY.find((item) => item.id === categoryId)?.name,
-    },
-  ];
+  const handleOpenModal = (): void => {
+    setShowModal(true);
+    //setTargetProtocol({ ...targetProtocol, protocol_category: "dfdf" });
+  };
+
+  const handleAddProtocol = (formProtocol: any): void => {
+    const newProtocol: IProtocol = {
+      brand: formProtocol.brands,
+      id: RANDOM.id,
+      description: formProtocol.description,
+      isRetailAllowed: false,
+      name: formProtocol.name,
+      products: products,
+      protocol_category: targetProtocol.protocol_category,
+    };
+    setProtocols([...protocols, newProtocol]);
+
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -154,9 +168,8 @@ const Protocols: FC = () => {
         textUiLeft={PROTOTOCOL_TEXT}
         textUiRight={SUBPROTOCOL_TEXT}
         hasInputs={{ first: true, second: false }}
-        onBtnClick={() => setShowModal(true)}
+        onBtnClick={handleOpenModal}
       />
-
       {showModal &&
         createPortal(
           <Modal
@@ -165,8 +178,8 @@ const Protocols: FC = () => {
             align="left"
           >
             <AddProtocol
-              items={prodFeatures}
-              onAddProtocol={(val: any) => console.log(val)}
+              protocolData={target}
+              onAddProtocol={handleAddProtocol}
             />
           </Modal>,
           document.body

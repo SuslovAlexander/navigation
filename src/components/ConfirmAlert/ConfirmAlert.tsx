@@ -17,7 +17,7 @@ const ConfirmAlert: FC<IConfirmAlertProps> = ({
       <p className={styles.header}>{header}</p>
       <p className={styles.text}>{text}</p>
       <div className={styles.actions}>
-        <Button onBtnClick={onConfirm}>Удалить</Button>
+        <Button onClick={onConfirm}>Удалить</Button>
         <div className={styles.cancel} onClick={onCancel}>
           Отменить удаление
         </div>
