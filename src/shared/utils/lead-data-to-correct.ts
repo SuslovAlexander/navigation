@@ -5,7 +5,9 @@ export const leaveUsedValues = (
   const result: any = {};
 
   for (const key in origin) {
-    if (usedValues.includes(key)) result[key] = origin[key];
+    if (usedValues.includes(key)) {
+      result[key] = origin[key];
+    }
   }
 
   return result;

@@ -2,7 +2,6 @@ import { FC, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 import Modal from "../../components/UI/Modal/Modal";
-import { RANDOM } from "../../helpers/random-id";
 import { BRANDS } from "../../mock/brands.mock";
 import { PROTOL_CATEGORY } from "../../mock/protocol_category.mock";
 import { PROTOCOLS } from "../../mock/protocols.mock";
@@ -11,6 +10,7 @@ import {
   SUBPROTOCOL_TEXT,
 } from "../../shared/constants/protocol-text-ui";
 import { IProtocol } from "../../shared/interfaces/IProtocol";
+import { RANDOM } from "../../shared/utils/random-id";
 import CategoryPair from "../Categories/CategoryPair/CategoryPair";
 
 import AddProtocol from "./AddProtocol/AddProtocol";
@@ -30,6 +30,8 @@ const Protocols: FC = () => {
   const [protocols, setProtocols] = useState<any>(PROTOCOLS);
 
   const [target, setTarget] = useState<any>({});
+
+  const [selectedCategory, setSelectedCategory] = useState({});
   //console.log(protocols)
 
   useEffect(() => {
@@ -51,11 +53,15 @@ const Protocols: FC = () => {
   });
 
   const handleClickCategory = (id: string): void => {
-    if (id) setCategoryId(id);
+    if (id) {
+      setCategoryId(id);
+    }
   };
 
   const handleClickSubCategory = (id: string): void => {
-    if (id) setSubCategoryId(id);
+    if (id) {
+      setSubCategoryId(id);
+    }
 
     const temp = protocols.find((item: any) => item.id === id);
     setTarget(temp);
@@ -102,18 +108,24 @@ const Protocols: FC = () => {
   };
 
   const handleAddCategory = (val: string): void => {
-    if (val.trim() === "") return;
+    if (val.trim() === "") {
+      return;
+    }
     const categoryToAdd = createCategory(val);
     setCategories([categoryToAdd, ...categories]);
   };
 
   const handleAddSubCategory = (val: string): void => {
-    if (val.trim() === "") return;
+    if (val.trim() === "") {
+      return;
+    }
     const categoryToAdd = createCategory(val);
     setSubcategories([categoryToAdd, ...subcategories]);
   };
   const handleOnEditCat = (val: any): void => {
-    if (val.id.trim() === "") return;
+    if (val.id.trim() === "") {
+      return;
+    }
     const hasInCategories = categories.find((item: any) => item.id === val.id);
     if (hasInCategories) {
       hasInCategories.name = val.name;
@@ -121,7 +133,9 @@ const Protocols: FC = () => {
   };
 
   const handleOnEditSubCat = (val: any): void => {
-    if (val.id.trim() === "") return;
+    if (val.id.trim() === "") {
+      return;
+    }
     const hasInCategories = subcategories.find(
       (item: any) => item.id === val.id
     );
@@ -132,7 +146,12 @@ const Protocols: FC = () => {
 
   const handleOpenModal = (): void => {
     setShowModal(true);
-    //setTargetProtocol({ ...targetProtocol, protocol_category: "dfdf" });
+    const selected = protocols.find(
+      (item: any) => item.protocol_category.id === categoryId
+    );
+
+    setSelectedCategory(selected);
+    /*  setTargetProtocol({ ...targetProtocol, protocol_category: name }); */
   };
 
   const handleAddProtocol = (formProtocol: any): void => {
@@ -178,7 +197,7 @@ const Protocols: FC = () => {
             align="left"
           >
             <AddProtocol
-              protocolData={target}
+              protocolData={targetProtocol}
               onAddProtocol={handleAddProtocol}
             />
           </Modal>,

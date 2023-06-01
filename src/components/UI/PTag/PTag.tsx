@@ -5,12 +5,18 @@ import { IPTagProps } from "./IPTagProps";
 import styles from "./PTag.module.css";
 
 const PTag: FC<IPTagProps> = ({ size, children }) => {
-  const paragraphStyles =
-    size === "small"
-      ? styles.small
-      : size === "large"
-      ? styles.large
-      : styles.standart;
+  const getTagStyles = (tagSize: string): string => {
+    switch (tagSize) {
+      case "small":
+        return styles.small;
+      case "large":
+        return styles.large;
+      default:
+        return styles.standart;
+    }
+  };
+
+  const paragraphStyles = getTagStyles(size as string);
 
   return <p className={paragraphStyles}>{children}</p>;
 };

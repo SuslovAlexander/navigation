@@ -1,6 +1,5 @@
 import { FC } from "react";
 
-import { RANDOM } from "../../../helpers/random-id";
 import Plus from "../../UI/Plus/Plus";
 
 import Value from "./Value/Value";
@@ -13,8 +12,8 @@ const ProductValue: FC<IProductValueProps> = ({ title, values }) => {
     <div className={styles.wrap}>
       <p className={styles.heading}>{title}</p>
       <div className={styles.content}>
-        {values.map((value) => (
-          <Value key={RANDOM.id} />
+        {values.map((value, index) => (
+          <Value key={index} />
         ))}
       </div>
       <Plus title="Добавить объем" />

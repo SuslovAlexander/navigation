@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { RANDOM } from "../../../../helpers/random-id";
+import { RANDOM } from "../../../../shared/utils/random-id";
 import RowTextItem from "../../../../TablePage/RowTextItem/RowTextItem";
 import Checkbox from "../../Checkbox/Checkbox";
 
@@ -23,9 +23,9 @@ const THead: FC<ITHeadProps> = ({
           </td>
         )}
 
-        {tableHeadData.map((item: any) => {
+        {tableHeadData.map((item: any, index: number) => {
           return (
-            <td key={RANDOM.id} style={{ width: firsTrWidth }}>
+            <td key={index} style={{ width: firsTrWidth }}>
               {(firsTrWidth = "")}
               <RowTextItem>{item}</RowTextItem>
             </td>

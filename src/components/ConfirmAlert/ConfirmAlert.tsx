@@ -12,12 +12,17 @@ const ConfirmAlert: FC<IConfirmAlertProps> = ({
   onConfirm,
   onCancel,
 }) => {
+  const handleConfirm = (): void => {
+    if (onConfirm) {
+      onConfirm();
+    }
+  };
   return (
     <div className={styles.wrap}>
       <p className={styles.header}>{header}</p>
       <p className={styles.text}>{text}</p>
       <div className={styles.actions}>
-        <Button onClick={onConfirm}>Удалить</Button>
+        <Button onClick={handleConfirm}>Удалить</Button>
         <div className={styles.cancel} onClick={onCancel}>
           Отменить удаление
         </div>

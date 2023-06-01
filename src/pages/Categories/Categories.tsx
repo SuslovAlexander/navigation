@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from "react";
 
-import { RANDOM } from "../../helpers/random-id";
 import { CATEGORY } from "../../mock/categoty.mock";
 import { SUB_CATEGORY } from "../../mock/sub_category.mock";
 import {
@@ -8,6 +7,7 @@ import {
   SUBCATEGORY_TEXT,
 } from "../../shared/constants/category-text-ui";
 import { TCategory } from "../../shared/types/TCategory";
+import { RANDOM } from "../../shared/utils/random-id";
 
 import CategoryPair from "./CategoryPair/CategoryPair";
 import { TEditParams } from "./EditCategoryItem/IEditCategoryProps";
@@ -19,11 +19,15 @@ const Categories: FC = () => {
   const [subcategories, setSubcategories] = useState<any>();
 
   const handleClickCategory = (id: string): void => {
-    if (id) setCategoryId(id);
+    if (id) {
+      setCategoryId(id);
+    }
   };
 
   const handleClickSubCategory = (id: string): void => {
-    if (id) setSubCategoryId(id);
+    if (id) {
+      setSubCategoryId(id);
+    }
   };
 
   useEffect(() => {
@@ -71,13 +75,17 @@ const Categories: FC = () => {
   };
 
   const handleAddSubCategory = (val: string): void => {
-    if (val.trim() === "") return;
+    if (val.trim() === "") {
+      return;
+    }
     const categoryToAdd = createCategory(val);
     setSubcategories([categoryToAdd, ...subcategories]);
   };
 
   const handleOnEditCat = (val: TEditParams): void => {
-    if (val.id.trim() === "") return;
+    if (val.id.trim() === "") {
+      return;
+    }
     const hasInCategories = categories.find((item: any) => item.id === val.id);
     if (hasInCategories) {
       hasInCategories.name = val.name;
@@ -85,7 +93,9 @@ const Categories: FC = () => {
   };
 
   const handleOnEditSubCat = (val: TEditParams): void => {
-    if (val.id.trim() === "") return;
+    if (val.id.trim() === "") {
+      return;
+    }
     const hasInCategories = subcategories.find(
       (item: any) => item.id === val.id
     );

@@ -1,4 +1,5 @@
+export type IFormValues = any;
 export interface IAddProtocolProps {
-  onAddProtocol: any;
+  onAddProtocol: (val: IFormValues) => void;
   protocolData: any;
 }

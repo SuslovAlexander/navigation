@@ -38,7 +38,7 @@ export const CONFIG = [
     id: "4",
     title: "Категория",
     component: Input,
-    field: "category",
+    field: "protocol_category", 
     inputProps: {
       type: "text",
       disabled: true,

@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 
-import { RANDOM } from "../../../helpers/random-id";
 import { ReactComponent as Clip } from "../../../public/assets/images/clip.svg";
 import { IBrand } from "../../../shared/interfaces/IProduct";
+import { RANDOM } from "../../../shared/utils/random-id";
 import Button from "../../UI/Button/Button";
 import Input from "../../UI/Input/Input";
 import Note from "../../UI/Note/Note";

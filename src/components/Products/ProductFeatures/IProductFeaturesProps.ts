@@ -1,4 +1,4 @@
-import { IFeature } from "../../../shared/types/IFeature";
+import { IFeature } from "../../../shared/interfaces/IFeature";
 
 export interface IProductFeatures {
   title?: string;

@@ -4,6 +4,11 @@ import { ICheckBoxProps } from "./ICheckboxProps";
 
 import styles from "./Checkbox.module.css";
 const Checkbox: FC<ICheckBoxProps> = ({ checked, id, onSelect }) => {
+  const handleChange = (): void => {
+    if (onSelect) {
+      onSelect(id);
+    }
+  };
   return (
     <>
       <input
@@ -11,7 +16,7 @@ const Checkbox: FC<ICheckBoxProps> = ({ checked, id, onSelect }) => {
         checked={checked}
         className={styles.checkbox}
         id={id}
-        onChange={() => onSelect(id)}
+        onChange={handleChange}
       ></input>
       <label htmlFor={id} />
     </>

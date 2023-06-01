@@ -26,16 +26,22 @@ const EditCategoryItem: FC<IEditCategoryProps> = ({
   };
 
   const handleClick = (): void => {
-    if (onClick) onClick(data.id);
+    if (onClick) {
+      onClick(data.id);
+    }
   };
 
   const handleClickEdit = (): void => {
-    if (canEdit) onEdit({ id: data.id, name: inputValue });
-    handleEdit();
+    if (canEdit) {
+      onEdit({ id: data.id, name: inputValue });
+      handleEdit();
+    }
   };
 
   const handleClickRemove = (): void => {
-    if (onRemove) onRemove(data.id);
+    if (onRemove) {
+      onRemove(data.id);
+    }
   };
 
   return (

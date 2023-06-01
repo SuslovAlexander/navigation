@@ -1,16 +1,13 @@
 import { FC } from "react";
 
+import { getOptions } from "../../../shared/utils/pages-options";
+
 import { IPageSelectProps } from "./IPageSelectProps";
 
 import styles from "./PageSelect.module.css";
 
 const PageSelect: FC<IPageSelectProps> = ({ pageAmount, onSelect }) => {
-  const selectOptions = [];
-  if (pageAmount) {
-    for (let i = 10; i <= pageAmount; i += 10) {
-      selectOptions.push(i);
-    }
-  }
+  const selectOptions = getOptions(pageAmount, [10, 50, 100]);
 
   const handleChange = (e: any): void => {
     onSelect(e.target.value);

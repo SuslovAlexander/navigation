@@ -1,11 +1,8 @@
 import { FC, useEffect, useState } from "react";
 
-import SearchInput from "../components/UI/SearchInput/SearchInput";
 import Table from "../components/UI/Table/Table";
 
-import PageFromPages from "./Actios/PageFromPages/PageFromPages";
-import ShowPageAmount from "./Actios/ShowPageAmount/ShowPageAmount";
-import TurnPage from "./Actios/TurnPage/TurnPage";
+import PageActions from "./PageActions/PageActions";
 import SelectedAlert from "./SelectedAlert/SelectedAlert";
 import { ITablePageProps, TtableData } from "./ITablePageProps";
 
@@ -19,28 +16,19 @@ const TablePage: FC<ITablePageProps> = ({
   onAction,
 }) => {
   const [tableData, setTableData] = useState(tableBody);
-  const [showAmount, setShowAmount] = useState<number>(10);
-  const [start, setStart] = useState(0);
-  const [end, setEnd] = useState<number>(showAmount);
+
   const [currentSlice, setCurrentSlice] = useState<TtableData>([]);
-  const [currentPage, setCurrentPage] = useState<number>(1);
+
   const [selected, setSelected] = useState<string[]>([]);
   const [selectAll, setSelectAll] = useState<boolean>(false);
   const [showAlert, setShowAlert] = useState<boolean>(false);
-  const totalAmount = tableData.length;
-  const fromPages = Math.ceil(totalAmount / showAmount);
+
   const [toggleSelectAll, setToggleSelectAll] = useState(true);
 
   useEffect(() => {
-    setEnd(showAmount);
-  }, [showAmount]);
-
-  useEffect(() => {
-    setCurrentSlice(tableData.slice(start, end));
-  }, [tableData, start, end]);
-
-  useEffect(() => {
-    if (!selected.length) setShowAlert(false);
+    if (!selected.length) {
+      setShowAlert(false);
+    }
   }, [selected]);
 
   const handleDelete = (): void => {
@@ -50,20 +38,6 @@ const TablePage: FC<ITablePageProps> = ({
     setSelected([]);
     setTableData(updatedTableData);
     setShowAlert(false);
-  };
-
-  const handleNext = (): void => {
-    if (currentPage === fromPages) return;
-    setStart((prev) => prev + showAmount);
-    setEnd((prev) => prev + showAmount);
-    setCurrentPage((prev) => prev + 1);
-  };
-
-  const handlePrev = (): void => {
-    if (currentPage === 1) return;
-    setStart((prev) => prev - showAmount);
-    setEnd((prev) => prev - showAmount);
-    setCurrentPage((prev) => prev - 1);
   };
 
   const handleSelect = (val: string): void => {
@@ -82,7 +56,7 @@ const TablePage: FC<ITablePageProps> = ({
     setToggleSelectAll(!toggleSelectAll);
     setSelectAll(!selectAll);
     const updatedSelected = toggleSelectAll
-      ? tableData.map((item: any) => item[idName])
+      ? tableData.map((item: Record<string, any>) => item[idName])
       : [];
     setSelected(updatedSelected);
   };
@@ -90,17 +64,7 @@ const TablePage: FC<ITablePageProps> = ({
   return (
     <>
       <div className={styles.table}>
-        {/* вынести */}
-        <div className={styles.head}>
-          <ShowPageAmount amount={totalAmount} onSetAmount={setShowAmount} />
-          <PageFromPages from={fromPages} current={currentPage} />
-          <div className={styles.actions}>
-            <TurnPage direction="prev" onBtnClick={handlePrev} />
-            <TurnPage direction="next" onBtnClick={handleNext} />
-          </div>
-        </div>
-        {/* вынести */}
-
+        <PageActions tableData={tableData} onSetSlice={setCurrentSlice} />
         <Table
           heading={tableHeading}
           tableData={currentSlice}

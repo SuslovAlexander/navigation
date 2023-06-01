@@ -3,9 +3,9 @@ import { FC, useEffect, useState } from "react";
 import BrandList from "../../components/Brands/BrandList";
 import BrandsHead from "../../components/PageHeads/BrandsHead/BrandsHead";
 import Table from "../../components/UI/Table/Table";
-import { RANDOM } from "../../helpers/random-id";
 import { BRANDS } from "../../mock/brands.mock";
 import { IBrand } from "../../shared/interfaces/IProduct";
+import { RANDOM } from "../../shared/utils/random-id";
 
 import styles from "./Brands.module.css";
 
@@ -27,6 +27,7 @@ const Brands: FC = () => {
     const brandToAdd = { id: RANDOM.id, name: brand.name, icon: brand.icon };
     setBrands([brandToAdd, ...brands]);
   };
+
 
   return (
     <div className={styles.wrap}>

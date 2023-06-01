@@ -26,8 +26,10 @@ const Category: FC<ICategoryProps> = ({
   };
 
   const handleAction = (): void => {
-    if (!hasInput) onBtnClick();
-  }
+    if (!hasInput) {
+      onBtnClick();
+    }
+  };
 
   return (
     <div className={styles["category-column"]}>

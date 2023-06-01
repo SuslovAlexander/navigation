@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from "react";
 
 import Button from "../../../components/UI/Button/Button";
+import Field from "../../../components/UI/Form/Field/Field";
 import { BRANDS } from "../../../mock/brands.mock";
 import { TDropdowns } from "../../../shared/types/TDropdowns";
-import Field from "../../Seminars/Field/Field";
-import { CONFIG } from "../../Seminars/TEMP/config";
+import { CONFIG } from "../configs/config";
 
 import { IAddProtocolProps } from "./IAddProtocolProps";
 
@@ -14,7 +14,7 @@ const AddProtocol: FC<IAddProtocolProps> = ({
   onAddProtocol,
   protocolData,
 }) => {
-  const [formValues, setFormValues] = useState<any>({protocolData});
+  const [formValues, setFormValues] = useState<any>({ protocolData });
   const [dropdowns, setDropdowns] = useState<any>({});
 
   useEffect(() => {

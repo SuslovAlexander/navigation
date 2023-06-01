@@ -2,9 +2,9 @@ import { FC, useState } from "react";
 
 import CitiesHead from "../../components/PageHeads/CitiesHead/CitiesHead";
 import Table from "../../components/UI/Table/Table";
-import { transformData } from "../../helpers/transform-data";
 import { CITIES_MOCK } from "../../mock/cities.mock";
 import { shapeOfCities } from "../../shared/shape/shape-of-cities";
+import { transformData } from "../../shared/utils/transform-data";
 
 import styles from "./Cities.module.css";
 

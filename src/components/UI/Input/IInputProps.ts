@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 
 export interface IInputProps {
+  type: string;
   isClear?: boolean;
   variant?: "link";
-  type: string;
   placeholder?: string;
   disabled?: boolean;
   onInputBlur?: (val: string) => void;

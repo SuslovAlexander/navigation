@@ -16,11 +16,14 @@ const Input: FC<IInputProps> = ({
   onChange,
   iconImg,
 }) => {
+  const [inputValue, setInputValue] = useState<any>(value);
   const [inputType, setInputType] = useState(type);
 
   const inputStyles = `${styles.input} ${disabled ? styles.disabled : ""}`;
   let inputStyle = {};
-  if (variant === "link") inputStyle = { color: "#737680" };
+  if (variant === "link") {
+    inputStyle = { color: "#737680" };
+  }
 
   const handleShowPassword = (): void => {
     setInputType("text");
@@ -41,15 +44,19 @@ const Input: FC<IInputProps> = ({
   );
 
   const handleInputBlur = (): void => {
-    if (onInputBlur && value) {
-      onInputBlur(value);
+    if (onInputBlur) {
+      onInputBlur(inputValue);
+      setInputValue("");
     }
   };
 
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> | undefined = (
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (
     e
   ): void => {
-    if (onChange) onChange(e.target.value);
+    setInputValue(e.target.value);
+    if (onChange) {
+      onChange(e.target.value);
+    }
   };
 
   return (
@@ -59,7 +66,7 @@ const Input: FC<IInputProps> = ({
         className={inputStyles}
         style={inputStyle}
         placeholder={placeholder}
-        value={value}
+        value={inputValue}
         onChange={handleChange}
         onBlur={handleInputBlur}
       />

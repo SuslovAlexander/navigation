@@ -1,6 +1,6 @@
 export interface ITextareaProps {
   placeholder?: string;
   value?: string;
-  onChange?: any;
+  onChange?: (value: string) => void;
   disabled?: boolean;
 }
