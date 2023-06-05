@@ -2,7 +2,6 @@ import { FC, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 import Modal from "../../components/UI/Modal/Modal";
-import { BRANDS } from "../../mock/brands.mock";
 import { PROTOL_CATEGORY } from "../../mock/protocol_category.mock";
 import { PROTOCOLS } from "../../mock/protocols.mock";
 import {
@@ -11,28 +10,40 @@ import {
 } from "../../shared/constants/protocol-text-ui";
 import { IProtocol } from "../../shared/interfaces/IProtocol";
 import { RANDOM } from "../../shared/utils/random-id";
+import { getProtocolFormData } from "../../utils/get-protocol-from-data";
 import CategoryPair from "../Categories/CategoryPair/CategoryPair";
 
-import AddProtocol from "./AddProtocol/AddProtocol";
+import ActionProtocol from "./AddProtocol/ActionProtocol";
 
 const Protocols: FC = () => {
   const [categoryId, setCategoryId] = useState<string>();
   const [subCategoryId, setSubCategoryId] = useState<string>();
   const [categories, setCategories] = useState<any>();
   const [subcategories, setSubcategories] = useState<any>();
-
   const [targetProtocol, setTargetProtocol] = useState<any>({});
-
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<any>([
+    {
+      id: "1234",
+      name: "sdsdsd",
+      isRetailAllowed: false,
+      brand: { id: "98", name: "Superrr" },
+      images: [],
+    },
+    {
+      id: "1234",
+      name: "sdsdsd",
+      isRetailAllowed: false,
+      brand: { id: "98", name: "Superrr" },
+      images: [],
+    },
+  ]);
 
   const [showModal, setShowModal] = useState<boolean>(false);
-
   const [protocols, setProtocols] = useState<any>(PROTOCOLS);
 
-  const [target, setTarget] = useState<any>({});
-
-  const [selectedCategory, setSelectedCategory] = useState({});
-  //console.log(protocols)
+  const [selectedCategory, setSelectedCategory] = useState<any>({});
+  const categoryName = selectedCategory?.protocol_category?.name;
+  const [dataToForm, setDataToForm] = useState<any>({});
 
   useEffect(() => {
     const protocol = protocols.find(
@@ -44,7 +55,7 @@ const Protocols: FC = () => {
   const SUB_CATEGORY = protocols.map((protocol: any) => {
     const res = {
       protocol_category: {
-        id: protocol.protocol_category.id,
+        id: protocol?.protocol_category?.id,
       },
       name: protocol.name,
       id: protocol.id,
@@ -59,14 +70,11 @@ const Protocols: FC = () => {
   };
 
   const handleClickSubCategory = (id: string): void => {
-    if (id) {
-      setSubCategoryId(id);
-    }
-
     const temp = protocols.find((item: any) => item.id === id);
-    setTarget(temp);
-
-    /////////////////////////////////ПО ЭТОМУ ID  НАХОЖУ ПРОТОКОЛ В targetProtocol
+    const transformed = getProtocolFormData(temp);
+    setDataToForm(transformed);
+    setSubCategoryId(id);
+    setShowModal(true);
   };
 
   useEffect(() => {
@@ -144,14 +152,17 @@ const Protocols: FC = () => {
     }
   };
 
-  const handleOpenModal = (): void => {
-    setShowModal(true);
+  useEffect(() => {
     const selected = protocols.find(
       (item: any) => item.protocol_category.id === categoryId
     );
-
     setSelectedCategory(selected);
-    /*  setTargetProtocol({ ...targetProtocol, protocol_category: name }); */
+  }, [categoryId]);
+
+  const handleOpenModal = (): void => {
+    setShowModal(true);
+    setDataToForm({ category: categoryName });
+
   };
 
   const handleAddProtocol = (formProtocol: any): void => {
@@ -162,11 +173,23 @@ const Protocols: FC = () => {
       isRetailAllowed: false,
       name: formProtocol.name,
       products: products,
-      protocol_category: targetProtocol.protocol_category,
+      protocol_category: targetProtocol?.protocol_category,
     };
     setProtocols([...protocols, newProtocol]);
-
     setShowModal(false);
+  };
+
+  const handleEditProtocol = (formProtocol: any): void => {
+    console.log(formProtocol);
+    /* 
+    let editable = protocols.find((item: any) => item.id === subCategoryId);
+
+    const resObj = { ...editable, ...formProtocol };
+    editable = resObj; */
+    /*     console.log(resObj);
+    console.log(
+      protocols.find((item: any) => item.id === resObj.protocol_category.id)
+    ); */
   };
 
   return (
@@ -196,9 +219,11 @@ const Protocols: FC = () => {
             setActive={() => setShowModal(false)}
             align="left"
           >
-            <AddProtocol
-              protocolData={targetProtocol}
+            <ActionProtocol
+              formData={dataToForm}
               onAddProtocol={handleAddProtocol}
+              onEditProtocol={handleEditProtocol}
+              products={products}
             />
           </Modal>,
           document.body

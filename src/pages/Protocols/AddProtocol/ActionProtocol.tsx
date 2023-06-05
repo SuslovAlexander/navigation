@@ -3,25 +3,27 @@ import { FC, useEffect, useState } from "react";
 import Button from "../../../components/UI/Button/Button";
 import Field from "../../../components/UI/Form/Field/Field";
 import { BRANDS } from "../../../mock/brands.mock";
-import { TDropdowns } from "../../../shared/types/TDropdowns";
+import ProductList from "../../Products/ProductList/ProductList";
 import { CONFIG } from "../configs/config";
 
-import { IAddProtocolProps } from "./IAddProtocolProps";
+import { IActionProtocolProps } from "./IActionProtocolProps";
 
-import styles from "./AddProtocol.module.css";
+import styles from "./ActionProtocol.module.css";
 
-const AddProtocol: FC<IAddProtocolProps> = ({
+const AddProtocol: FC<IActionProtocolProps> = ({
   onAddProtocol,
-  protocolData,
+  onEditProtocol,
+  formData,
+  products,
 }) => {
-  const [formValues, setFormValues] = useState<any>({ protocolData });
+  const [formValues, setFormValues] = useState<any>(formData);
   const [dropdowns, setDropdowns] = useState<any>({});
 
   useEffect(() => {
     const ops = BRANDS.data.map((item) => item.name);
     const drops = {
-      brands: {
-        name: "brands",
+      brand: {
+        name: "brand",
         options: ops,
       },
     };
@@ -34,15 +36,18 @@ const AddProtocol: FC<IAddProtocolProps> = ({
     });
   };
 
-  const handleAddProtocol = (): void => {
-    //logic to create protocol object
-    onAddProtocol(formValues);
+  const handleActionProtocol = (): void => {
+    if (formData.name) {
+      onEditProtocol(formValues);
+    } else {
+      onAddProtocol(formValues);
+    }
   };
 
   return (
     <div className={styles.wrap}>
       <div className={styles.actions}>
-        <Button highlighted={true} size="flex" onClick={handleAddProtocol}>
+        <Button highlighted={true} size="flex" onClick={handleActionProtocol}>
           Сохранить
         </Button>
       </div>
@@ -62,6 +67,7 @@ const AddProtocol: FC<IAddProtocolProps> = ({
         })}
         <div className={styles.addition}>
           <p className={styles["title-add"]}>Товары протокола</p>
+          <ProductList products={products} onClick={() => null} />
           <p className={styles["action-add"]}>+ Добавить товар</p>
         </div>
       </div>

@@ -28,7 +28,6 @@ const Brands: FC = () => {
     setBrands([brandToAdd, ...brands]);
   };
 
-
   return (
     <div className={styles.wrap}>
       <BrandsHead onAddBrand={addnewBrand} />

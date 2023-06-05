@@ -1,0 +1,12 @@
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 52px;
+  border-bottom: 1px solid #ebecef;
+}
+
+.item {
+  flex: 1 1 0;
+}

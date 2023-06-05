@@ -7,7 +7,7 @@ import Login from "../pages/Login/Login";
 import Orders from "../pages/Orders/Orders";
 import Products from "../pages/Products/Products";
 import Promocode from "../pages/Promocode/Promocode";
-import Protocols from "../pages/Protocols/Protocols";
+import Protocols from "../pages/Protocols/Protocols ";
 import Register from "../pages/Register/Register";
 import Seminars from "../pages/Seminars/Seminars";
 

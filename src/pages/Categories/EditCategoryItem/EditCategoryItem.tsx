@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 
 import Input from "../../../components/UI/Input/Input";
 import { ReactComponent as Edit } from "../../../public/assets/images/edit.svg";
@@ -17,6 +17,7 @@ const EditCategoryItem: FC<IEditCategoryProps> = ({
   onClick,
 }) => {
   const [editable, setEditable] = useState<boolean>(false);
+
   const [inputValue, setInputValue] = useState<string>("");
 
   const canEdit = editable && onEdit && inputValue.trim().length;
@@ -26,22 +27,17 @@ const EditCategoryItem: FC<IEditCategoryProps> = ({
   };
 
   const handleClick = (): void => {
-    if (onClick) {
-      onClick(data.id);
-    }
+    if (onClick) onClick(data.id);
   };
 
   const handleClickEdit = (): void => {
-    if (canEdit) {
-      onEdit({ id: data.id, name: inputValue });
-      handleEdit();
-    }
+    if (canEdit) onEdit({ id: data.id, name: inputValue });
+
+    handleEdit();
   };
 
   const handleClickRemove = (): void => {
-    if (onRemove) {
-      onRemove(data.id);
-    }
+    if (onRemove) onRemove(data.id);
   };
 
   return (
@@ -63,6 +59,8 @@ const EditCategoryItem: FC<IEditCategoryProps> = ({
             type="text"
             placeholder={data.name}
             onInputBlur={(val) => setInputValue(val)}
+            value={inputValue}
+            onChange={setInputValue}
           />
         )}
         {!editable && <RowTextItem>{data.name}</RowTextItem>}

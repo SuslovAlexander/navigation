@@ -11,7 +11,7 @@ export interface ICategoryProps {
   onEdit: any;
   onHandleClick?: any;
   items: any;
-  itemId: any;
+  itemId?: any;
   textUi: TTextUi;
   hasInput: any;
   onBtnClick?: any;

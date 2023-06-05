@@ -14,13 +14,6 @@
   padding-bottom: 27px;
 }
 
-.addition {
-  display: flex;
-  flex-direction: column;
-  padding-top: 32px;
-  gap: 6px;
-}
-
 .title-add {
   font-weight: 500;
   font-size: 14px;

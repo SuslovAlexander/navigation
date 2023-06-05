@@ -18,7 +18,7 @@ export const CONFIG = [
     id: "2",
     title: "Бренд",
     component: Dropdown,
-    field: "brands",
+    field: "brand",
     inputProps: {
       placeholder: "Выберите бренд",
     },
@@ -38,7 +38,7 @@ export const CONFIG = [
     id: "4",
     title: "Категория",
     component: Input,
-    field: "protocol_category", 
+    field: "category",
     inputProps: {
       type: "text",
       disabled: true,

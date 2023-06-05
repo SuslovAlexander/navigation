@@ -16,7 +16,6 @@ const Input: FC<IInputProps> = ({
   onChange,
   iconImg,
 }) => {
-  const [inputValue, setInputValue] = useState<any>(value);
   const [inputType, setInputType] = useState(type);
 
   const inputStyles = `${styles.input} ${disabled ? styles.disabled : ""}`;
@@ -44,16 +43,14 @@ const Input: FC<IInputProps> = ({
   );
 
   const handleInputBlur = (): void => {
-    if (onInputBlur) {
-      onInputBlur(inputValue);
-      setInputValue("");
+    if (onInputBlur && value) {
+      onInputBlur(value);
     }
   };
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (
     e
   ): void => {
-    setInputValue(e.target.value);
     if (onChange) {
       onChange(e.target.value);
     }
@@ -66,7 +63,7 @@ const Input: FC<IInputProps> = ({
         className={inputStyles}
         style={inputStyle}
         placeholder={placeholder}
-        value={inputValue}
+        value={value}
         onChange={handleChange}
         onBlur={handleInputBlur}
       />

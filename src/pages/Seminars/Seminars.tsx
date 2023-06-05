@@ -1,7 +1,11 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
 const Seminars: FC = () => {
-  return <h1>Семинары</h1>;
+  return (
+    <>
+      <h1>Семинары</h1>
+    </>
+  );
 };
 
 export default Seminars;
