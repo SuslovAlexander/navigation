@@ -1,8 +1,8 @@
 import { FC } from "react";
 
-import { transformData } from "../../helpers/transform-data";
 import { USERS } from "../../mock/users.mock";
 import { shapeOfClients } from "../../shared/shape/shape-of-clients";
+import { transformData } from "../../shared/utils/transform-data";
 import TablePage from "../../TablePage/TablePage";
 
 const Clients: FC = () => {

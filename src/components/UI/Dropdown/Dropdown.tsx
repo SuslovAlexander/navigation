@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from "react";
 
-import { RANDOM } from "../../../helpers/random-id";
 import { ReactComponent as Drop } from "../../../public/assets/images/dropdown.svg";
 
 import ItemDropdown from "./ItemDropdown/ItemDropdown";
@@ -35,7 +34,9 @@ const Dropdown: FC<IDropdownProps> = ({
         tabIndex={0}
         className={styles.action}
         onKeyDown={(e) => {
-          if (e.code == "Space") handleActive();
+          if (e.code === "Space") {
+            handleActive();
+          }
         }}
         onClick={handleActive}
       >
@@ -46,13 +47,13 @@ const Dropdown: FC<IDropdownProps> = ({
       </div>
       {isActive && (
         <div className={styles.content}>
-          {options?.map((option) => (
+          {options?.map((option, index) => (
             <ItemDropdown
               selected={value}
               option={option}
               setSelected={onChange}
               setIsActive={setIsActive}
-              key={RANDOM.id}
+              key={index}
             />
           ))}
         </div>

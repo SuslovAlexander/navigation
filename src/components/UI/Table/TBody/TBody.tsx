@@ -1,41 +1,43 @@
 import { FC } from "react";
 
-import { RANDOM } from "../../../../helpers/random-id";
 import EmptyParagraph from "../../EmptyParagraph/EmptyParagraph";
 import TableTr from "../TableTr/TableTr";
 
+import { TTBodyProps } from "./TTBodyProps";
+
 import styles from "./TBody.module.css";
 
-const TBody: FC<any> = ({
-  tableBodyData,
-  onSelect,
-  selectedItems,
-  onTrClick,
+const TBody: FC<TTBodyProps> = ({
+  tableData,
   idName,
+  emptyText,
+  selectedItems,
   hasCheckbox,
   canBeDeleted,
   canBeEdit,
+  onSelect,
+  onTrClick,
   onRemove,
   onEdit,
-  emptyText,
 }) => {
-  if (!tableBodyData.length)
+  if (!tableData?.length) {
     return (
       <div className={styles.empty}>
         <EmptyParagraph text={emptyText} />
       </div>
     );
+  }
 
   return (
     <tbody>
-      {tableBodyData.map((row: any) => {
+      {tableData.map((row: Record<string, string>, index: number) => {
         return (
           <TableTr
             idName={idName}
             selectedItems={selectedItems}
             onSelect={onSelect}
             data={row}
-            key={RANDOM.id}
+            key={index}
             onTrClick={onTrClick}
             hasCheckbox={hasCheckbox}
             canBeDeleted={canBeDeleted}

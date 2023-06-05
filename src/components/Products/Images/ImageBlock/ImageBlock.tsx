@@ -1,7 +1,8 @@
 import { FC } from "react";
 
 import { ReactComponent as Image } from "../../../../public/assets/images/no-image.svg";
-import RemoveButton from "../../../UI/RemoveButton/RemoveButton";
+import { ReactComponent as Trash } from "../../../../public/assets/images/trash.svg";
+import ActionBtn from "../../../UI/ActionBtn/ActionBtn";
 
 import { IImageBlockProps } from "./IImageBlockProps";
 
@@ -17,7 +18,9 @@ const ImageBlock: FC<IImageBlockProps> = ({ url }) => {
         <p className={styles.url}>{url}</p>
       </div>
       <div className={styles.remove}>
-        <RemoveButton />
+        <ActionBtn>
+          <Trash />
+        </ActionBtn>
       </div>
     </div>
   );

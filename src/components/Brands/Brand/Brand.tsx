@@ -1,10 +1,11 @@
 import { FC, useState } from "react";
 import { createPortal } from "react-dom";
 
-import { ReactComponent as Edit } from "../../../public/assets/images/edit.svg";
+import { ReactComponent as Pencil } from "../../../public/assets/images/edit.svg";
 import { ReactComponent as Image } from "../../../public/assets/images/no-image_large.svg";
-import { ReactComponent as Remove } from "../../../public/assets/images/trash.svg";
+import { ReactComponent as Trash } from "../../../public/assets/images/trash.svg";
 import ConfirmAlert from "../../ConfirmAlert/ConfirmAlert";
+import ActionBtn from "../../UI/ActionBtn/ActionBtn";
 import Modal from "../../UI/Modal/Modal";
 
 import { IBrandProps } from "./IBrandProps";
@@ -14,7 +15,9 @@ import styles from "./Brand.module.css";
 const Brand: FC<IBrandProps> = ({ url, text, id, onEdit, onRemove }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const handleEdit = (): void => {
-    if (onEdit) onEdit(id);
+    if (onEdit) {
+      onEdit(id);
+    }
     //do something when Edit is clicked
   };
 
@@ -34,12 +37,13 @@ const Brand: FC<IBrandProps> = ({ url, text, id, onEdit, onRemove }) => {
       </div>
       <div className={styles.text}>{text}</div>
       <div className={styles.actions}>
-        <div className={styles.action} onClick={handleEdit}>
-          <Edit />
-        </div>
-        <div className={styles.action} onClick={handleRemove}>
-          <Remove />
-        </div>
+        <ActionBtn onClick={handleEdit}>
+          <Pencil />
+        </ActionBtn>
+
+        <ActionBtn onClick={handleRemove}>
+          <Trash />
+        </ActionBtn>
       </div>
       {showModal &&
         createPortal(

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { ChangeEvent, FC, ReactEventHandler } from "react";
 
 import { ITextareaProps } from "./ITextareaProps";
 
@@ -10,10 +10,15 @@ const Textarea: FC<ITextareaProps> = ({
   onChange,
   disabled,
 }) => {
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
+    if (onChange) {
+      onChange(e.target.value);
+    }
+  };
   return (
     <textarea
       tabIndex={0}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={handleChange}
       className={styles.textarea}
       placeholder={placeholder}
       value={value}

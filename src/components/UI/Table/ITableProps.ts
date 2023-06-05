@@ -1,4 +1,6 @@
-import { IHeadTable } from "../../../shared/types/IHeadTable";
+import { ReactNode } from "react";
+
+import { IHeadTable } from "../../../shared/interfaces/IHeadTable";
 import { TtableData } from "../../../TablePage/ITablePageProps";
 
 export interface ITableProps {
@@ -16,5 +18,5 @@ export interface ITableProps {
   canBeEdit?: boolean;
   emptyText: string;
   firsTrWidth?: string;
-  children?: any;
+  children?: ReactNode;
 }

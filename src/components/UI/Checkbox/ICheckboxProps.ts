@@ -1,6 +1,6 @@
 export interface ICheckBoxProps {
   checked?: boolean;
   id: string;
-  onSelect?: any;
+  onSelect?: (id: string) => void;
   selectAll?: boolean;
 }

@@ -9,7 +9,7 @@ import Checkbox from "../../components/UI/Checkbox/Checkbox";
 import HTag from "../../components/UI/HTag/HTag";
 import Input from "../../components/UI/Input/Input";
 import PTag from "../../components/UI/PTag/PTag";
-import { RANDOM } from "../../helpers/random-id";
+import { RANDOM } from "../../shared/utils/random-id";
 
 import styles from "./Login.module.css";
 

@@ -9,9 +9,7 @@ import styles from "./SearchInput.module.css";
 
 const SearchInput: FC<ISearchInputProps> = ({ placeholder }) => {
   const [inputValue, setInputValue] = useState<string>("");
-  const handleInputChange:
-    | React.ChangeEventHandler<HTMLInputElement>
-    | undefined = (e) => {
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setInputValue(e.target.value);
   };
   return (

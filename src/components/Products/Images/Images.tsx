@@ -1,6 +1,5 @@
 import { FC } from "react";
 
-import { RANDOM } from "../../../helpers/random-id";
 import { ReactComponent as Link } from "../../../public/assets/images/link.svg";
 import Input from "../../UI/Input/Input";
 
@@ -12,8 +11,8 @@ import styles from "./Images.module.css";
 const Images: FC<IImagesProps> = ({ urlList }) => {
   return (
     <div className={styles.wrap}>
-      {urlList.map((url) => (
-        <ImageBlock url={url} key={RANDOM.id} />
+      {urlList.map((url, index) => (
+        <ImageBlock url={url} key={index} />
       ))}
       <Input
         type="text"

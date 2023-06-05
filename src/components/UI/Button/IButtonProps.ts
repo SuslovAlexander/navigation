@@ -4,5 +4,5 @@ export interface IButtonProps {
   highlighted?: boolean;
   size?: "static" | "flex";
   children: ReactNode;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }

@@ -16,7 +16,7 @@ const CategoryPair: FC<ICategoryPair> = ({
   handleRemoveFromCat,
   handleOnEditCat,
   subCategoryId,
-  subcategories,
+  subcategories = null,
   handleAddSubCategory,
   handleRemoveFromSubCat,
   handleClickSubCategory,

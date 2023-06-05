@@ -3,12 +3,12 @@ import { createPortal } from "react-dom";
 
 import Button from "../../components/UI/Button/Button";
 import Modal from "../../components/UI/Modal/Modal";
-import { getFeatures } from "../../helpers/getFeatures";
-import { transformData } from "../../helpers/transform-data";
 import { GOODS_MOCK } from "../../mock/goods.mock";
 import { PRODUCT_MODAL } from "../../mock/product-modal.mock";
 import { PROD_ADDITIVE } from "../../shared/shape/product-additive";
 import { productsShape } from "../../shared/shape/shape-of-products";
+import { getFeatures } from "../../shared/utils/get-features";
+import { transformData } from "../../shared/utils/transform-data";
 import Editor from "../../TablePage/Editor/Editor";
 import TablePage from "../../TablePage/TablePage";
 
@@ -33,8 +33,6 @@ const { head, body } = transformData<any, any, any>(GOODS_MOCK, productsShape);
 
 const Products: FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
-
-  console.log(prodFeatures);
 
   return (
     <>

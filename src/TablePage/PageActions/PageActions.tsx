@@ -8,38 +8,46 @@ import { IPageActionsProps } from "./IPageActionsProps";
 
 import styles from "./PageActions.module.css";
 
-const PageActions: FC<IPageActionsProps> = ({ length, onSetSlice }) => {
-  const [currentSlice, setCurrentSlice] = useState<any>([0, 1]);
-  const [displayItems, setDisplayItems] = useState<number>(10);
-  const [from, setFrom] = useState<number>(1);
+const PageActions: FC<IPageActionsProps> = ({ tableData, onSetSlice }) => {
+  const [showAmount, setShowAmount] = useState<number>(10);
+  const [start, setStart] = useState(0);
+  const [end, setEnd] = useState<number>(showAmount);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
+  const totalAmount = tableData.length;
+
+  const fromPages = Math.ceil(totalAmount / showAmount);
+
   useEffect(() => {
-    const val = Math.ceil(length / displayItems);
-    setFrom(val);
-    onSetSlice(currentSlice);
-  }, [displayItems, currentSlice]);
+    setEnd(showAmount);
+  }, [showAmount]);
+
+  useEffect(() => {
+    onSetSlice(tableData.slice(start, end));
+  }, [tableData, start, end]);
 
   const handleNext = (): void => {
-    const startSlice = currentSlice[0] + displayItems;
-    const endSlice = currentSlice[1] + displayItems;
-    setCurrentSlice([startSlice, endSlice]);
+    if (currentPage === fromPages) {
+      return;
+    }
+    setStart((prev) => prev + showAmount);
+    setEnd((prev) => prev + showAmount);
     setCurrentPage((prev) => prev + 1);
   };
+
   const handlePrev = (): void => {
-    const startSlice = currentSlice[0] - displayItems;
-    const endSlice = currentSlice[1] - displayItems;
-    setCurrentSlice([startSlice, endSlice]);
+    if (currentPage === 1) {
+      return;
+    }
+    setStart((prev) => prev - showAmount);
+    setEnd((prev) => prev - showAmount);
     setCurrentPage((prev) => prev - 1);
   };
 
   return (
     <div className={styles.wrap}>
-      <ShowPageAmount
-        amount={length}
-        onSetAmount={(val: number) => setDisplayItems(val)}
-      />
-      <PageFromPages from={from} current={currentPage} />
+      <ShowPageAmount amount={totalAmount} onSetAmount={setShowAmount} />
+      <PageFromPages from={fromPages} current={currentPage} />
       <div className={styles.actions}>
         <TurnPage direction="prev" onBtnClick={handlePrev} />
         <TurnPage direction="next" onBtnClick={handleNext} />

@@ -3,9 +3,9 @@ import { FC, useState } from "react";
 import CitiesHead from "../../components/PageHeads/CitiesHead/CitiesHead";
 import Button from "../../components/UI/Button/Button";
 import Table from "../../components/UI/Table/Table";
-import { transformData } from "../../helpers/transform-data";
 import { BANNERS_MOCK } from "../../mock/banners.mock";
 import { shapeOfBanners } from "../../shared/shape/shape-of-banners";
+import { transformData } from "../../shared/utils/transform-data";
 
 import styles from "./Banners.module.css";
 

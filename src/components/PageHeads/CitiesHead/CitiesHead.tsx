@@ -18,13 +18,17 @@ const CitiesHead: FC<ICitiesHeadProps> = ({ onAddCity }) => {
   };
 
   const cityDataIsValid = (): boolean => {
-    if (!newCity.address.trim().length) return false;
-    if (!newCity.name.trim().length) return false;
-    return true;
+    if (!newCity.address.trim().length || !newCity.name.trim().length) {
+      return false;
+    } else {
+      return true;
+    }
   };
 
   const handleAddCity = (): void => {
-    if (cityDataIsValid()) onAddCity(newCity);
+    if (cityDataIsValid()) {
+      onAddCity(newCity);
+    }
   };
 
   return (

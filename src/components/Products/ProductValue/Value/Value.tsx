@@ -1,8 +1,9 @@
 import { FC } from "react";
 
+import { ReactComponent as Trash } from "../../../../public/assets/images/trash.svg";
+import ActionBtn from "../../../UI/ActionBtn/ActionBtn";
 import BrightInput from "../../../UI/BrightInput/BrightInput";
 import PaleInput from "../../../UI/PaleInput/PaleInput";
-import RemoveButton from "../../../UI/RemoveButton/RemoveButton";
 
 import styles from "./Value.module.css";
 
@@ -12,12 +13,16 @@ const Value: FC = () => {
       <div className={styles.bright}>
         <BrightInput value="50мл" />
         <BrightInput value="SKU0002" />
-        <RemoveButton />
+        <ActionBtn>
+          <Trash />
+        </ActionBtn>
       </div>
       <div className={styles.pale}>
         <PaleInput placeholder="Значение" />
         <PaleInput placeholder="Артикул" />
-        <RemoveButton />
+        <ActionBtn>
+          <Trash />
+        </ActionBtn>
       </div>
     </div>
   );

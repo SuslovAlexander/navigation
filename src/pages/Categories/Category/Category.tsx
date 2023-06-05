@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 
 import Button from "../../../components/UI/Button/Button";
 import EmptyParagraph from "../../../components/UI/EmptyParagraph/EmptyParagraph";
@@ -21,20 +21,24 @@ const Category: FC<ICategoryProps> = ({
   hasInput,
   onBtnClick,
 }) => {
-  const handleEdit = (val: TEditParams): void => {
-    onEdit(val);
-  };
+  const [inputValue, setInputValue] = useState<string>("");
 
   const handleAction = (): void => {
-    if (!hasInput) onBtnClick();
-  }
+    if (hasInput) {
+      onBtnClick(inputValue);
+      setInputValue("");
+    } else {
+      onBtnClick();
+    }
+  };
 
   return (
     <div className={styles["category-column"]}>
       <div className={styles.head}>
         {hasInput && (
           <Input
-            placeholder={textUi.inputText}
+            value={inputValue}
+            onChange={setInputValue}
             type="text"
             onInputBlur={onHandleBlure}
           />
@@ -48,10 +52,11 @@ const Category: FC<ICategoryProps> = ({
             <EditCategoryItem
               data={category}
               key={category.id}
-              onEdit={handleEdit}
+              onEdit={onEdit}
               onRemove={onRemove}
-              onClick={onHandleClick}
-              isActive={category.id === itemId ? true : false}
+              onClick={() => onHandleClick(category.id)}
+              /* isActive={category.id === itemId ? true : false} */
+              isActive={false}
             />
           ))}
         </li>

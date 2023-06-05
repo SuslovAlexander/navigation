@@ -20,7 +20,9 @@ const Input: FC<IInputProps> = ({
 
   const inputStyles = `${styles.input} ${disabled ? styles.disabled : ""}`;
   let inputStyle = {};
-  if (variant === "link") inputStyle = { color: "#737680" };
+  if (variant === "link") {
+    inputStyle = { color: "#737680" };
+  }
 
   const handleShowPassword = (): void => {
     setInputType("text");
@@ -46,10 +48,12 @@ const Input: FC<IInputProps> = ({
     }
   };
 
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> | undefined = (
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (
     e
   ): void => {
-    if (onChange) onChange(e.target.value);
+    if (onChange) {
+      onChange(e.target.value);
+    }
   };
 
   return (

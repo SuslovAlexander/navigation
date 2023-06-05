@@ -1,9 +1,9 @@
+export type TtableData = Record<string, any>[];
+
 export interface ITablePageProps {
-  tableBody: any;
-  tableHeading: any;
+  tableBody: TtableData;
+  tableHeading: string[];
   idName: string;
   hasCheckbox: boolean;
-  onAction: any;
+  onAction: (id: string) => void;
 }
-
-export type TtableData = Record<string, any>[];

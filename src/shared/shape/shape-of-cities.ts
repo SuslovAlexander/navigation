@@ -1,4 +1,4 @@
 export const shapeOfCities = {
-    Город: "name",
-    Адрес: "address",
-  };
+  Город: "name",
+  Адрес: "address",
+};

@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from "react";
 
-import { RANDOM } from "../../../helpers/random-id";
 import { TTag } from "../../../shared/types/TTag";
+import { RANDOM } from "../../../shared/utils/random-id";
 import Tag from "../Tag/Tag";
 
-import { ITagsBlock } from "./ITagsBlockprops";
+import { ITagsBlock } from "./ITagsBlockProps";
 
 import styles from "./TagsBlock.module.css";
 
@@ -24,10 +24,12 @@ const ProductTags: FC<ITagsBlock> = ({ title, maxTags, tags }) => {
     setInputValue("");
   };
 
-  const handleInputKeyDown:
-    | React.KeyboardEventHandler<HTMLSpanElement>
-    | undefined = (e) => {
-    if (e.code === "Enter") addNewTag();
+  const handleInputKeyDown: React.KeyboardEventHandler<HTMLSpanElement> = (
+    e
+  ) => {
+    if (e.code === "Enter") {
+      addNewTag();
+    }
   };
 
   const handleEditable = (): void => {
