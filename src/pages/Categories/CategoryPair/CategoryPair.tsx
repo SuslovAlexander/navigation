@@ -8,7 +8,7 @@ import { ICategoryPair } from "./ICategoryPairProps";
 
 import styles from "./CategoryPair.module.css";
 
-const CategoryPair: FC<ICategoryPair> = ({
+const CategoryPair = <T,>({
   categoryId,
   categories,
   handleAddCategory,
@@ -25,7 +25,8 @@ const CategoryPair: FC<ICategoryPair> = ({
   textUiRight,
   hasInputs,
   onBtnClick,
-}) => {
+}: ICategoryPair<T>): JSX.Element => {
+
   return (
     <div className={styles.wrap}>
       <Category
@@ -42,8 +43,8 @@ const CategoryPair: FC<ICategoryPair> = ({
         <Arrow />
         <Arrow />
       </div>
-      {!categoryId && <Placeholder text="Выберите категорию" />}
-      {categoryId && (
+      {!subcategories?.length && <Placeholder text="Выберите категорию" />}
+      {subcategories?.length && (
         <Category
           itemId={subCategoryId}
           items={subcategories}

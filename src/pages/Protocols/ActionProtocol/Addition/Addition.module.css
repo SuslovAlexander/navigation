@@ -1,17 +1,7 @@
 .wrap {
-  width: 620px;
-  min-height: 100vh;
-  padding: 40px;
-  background-color: #fff;
-  gap: 34px;
   display: flex;
   flex-direction: column;
-}
-
-.actions {
-  display: flex;
-  gap: 16px;
-  padding-bottom: 27px;
+  gap: 4px;
 }
 
 .title-add {
@@ -27,4 +17,15 @@
   line-height: 24px;
   color: #c06ecc;
   cursor: pointer;
+}
+
+.action-add-disabled {
+  color: #b8bdcc;
+  pointer-events: none;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 13px;
 }

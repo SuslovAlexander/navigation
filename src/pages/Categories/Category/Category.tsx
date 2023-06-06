@@ -4,7 +4,6 @@ import Button from "../../../components/UI/Button/Button";
 import EmptyParagraph from "../../../components/UI/EmptyParagraph/EmptyParagraph";
 import Input from "../../../components/UI/Input/Input";
 import EditCategoryItem from "../EditCategoryItem/EditCategoryItem";
-import { TEditParams } from "../EditCategoryItem/IEditCategoryProps";
 
 import { ICategoryProps } from "./ICategoryProps";
 
@@ -24,6 +23,7 @@ const Category: FC<ICategoryProps> = ({
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleAction = (): void => {
+    if (!onBtnClick) return;
     if (hasInput) {
       onBtnClick(inputValue);
       setInputValue("");

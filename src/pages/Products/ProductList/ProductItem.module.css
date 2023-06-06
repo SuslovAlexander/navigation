@@ -1,0 +1,12 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #434652;
+}
+
+.wrap > * {
+  flex: 1 1 1;
+}
