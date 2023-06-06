@@ -3,14 +3,14 @@ import { FC, useEffect, useState } from "react";
 import Button from "../../../components/UI/Button/Button";
 import Field from "../../../components/UI/Form/Field/Field";
 import { BRANDS } from "../../../mock/brands.mock";
-import ProductList from "../../Products/ProductList/ProductList";
 import { CONFIG } from "../configs/config";
 
+import Addition from "./Addition/Addition";
 import { IActionProtocolProps } from "./IActionProtocolProps";
 
 import styles from "./ActionProtocol.module.css";
 
-const AddProtocol: FC<IActionProtocolProps> = ({
+const ActionProtocol: FC<IActionProtocolProps> = ({
   onAddProtocol,
   onEditProtocol,
   formData,
@@ -65,14 +65,10 @@ const AddProtocol: FC<IActionProtocolProps> = ({
             </Field>
           );
         })}
-        <div className={styles.addition}>
-          <p className={styles["title-add"]}>Товары протокола</p>
-          <ProductList products={products} onClick={() => null} />
-          <p className={styles["action-add"]}>+ Добавить товар</p>
-        </div>
       </div>
+      <Addition items={products} onClick={() => null} />
     </div>
   );
 };
 
-export default AddProtocol;
+export default ActionProtocol;

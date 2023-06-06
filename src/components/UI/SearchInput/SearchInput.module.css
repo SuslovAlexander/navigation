@@ -4,10 +4,16 @@
   align-items: center;
   justify-content: space-between;
   padding: 8px 12px;
-  width: 320px;
+  width: 100%;
   height: 40px;
   border: 1px solid #d0d3da;
   border-radius: 8px;
+}
+
+.wrap:focus {
+  border: 1px solid #8a3597;
+  box-shadow: -2px -2px 0px #eed9f2, 2px 2px 0px #eed9f2, -2px 2px 0px #eed9f2,
+    2px -2px 0px #eed9f2;
 }
 
 .input {

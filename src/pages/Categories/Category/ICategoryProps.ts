@@ -7,7 +7,7 @@ export type TTextUi = {
 
 export interface ICategoryProps {
   onHandleBlure: any;
-  onRemove: (val: string) => void;
+  onRemove?: (val: string) => void;
   onEdit: any;
   onHandleClick?: any;
   items: any;

@@ -1,13 +1,14 @@
 import { ICategory } from "./ICategory";
 import { ICategoryProduct } from "./ICategoryProduct";
-import { IBrand } from "./IProduct";
+import { IItem } from "./IItem";
+import { IProductProtol } from "./IProductProtocol";
 
 export interface IProtocol {
   id: string;
   name: string;
   description: string;
   isRetailAllowed: boolean;
-  brand: IBrand;
+  brand: IItem;
   protocol_category: ICategory;
-  products: ICategoryProduct[];
+  products: ICategoryProduct[] | IProductProtol[];
 }

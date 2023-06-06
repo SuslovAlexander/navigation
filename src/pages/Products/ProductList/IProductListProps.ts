@@ -10,5 +10,5 @@ export type IProduct = {
 
 export interface IProductListProps {
   products: IProduct[];
-  onClick: () => void;
+  onClick: (id: string) => void;
 }

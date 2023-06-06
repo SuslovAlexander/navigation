@@ -1,4 +1,4 @@
-export const PROTOL_CATEGORY = [
+export const PROTOL_CATEGORIES = [
   { id: "a23e5f4c-6718-4cd0-8328-f4a93a96df22", name: "Для жирной кожи" },
   {
     id: "799174b9-7117-4fd3-9b12-95b5daca8b6f",

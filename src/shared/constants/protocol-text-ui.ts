@@ -11,3 +11,5 @@ export const SUBPROTOCOL_TEXT = {
   titleCatText: "Название подкатегории",
   emptyCatText: "Здесь пока нет протоколов",
 };
+
+
