@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 
-import CitiesHead from "../../components/PageHeads/CitiesHead/CitiesHead";
 import Button from "../../components/UI/Button/Button";
 import Table from "../../components/UI/Table/Table";
 import { BANNERS_MOCK } from "../../mock/banners.mock";
+import { IItem } from "../../shared/interfaces/IItem";
 import { shapeOfBanners } from "../../shared/shape/shape-of-banners";
 import { transformData } from "../../shared/utils/transform-data";
 
@@ -22,7 +22,7 @@ const Banners: FC = () => {
   };
 
   const removeBanner = (id: string): void => {
-    const updatedCities = tableBody.filter((city: any) => city.name !== id);
+    const updatedCities = tableBody.filter((city: IItem) => city.name !== id);
     setTableBody(updatedCities);
   };
 

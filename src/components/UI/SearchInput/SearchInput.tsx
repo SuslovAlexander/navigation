@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 
 import { ReactComponent as Clear } from "../../../public/assets/images/clear.svg";
 import { ReactComponent as Mark } from "../../../public/assets/images/mark.svg";
@@ -8,10 +8,14 @@ import { ISearchInputProps } from "./ISearchInputProps";
 
 import styles from "./SearchInput.module.css";
 
-const SearchInput: FC<ISearchInputProps> = ({ placeholder, variant }) => {
-  const [inputValue, setInputValue] = useState<string>("");
+const SearchInput: FC<ISearchInputProps> = ({
+  value,
+  onChange,
+  placeholder,
+  variant,
+}) => {
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setInputValue(e.target.value);
+    onChange(e.target.value);
   };
   return (
     <div className={styles.wrap}>
@@ -20,7 +24,7 @@ const SearchInput: FC<ISearchInputProps> = ({ placeholder, variant }) => {
       </div>
       <input
         className={styles.input}
-        value={inputValue}
+        value={value}
         onChange={handleInputChange}
         placeholder={placeholder}
       />

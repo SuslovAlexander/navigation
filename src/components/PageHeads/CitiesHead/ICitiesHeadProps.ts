@@ -1,3 +1,3 @@
 export interface ICitiesHeadProps {
-  onAddCity: any;
+  onAddCity: (val: { name: string; address: string }) => void;
 }

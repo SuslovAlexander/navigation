@@ -12,6 +12,7 @@ import styles from "./ActionProtocol.module.css";
 
 const ActionProtocol: FC<IActionProtocolProps> = ({
   onAddProtocol,
+  onRemoveProducts,
   onEditProtocol,
   formData,
   products,
@@ -66,7 +67,7 @@ const ActionProtocol: FC<IActionProtocolProps> = ({
           );
         })}
       </div>
-      <Addition items={products} onClick={() => null} />
+      <Addition items={products} onClick={onRemoveProducts} />
     </div>
   );
 };

@@ -15,4 +15,5 @@ export interface ICategoryProps {
   textUi: TTextUi;
   hasInput: any;
   onBtnClick?: any;
+  changeable?: boolean;
 }

@@ -1,5 +1,3 @@
-import { FC } from "react";
-
 import { ReactComponent as Arrow } from "../../../public/assets/images/arrow-right.svg";
 import Category from "../Category/Category";
 import Placeholder from "../Placeholder/Placeholder";
@@ -25,8 +23,8 @@ const CategoryPair = <T,>({
   textUiRight,
   hasInputs,
   onBtnClick,
+  changeableSub,
 }: ICategoryPair<T>): JSX.Element => {
-
   return (
     <div className={styles.wrap}>
       <Category
@@ -43,8 +41,8 @@ const CategoryPair = <T,>({
         <Arrow />
         <Arrow />
       </div>
-      {!subcategories?.length && <Placeholder text="Выберите категорию" />}
-      {subcategories?.length && (
+      {!categoryId && <Placeholder text="Выберите категорию" />}
+      {categoryId && (
         <Category
           itemId={subCategoryId}
           items={subcategories}
@@ -55,6 +53,7 @@ const CategoryPair = <T,>({
           textUi={textUiRight}
           hasInput={hasInputs.second}
           onBtnClick={onBtnClick}
+          changeable={changeableSub}
         />
       )}
     </div>

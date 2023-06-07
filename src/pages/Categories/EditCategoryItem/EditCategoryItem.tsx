@@ -15,6 +15,7 @@ const EditCategoryItem: FC<IEditCategoryProps> = ({
   onRemove,
   onEdit,
   onClick,
+  changeable = true,
 }) => {
   const [editable, setEditable] = useState<boolean>(false);
 
@@ -27,12 +28,19 @@ const EditCategoryItem: FC<IEditCategoryProps> = ({
   };
 
   const handleClick = (): void => {
-    if (onClick) onClick(data.id);
+    if (onClick) {
+      onClick(data.id);
+    }
   };
 
   const handleClickEdit = (): void => {
-    if (canEdit) onEdit({ id: data.id, name: inputValue });
-
+    if (!changeable) {
+      handleClick();
+      return;
+    }
+    if (canEdit) {
+      onEdit({ id: data.id, name: inputValue });
+    }
     handleEdit();
   };
 
