@@ -20,4 +20,5 @@ export interface ICategoryPair<T> {
   handleClickCategory?: TBearValue;
   handleRemoveFromCat?: TBearValue;
   onBtnClick?: TBearValue;
+  changeableSub?: boolean;
 }

@@ -19,14 +19,15 @@ const Category: FC<ICategoryProps> = ({
   textUi,
   hasInput,
   onBtnClick,
+  changeable,
 }) => {
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleAction = (): void => {
+    setInputValue("");
     if (!onBtnClick) return;
     if (hasInput) {
       onBtnClick(inputValue);
-      setInputValue("");
     } else {
       onBtnClick();
     }
@@ -48,17 +49,21 @@ const Category: FC<ICategoryProps> = ({
       </div>
       <ul className={styles.content}>
         <li>
-          {items?.map((category: any) => (
-            <EditCategoryItem
-              data={category}
-              key={category.id}
-              onEdit={onEdit}
-              onRemove={onRemove}
-              onClick={() => onHandleClick(category.id)}
-              /* isActive={category.id === itemId ? true : false} */
-              isActive={false}
-            />
-          ))}
+          {items ? (
+            items.map((category: any) => (
+              <EditCategoryItem
+                changeable={changeable}
+                data={category}
+                key={category.id}
+                onEdit={onEdit}
+                onRemove={onRemove}
+                onClick={() => onHandleClick(category.id)}
+                isActive={category.id === itemId ? true : false}
+              />
+            ))
+          ) : (
+            <></>
+          )}
         </li>
       </ul>
       {!items?.length && <EmptyParagraph text={textUi.emptyCatText} />}

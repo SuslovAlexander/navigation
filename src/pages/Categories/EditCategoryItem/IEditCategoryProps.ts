@@ -11,4 +11,5 @@ export interface IEditCategoryProps {
   onEdit?: (val: TEditParams) => void;
   onRemove?: (id: string) => void;
   onClick?: (id: string) => void;
+  changeable?: boolean;
 }

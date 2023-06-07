@@ -29,6 +29,15 @@ const CitiesHead: FC<ICitiesHeadProps> = ({ onAddCity }) => {
     if (cityDataIsValid()) {
       onAddCity(newCity);
     }
+    setNewCity({ name: "", address: "" });
+  };
+
+  const handleInputKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (
+    e
+  ) => {
+    if (e.code === "Enter") {
+      handleAddCity();
+    }
   };
 
   return (
@@ -36,13 +45,15 @@ const CitiesHead: FC<ICitiesHeadProps> = ({ onAddCity }) => {
       <div className={styles.actions}>
         <div className={styles.action}>
           <Input
+            value={newCity.name}
             type="text"
             placeholder="Ввведите название города"
             onChange={handleCityChange}
           />
         </div>
-        <div className={styles.action}>
+        <div className={styles.action} onKeyDown={handleInputKeyDown}>
           <Input
+            value={newCity.address}
             type="text"
             placeholder="Ввведите адрес"
             onChange={handleAddressChange}

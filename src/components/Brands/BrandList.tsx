@@ -17,7 +17,7 @@ const BrandList: FC<IBrandListProps> = ({ brands, onRemove }) => {
   } else {
     return (
       <div className={styles.wrap}>
-        {brands?.map((brand: any) => (
+        {brands?.map((brand) => (
           <Brand
             url={brand.icon}
             text={brand.name}

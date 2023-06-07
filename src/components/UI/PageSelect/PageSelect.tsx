@@ -9,7 +9,9 @@ import styles from "./PageSelect.module.css";
 const PageSelect: FC<IPageSelectProps> = ({ pageAmount, onSelect }) => {
   const selectOptions = getOptions(pageAmount, [10, 50, 100]);
 
-  const handleChange = (e: any): void => {
+  const handleChange: React.ChangeEventHandler<HTMLSelectElement> = (
+    e
+  ): void => {
     onSelect(e.target.value);
   };
 
