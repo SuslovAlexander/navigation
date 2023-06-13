@@ -18,10 +18,11 @@
 }
 
 .content {
-  overflow-y: auto;
-  height: inherit;
+  overflow-y: scroll;
+  height: 100%;
   display: flex;
-  align-items: center;
+  background: white;
+  padding: 40px;
 }
 
 .left {

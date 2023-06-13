@@ -1,3 +1,8 @@
+.black,
+.white {
+  width: 24px;
+}
+
 .black svg path {
   fill: #000000;
 }

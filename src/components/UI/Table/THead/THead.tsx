@@ -12,7 +12,7 @@ const THead: FC<ITHeadProps> = ({
   hasCheckbox,
   canBeDeleted,
   canBeEdit,
-  firsTrWidth,
+  tdWidths,
 }) => {
   return (
     <thead>
@@ -23,10 +23,9 @@ const THead: FC<ITHeadProps> = ({
           </td>
         )}
 
-        {tableHeadData.map((item: any, index: number) => {
+        {tableHeadData.map((item, index) => {
           return (
-            <td key={index} style={{ width: firsTrWidth }}>
-              {(firsTrWidth = "")}
+            <td key={index} style={{ width: tdWidths ? tdWidths[index] : "" }}>
               <RowTextItem>{item}</RowTextItem>
             </td>
           );

@@ -31,5 +31,6 @@ export const CITIES_MOCK = {
       address: "ул. Красная 180, офис 112",
     },
   ],
-  count: 6,
 };
+
+

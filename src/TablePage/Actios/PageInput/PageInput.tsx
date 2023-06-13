@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 
 import { IpageInputProps } from "./IPageInputProps";
 
@@ -10,9 +10,7 @@ const PageInput: FC<IpageInputProps> = ({ current }) => {
       type="number"
       className={styles.input}
       value={current}
-      onChange={() => {
-        true;
-      }}
+      onChange={() => null}
     />
   );
 };

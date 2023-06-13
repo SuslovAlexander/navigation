@@ -15,6 +15,7 @@ const Addition: FC<any> = ({ items, onClick }) => {
   return (
     <div className={styles.wrap}>
       <p className={styles["title-add"]}>Товары протокола</p>
+      <ProductList products={items} onClick={onClick} />
       {items?.length && (
         <div className={styles.search}>
           <SearchInput
@@ -28,7 +29,6 @@ const Addition: FC<any> = ({ items, onClick }) => {
           </div>
         </div>
       )}
-      <ProductList products={items} onClick={onClick} />
       <p className={styles["action-add"]}>+ Добавить товар</p>
     </div>
   );

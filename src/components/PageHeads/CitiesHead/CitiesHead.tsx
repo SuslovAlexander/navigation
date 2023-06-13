@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 
+import { ICity } from "../../../shared/interfaces/ICity";
 import Button from "../../UI/Button/Button";
 import Input from "../../UI/Input/Input";
 
@@ -8,7 +9,7 @@ import { ICitiesHeadProps } from "./ICitiesHeadProps";
 import styles from "./CitiesHead.module.css";
 
 const CitiesHead: FC<ICitiesHeadProps> = ({ onAddCity }) => {
-  const [newCity, setNewCity] = useState({ name: "", address: "" });
+  const [newCity, setNewCity] = useState<ICity>({ name: "", address: "" });
 
   const handleAddressChange = (address: string): void => {
     setNewCity({ ...newCity, address: address });

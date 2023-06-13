@@ -11,15 +11,32 @@ import styles from "./SearchInput.module.css";
 const SearchInput: FC<ISearchInputProps> = ({
   value,
   onChange,
+  handleMarkClick,
+  handleSearch,
   placeholder,
   variant,
 }) => {
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     onChange(e.target.value);
   };
+
+  const handleSearchClick = (): void => {
+    if (handleSearch) {
+      handleSearch(value);
+    }
+  };
+
+  const handleInputKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
+    e
+  ) => {
+    if (e.code === "Enter") {
+      handleSearchClick();
+    }
+  };
+
   return (
     <div className={styles.wrap}>
-      <div className={styles.search}>
+      <div className={styles.search} onClick={handleSearchClick}>
         <Search />
       </div>
       <input
@@ -27,9 +44,10 @@ const SearchInput: FC<ISearchInputProps> = ({
         value={value}
         onChange={handleInputChange}
         placeholder={placeholder}
+        onKeyDown={handleInputKeyDown}
       />
 
-      <div className={styles.clear}>
+      <div className={styles.clear} onClick={handleMarkClick}>
         {variant === "cross" && <Clear />}
         {variant === "mark" && <Mark />}
       </div>

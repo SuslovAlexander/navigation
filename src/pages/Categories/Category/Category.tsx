@@ -42,6 +42,7 @@ const Category: FC<ICategoryProps> = ({
             onChange={setInputValue}
             type="text"
             onInputBlur={onHandleBlure}
+            placeholder={textUi.inputText}
           />
         )}
         <Button onClick={handleAction}>{textUi.buttonCatText}</Button>

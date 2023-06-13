@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 import { ReactComponent as Drop } from "../../../public/assets/images/dropdown.svg";
 
@@ -30,7 +30,7 @@ const Dropdown: FC<IDropdownProps> = ({
     closeDropdown();
     setBackdrop(false);
   };
-
+ 
   return (
     <>
       {backdrop && <div className={styles.backdrop} onClick={handleBackdrop} />}
