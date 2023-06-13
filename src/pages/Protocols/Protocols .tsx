@@ -42,13 +42,14 @@ const Protocols: FC = () => {
       (category) => category.id === categoryId
     );
     setActiveCategory(clickedCategory);
-  }, [categoryId, protocolId, protocols]);
+  }, [categoryId, protocolId, protocols, categories]);
 
   const handleCategoryClick = (id: string): void => {
     setCategoryId(id);
   };
 
   const handleAddCategory = (value: string): void => {
+    if (value.trim() === "") return;
     const newCategory = { id: RANDOM.id, name: value };
     setCategories((prev) => [...prev, newCategory]);
   };
@@ -123,10 +124,9 @@ const Protocols: FC = () => {
     setShowModal(false);
   };
 
-  const handleRemoveProduct = (id: string): void => {
-    const prots = [...protocols];
-    for (let i = 0; i < prots.length; i++) {
-      const prods = prots[i].products;
+    const handleRemoveProduct = (id: string): void => {
+    for (let i = 0; i < protocols.length; i++) {
+      const prods = protocols[i].products;
       for (let j = 0; j < prods.length; j++) {
         if (prods[j].id === id) {
           prods.splice(j, 1);
@@ -134,7 +134,8 @@ const Protocols: FC = () => {
       }
     }
     setProtocols([...protocols]);
-  };
+  }; 
+
 
   return (
     <>

@@ -2,7 +2,7 @@ export const ORDERS = {
   data: [
     {
       id: "5102fc00-66f0-4183-a1d1-e210245e838d",
-      order_type: "OFFICE_CASH",
+      order_type: "`OFFICE_CASH`",
       total: 3797,
       isViewedByAdmin: false,
       order_number: "6787156649-0",

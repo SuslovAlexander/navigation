@@ -1,7 +1,6 @@
 import { FC, useState } from "react";
 import { createPortal } from "react-dom";
 
-import Button from "../../components/UI/Button/Button";
 import Modal from "../../components/UI/Modal/Modal";
 import { GOODS_MOCK } from "../../mock/goods.mock";
 import { PRODUCT_MODAL } from "../../mock/product-modal.mock";
@@ -29,7 +28,7 @@ const usedVals = [
 
 const prodFeatures = getFeatures(PRODUCT_MODAL, usedVals, PROD_ADDITIVE);
 
-const { head, body } = transformData<any, any, any>(GOODS_MOCK, productsShape);
+const { head, body } = transformData<any, any>(GOODS_MOCK, productsShape);
 
 const Products: FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);

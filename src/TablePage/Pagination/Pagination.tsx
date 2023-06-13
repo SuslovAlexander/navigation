@@ -4,11 +4,11 @@ import PageFromPages from "../Actios/PageFromPages/PageFromPages";
 import ShowPageAmount from "../Actios/ShowPageAmount/ShowPageAmount";
 import TurnPage from "../Actios/TurnPage/TurnPage";
 
-import { IPageActionsProps } from "./IPageActionsProps";
+import { IPageActionsProps } from "./IPaginatioProps";
 
-import styles from "./PageActions.module.css";
+import styles from "./Pagination.module.css";
 
-const PageActions: FC<IPageActionsProps> = ({ tableData, onSetSlice }) => {
+const Pagination: FC<IPageActionsProps> = ({ tableData, onSetSlice }) => {
   const [showAmount, setShowAmount] = useState<number>(10);
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState<number>(showAmount);
@@ -56,4 +56,4 @@ const PageActions: FC<IPageActionsProps> = ({ tableData, onSetSlice }) => {
   );
 };
 
-export default PageActions;
+export default Pagination;

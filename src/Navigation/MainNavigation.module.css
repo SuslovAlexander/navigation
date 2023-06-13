@@ -9,6 +9,7 @@
   border-radius: 24px 24px 0px 0px;
   display: flex;
   justify-content: center;
+  padding: 24px;
 }
 .container {
   max-width: 1300px;

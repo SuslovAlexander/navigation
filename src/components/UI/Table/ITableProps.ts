@@ -5,7 +5,7 @@ import { TtableData } from "../../../TablePage/ITablePageProps";
 
 export interface ITableProps {
   heading: IHeadTable;
-  selectedItems?: string[];
+  selectedItems?: Record<string, any>;
   tableData?: TtableData;
   onSelect?: (val: string) => void;
   onSelectAll?: () => void;
@@ -17,6 +17,6 @@ export interface ITableProps {
   canBeDeleted?: boolean;
   canBeEdit?: boolean;
   emptyText: string;
-  firsTrWidth?: string;
+  tdWidths: string[];
   children?: ReactNode;
 }

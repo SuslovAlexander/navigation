@@ -38,7 +38,7 @@ const Brands: FC = () => {
         canBeDeleted={false}
         canBeEdit={false}
         hasCheckbox={false}
-        firsTrWidth="162px"
+        tdWidths={["146px"]}
       >
         <BrandList brands={brands} onRemove={handleRemove} />
       </Table>

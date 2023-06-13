@@ -1,0 +1,19 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  width: 560px;
+  gap: 16px;
+}
+.action {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 27px;
+}
+.total {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #010101;
+  display: flex;
+  justify-content: space-between;
+}

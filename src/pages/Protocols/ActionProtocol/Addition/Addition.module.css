@@ -26,6 +26,10 @@
 
 .search {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 13px;
+  height: 52px;
+  border-bottom: 1px solid #ebecef;
+  padding-bottom: 4px;
 }

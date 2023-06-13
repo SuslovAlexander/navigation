@@ -1,7 +1,6 @@
 .wrap {
-  width: 620px;
+  width: 540px;
   min-height: 100vh;
-  padding: 40px;
   background-color: #fff;
   gap: 34px;
   display: flex;

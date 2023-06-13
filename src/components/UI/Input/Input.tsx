@@ -45,6 +45,9 @@ const Input: FC<IInputProps> = ({
   const handleInputBlur = (): void => {
     if (onInputBlur && value) {
       onInputBlur(value);
+      if (onChange) {
+        onChange("");
+      }
     }
   };
 
@@ -53,6 +56,17 @@ const Input: FC<IInputProps> = ({
   ): void => {
     if (onChange) {
       onChange(e.target.value);
+    }
+  };
+
+  const handleInputKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (
+    e
+  ) => {
+    if (e.code === "Enter") {
+      handleInputBlur();
+      if (onChange) {
+        onChange("");
+      }
     }
   };
 
@@ -66,6 +80,7 @@ const Input: FC<IInputProps> = ({
         value={value}
         onChange={handleChange}
         onBlur={handleInputBlur}
+        onKeyDown={handleInputKeyDown}
       />
       {type === "password" && passwordIcon}
       {variant === "link" && <div className={styles.link}>{iconImg}</div>}

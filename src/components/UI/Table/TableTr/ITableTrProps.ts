@@ -2,7 +2,7 @@ export interface ITableTrProps {
   data: Record<string, any>;
   onTrClick?: (val: string) => void;
   onSelect?: (val: string) => void;
-  selectedItems?: string[];
+  selectedItems?: Record<string, any>;
   idName: string;
   hasCheckbox: boolean;
   canBeDeleted?: boolean;

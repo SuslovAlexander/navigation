@@ -1,9 +1,9 @@
 import { formatPhoneNumber } from "./format-phone";
 
-export function transformData<T, D extends object, R>(
+export function transformData<T, D extends object>(
   origin: { data: T[] },
   shape: D
-): { head: string[]; body: R[] } {
+): { head: string[]; body: T[] } {
   const head = Object.keys(shape);
 
   const body = origin.data.map((item: any) => {

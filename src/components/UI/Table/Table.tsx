@@ -20,7 +20,7 @@ const Table: FC<ITableProps> = ({
   canBeDeleted = false,
   canBeEdit = false,
   emptyText = "Пусто",
-  firsTrWidth = "",
+  tdWidths,
   children,
 }) => {
   return (
@@ -31,7 +31,7 @@ const Table: FC<ITableProps> = ({
         hasCheckbox={hasCheckbox}
         canBeDeleted={canBeDeleted}
         canBeEdit={canBeEdit}
-        firsTrWidth={firsTrWidth}
+        tdWidths={tdWidths}
       />
       {children && children}
       {!children && (

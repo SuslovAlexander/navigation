@@ -45,22 +45,4 @@ export const CONFIG = [
       placeholder: "",
     },
   },
-  {
-    id: "2",
-    title: "Бренд",
-    component: Dropdown,
-    field: "brand",
-    inputProps: {
-      placeholder: "Выберите бренд",
-    },
-  },
-  {
-    id: "2",
-    title: "Бренд",
-    component: Dropdown,
-    field: "brand",
-    inputProps: {
-      placeholder: "Выберите бренд",
-    },
-  },
 ];

@@ -7,6 +7,6 @@
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   text-overflow: -o-ellipsis-lastline;
-  width: inherit;
+  padding-left: 16px;
   user-select: none;
 }

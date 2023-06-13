@@ -1,0 +1,10 @@
+.wrap {
+  width: 540px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  width: 560px;
+  padding-bottom: 27px;
+}

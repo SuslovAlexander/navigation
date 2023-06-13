@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 
 import Table from "../components/UI/Table/Table";
 
-import PageActions from "./PageActions/PageActions";
+import PageActions from "./Pagination/Pagination";
 import SelectedAlert from "./SelectedAlert/SelectedAlert";
 import { ITablePageProps, TtableData } from "./ITablePageProps";
 
@@ -75,6 +75,7 @@ const TablePage: FC<ITablePageProps> = ({
           onSelectAll={handleToggleSelectAll}
           hasCheckbox={hasCheckbox}
           emptyText="Здесь пока нет товаров"
+          tdWidths={["87%", "10%"]}
         />
         <div className={styles.popup}>
           <SelectedAlert
