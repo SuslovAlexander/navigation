@@ -12,7 +12,7 @@ const TBody: FC<TTBodyProps> = ({
   idName,
   emptyText,
   selectedItems,
-  hasCheckbox,
+  hasCheckbox = false,
   canBeDeleted,
   canBeEdit,
   onSelect,

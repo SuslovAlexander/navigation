@@ -1,11 +1,12 @@
 import Input from "../../../components/UI/Input/Input";
 
-export const CONFIG = [
+export const BANNER_CONFIG = [
   {
     id: "10",
     title: "Заголовок",
     component: Input,
     field: "title",
+    fieldStyle: { width: "100%" },
     inputProps: {
       type: "text",
       disabled: false,
@@ -17,17 +18,7 @@ export const CONFIG = [
     title: "Краткое описание",
     component: Input,
     field: "description",
-    inputProps: {
-      type: "text",
-      disabled: false,
-      placeholder: "Опишите протокол",
-    },
-  },
-  {
-    id: "12",
-    title: "Процент скидки",
-    component: Input,
-    field: "description",
+    fieldStyle: { width: "100%" },
     inputProps: {
       type: "text",
       disabled: false,
