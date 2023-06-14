@@ -7,7 +7,7 @@ import ActionBtn from "../../../UI/ActionBtn/ActionBtn";
 import { IImageBlockProps } from "./IImageBlockProps";
 
 import styles from "./ImageBlock.module.css";
-const ImageBlock: FC<IImageBlockProps> = ({ url }) => {
+const ImageBlock: FC<IImageBlockProps> = ({ url, onClick = () => null }) => {
   return (
     <div className={styles.wrap}>
       <div className={styles["image-block"]}>
@@ -17,7 +17,7 @@ const ImageBlock: FC<IImageBlockProps> = ({ url }) => {
         </div>
         <p className={styles.url}>{url}</p>
       </div>
-      <div className={styles.remove}>
+      <div className={styles.remove} onClick={onClick}>
         <ActionBtn>
           <Trash />
         </ActionBtn>

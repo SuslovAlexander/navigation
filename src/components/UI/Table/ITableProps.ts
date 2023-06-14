@@ -13,10 +13,10 @@ export interface ITableProps {
   onRemove?: (id: string) => void;
   onEdit?: (id: string) => void;
   idName: string;
-  hasCheckbox: boolean;
+  hasCheckbox?: boolean;
   canBeDeleted?: boolean;
   canBeEdit?: boolean;
   emptyText: string;
-  tdWidths: string[];
+  tdWidths?: string[];
   children?: ReactNode;
 }

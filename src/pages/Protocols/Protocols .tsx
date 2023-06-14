@@ -67,6 +67,7 @@ const Protocols: FC = () => {
   };
 
   const handleEditCategory = (data: IItem): void => {
+    console.log("ssssssssssss");
     const targetCategory = categories.find(
       (category) => category.id === data.id
     );

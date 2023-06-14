@@ -8,19 +8,19 @@ import styles from "./Table.module.css";
 
 const Table: FC<ITableProps> = ({
   heading,
-  selectedItems,
+  selectedItems = [],
   tableData = [],
   onSelect,
   onSelectAll,
   onTrClick = () => true,
   onRemove = () => true,
   onEdit = () => true,
-  idName,
+  idName = "id",
   hasCheckbox = false,
   canBeDeleted = false,
   canBeEdit = false,
   emptyText = "Пусто",
-  tdWidths,
+  tdWidths = [],
   children,
 }) => {
   return (
