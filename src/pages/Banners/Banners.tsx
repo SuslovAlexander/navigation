@@ -117,6 +117,7 @@ const Banners: FC = () => {
           onEdit={handleEditBanner}
           onTrClick={handleEditBanner}
           emptyText="Здесь пока нет банеров"
+          tdWidths={["90%", "10%"]}
         />
       </div>
       {showModal &&

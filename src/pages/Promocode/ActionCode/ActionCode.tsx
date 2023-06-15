@@ -1,22 +1,18 @@
 import { FC } from "react";
 
-import TitledContent from "../../../components/Products/EditProduct/TitltInputPair/TitledContent";
-import ImageBlock from "../../../components/Products/Images/ImageBlock/ImageBlock";
 import Button from "../../../components/UI/Button/Button";
 import Form from "../../../components/UI/Form/Field/Form";
-import { BANNER_CONFIG } from "../configs/banner-config";
+import { PROMOCODES_CONFIG } from "../config/promocodes-config";
 
-import { IActionBannerProps } from "./ActionBannerProps";
+import { IActionCodeProps } from "./IActionCodeProps";
 
-import styles from "./ActionBanner.module.css";
+import styles from "./ActionCode.module.css";
 
-const ActionBanner: FC<IActionBannerProps> = ({
-  image,
+const ActionCode: FC<IActionCodeProps> = ({
   formData,
   onSetFormValue,
   onConfirm,
   onRemove,
-  onRemoveImage,
 }) => {
   return (
     <div className={styles.wrap}>
@@ -30,19 +26,13 @@ const ActionBanner: FC<IActionBannerProps> = ({
       </div>
       <div className={styles.form}>
         <Form
-          config={BANNER_CONFIG}
+          config={PROMOCODES_CONFIG}
           dropdownList={[]}
           onSetFormValues={onSetFormValue}
           values={formData}
         />
-        {image && (
-          <TitledContent heading="Баннер">
-            <ImageBlock url={image} onClick={onRemoveImage} />
-          </TitledContent>
-        )}
       </div>
     </div>
   );
 };
-
-export default ActionBanner;
+export default ActionCode;
