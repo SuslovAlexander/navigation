@@ -19,10 +19,7 @@
 
 .content {
   overflow-y: auto;
-  height: 100%;
   display: flex;
-  background: white;
-  padding: 40px;
 }
 
 .left {

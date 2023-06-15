@@ -66,6 +66,7 @@ const EditCategoryItem: FC<IEditCategoryProps> = ({
           <Input
             type="text"
             placeholder={data.name}
+            onInputBlur={(val) => setInputValue(val)}
             value={inputValue}
             onChange={setInputValue}
           />
