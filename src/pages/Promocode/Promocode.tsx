@@ -38,14 +38,14 @@ const Promocode: FC = () => {
     setFormData({});
   };
 
-  const addNewCode = (): void => {
+  const handleAddCode = (): void => {
     clearBehaviour();
 
     setEditMode(false);
     setShowModal(true);
   };
 
-  const handleRemoveProtocol = (id: string): void => {
+  const handleRemoveCode = (id: string): void => {
     const updatedCodes = {
       data: codes.data.filter((item) => item.name !== id),
     };
@@ -92,17 +92,18 @@ const Promocode: FC = () => {
   return (
     <>
       <div className={styles.wrap}>
-        <Button onClick={addNewCode}>Добавить протокол</Button>
+        <Button onClick={handleAddCode}>Добавить протокол</Button>
         <Table
           heading={head}
           tableData={tableBody}
           idName={"name"}
           canBeDeleted={true}
           canBeEdit={true}
-          onRemove={handleRemoveProtocol}
+          onRemove={handleRemoveCode}
           onEdit={handleEditCode}
           onTrClick={handleEditCode}
           emptyText="Здесь пока нет протоколов"
+          tdWidths={["90%", "10%"]}
         />
       </div>
       {showModal &&
@@ -116,7 +117,7 @@ const Promocode: FC = () => {
               formData={formData}
               onSetFormValue={setFormData}
               onConfirm={handleSaveCode}
-              onRemove={() => handleRemoveProtocol(currentCode.name as string)}
+              onRemove={() => handleRemoveCode(currentCode.name as string)}
             />
           </Modal>,
           document.body
