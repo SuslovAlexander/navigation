@@ -3,20 +3,22 @@ import { FC } from "react";
 import Button from "../../../components/UI/Button/Button";
 import Form from "../../../components/UI/Form/Field/Form";
 import { PAY_TYPE } from "../../../mock/pay-type";
-import { ORDER_CONFIG } from "../order-form-config";
+import { ORDER_CONFIG } from "../config/order-form-config";
+
+import { IActionOrderProps } from "./IActionOrderProps";
 
 import styles from "./ActionOrder.module.css";
 
-const ActionOrder: FC<any> = ({
+const ActionOrder: FC<IActionOrderProps> = ({
   total,
   formData,
   onSetFormValues,
   onConfirm,
-  onCancel,
+  onCancel, 
 }) => {
   return (
     <div className={styles.wrap}>
-      <div className={styles.action}>
+      <div className={styles.actions}>
         <Button highlighted={false} onClick={onCancel}>
           Закрыть
         </Button>
@@ -32,7 +34,7 @@ const ActionOrder: FC<any> = ({
       />
       <div className={styles.total}>
         <span>Итого:</span>
-        <span>{total.current} &#8381;</span>
+        <span>{total} &#8381;</span>
       </div>
     </div>
   );

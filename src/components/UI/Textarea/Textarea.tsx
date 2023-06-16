@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, ReactEventHandler } from "react";
+import { ChangeEvent, FC } from "react";
 
 import { ITextareaProps } from "./ITextareaProps";
 
@@ -16,14 +16,16 @@ const Textarea: FC<ITextareaProps> = ({
     }
   };
   return (
-    <textarea
-      tabIndex={0}
-      onChange={handleChange}
-      className={styles.textarea}
-      placeholder={placeholder}
-      value={value}
-      disabled={disabled}
-    />
+    <div>
+      <textarea
+        tabIndex={0}
+        onChange={handleChange}
+        className={styles.textarea}
+        placeholder={placeholder}
+        value={value}
+        disabled={disabled}
+      />
+    </div>
   );
 };
 

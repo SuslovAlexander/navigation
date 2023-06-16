@@ -4,92 +4,71 @@ import { createPortal } from "react-dom";
 import Modal from "../../components/UI/Modal/Modal";
 import Table from "../../components/UI/Table/Table";
 import { ORDERS } from "../../mock/orders.mock";
-import { shapeOfOrder } from "../../shared/shape/shape-of-order";
-import { transformData } from "../../shared/utils/transform-data";
+import { IOrder } from "../../shared/interfaces/IOrder";
+import { TtableData } from "../../TablePage/ITablePageProps";
+import { IFormValues } from "../Protocols/ActionProtocol/IActionProtocolProps";
 
 import ActionOrder from "./ActionOrder/ActionOrder";
+import { tableHead } from "./consts/tableHead";
 import OrdersHead from "./OrdersHead/OrdersHead";
+import { processOrders } from "./utils/process-orders";
 
 import styles from "./Orders.module.css";
 
 const Orders: FC = () => {
-  const [orders, setOrders] = useState(ORDERS);
-  const [tableBody, setTableBody] = useState<any>([]);
-  const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState<any>({});
-  const [currentSlice, setCurrentSlice] = useState(tableBody);
-  const { head, body } = transformData<any, any>(orders, shapeOfOrder);
+  const [orders, setOrders] = useState<{ data: IOrder[] }>(ORDERS);
+  const [tableBody, setTableBody] = useState<TtableData>([]);
+  const [formData, setFormData] = useState<IFormValues>({});
+  const [currentSlice, setCurrentSlice] = useState<TtableData>(tableBody);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
-  const total = useRef<any>(null);
-
-  const old = useRef(
-    body.map((order) => {
-      if (order.user) {
-        return {
-          ...order,
-          user: order.user.name,
-          delivery_type:
-            order.delivery_type === "PICKUP" ? "Самовывоз" : "Доставка",
-          isPayed: order.isPayed ? "Да" : "Нет",
-        };
-      }
-    })
-  );
+  const body = processOrders(orders);
+  const total = useRef<number>(0);
+  const standartBody = useRef(body);
 
   useEffect(() => {
-    const bodyData = body.map((order) => {
-      if (order.user) {
-        return {
-          ...order,
-          user: order.user.name,
-          delivery_type:
-            order.delivery_type === "PICKUP" ? "Самовывоз" : "Доставка",
-          isPayed: order.isPayed ? "Да" : "Нет",
-        };
-      }
-    });
-    setTableBody(bodyData);
+    setTableBody(body);
   }, [orders]);
-
-  const mirror: any = {
-    PICKUP: "Самовывоз",
-    DELIVERY: "Доставка",
-  };
 
   const handleAction = (val: string): void => {
     setShowModal(true);
     const orderToActive = orders.data.find(
-      (orderItem: any) => orderItem.order_number === val
+      (orderItem) => orderItem.order_number === val
     );
-    if (!orderToActive) return;
+    if (!orderToActive) {
+      return;
+    }
     const data = {
       date: orderToActive?.date,
-      delivery_type: mirror[orderToActive.delivery_type],
+      delivery_type: orderToActive.delivery_type,
       order_number: orderToActive?.order_number,
       city: orderToActive?.warehouse.city,
       user: orderToActive?.user.name,
     };
+
     setFormData(data);
     total.current = orderToActive?.total;
   };
 
   const handleSearch = (str: string): void => {
-    const updatedBody = old.current.filter(
-      (item: any) =>
-        item.user && item.user.toLowerCase().includes(str.toLowerCase())
+    const updatedBody = standartBody.current.filter(
+      (item) => item.user && item.user.toLowerCase().includes(str.toLowerCase())
     );
     setTableBody(updatedBody);
   };
 
   const handleEditOrder = (): void => {
     const orderToEdit = orders.data.find(
-      (item: any) => item.order_number === formData.order_number
+      (item) => item.order_number === formData.order_number
     );
     if (orderToEdit) {
+      orderToEdit.date = formData.date;
+      orderToEdit.delivery_type = formData.delivery_type;
+      orderToEdit.order_number = formData.order_number;
+      orderToEdit.warehouse.city = formData.city;
       orderToEdit.user = { ...orderToEdit?.user, name: formData.user };
     }
     setOrders({ ...orders });
-
     setShowModal(false);
   };
 
@@ -108,10 +87,9 @@ const Orders: FC = () => {
       <Table
         idName={"order_number"}
         emptyText="Здесь пока нет заказов"
-        heading={head}
+        heading={tableHead}
         selectedItems={currentSlice}
         tableData={currentSlice}
-        hasCheckbox={false}
         onTrClick={handleAction}
         tdWidths={["16%", "16%", "16%", "16%", "16%", "16%"]}
       />
@@ -122,15 +100,13 @@ const Orders: FC = () => {
             setActive={() => setShowModal(false)}
             align="left"
           >
-            <div style={{ background: "white", width: "100%" }}>
-              <ActionOrder
-                total={total}
-                formData={formData}
-                onSetFormValues={setFormData}
-                onConfirm={handleEditOrder}
-                onCancel={handleCancelEditOrder}
-              />
-            </div>
+            <ActionOrder
+              total={total.current}
+              formData={formData}
+              onSetFormValues={setFormData}
+              onConfirm={handleEditOrder}
+              onCancel={handleCancelEditOrder}
+            />
           </Modal>,
           document.body
         )}

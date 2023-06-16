@@ -191,5 +191,4 @@ export const ORDERS = {
       date: "16.03.23",
     },
   ],
-  count: 392,
 };
