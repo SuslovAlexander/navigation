@@ -1,16 +1,22 @@
 .wrap {
-  width: 540px;
+  width: 640px;
+  min-height: 100vh;
+  height: fit-content;
+  background-color: #fff;
+  gap: 34px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .actions {
   display: flex;
   gap: 16px;
-  width: 560px;
   padding-bottom: 27px;
-}
-
-.form {
-  gap: 16px;
-  display: flex;
-  flex-direction: column;
 }

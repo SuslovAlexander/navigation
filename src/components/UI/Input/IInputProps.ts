@@ -10,4 +10,5 @@ export interface IInputProps {
   onChange?: (val: string) => void;
   iconImg?: ReactNode;
   value?: string;
+  F?: any;
 }

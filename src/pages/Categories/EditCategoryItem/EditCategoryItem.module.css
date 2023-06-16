@@ -8,8 +8,8 @@
   line-height: 20px;
   color: #434652;
   cursor: default;
-  padding: 8px;
   gap: 6px;
+  padding-right: 12px;
 }
 .wrap:hover {
   color: "#BD68CA";

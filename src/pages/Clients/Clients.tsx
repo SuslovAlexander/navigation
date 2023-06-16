@@ -43,7 +43,7 @@ const Clients: FC = () => {
         selectedItems={currentSlice}
         tableData={currentSlice}
         hasCheckbox={false}
-        tdWidths={["33%", "33%", "33%"]}
+        tdWidths={["40%", "40%", "20%"]}
       />
     </div>
   );

@@ -67,7 +67,6 @@ const Protocols: FC = () => {
   };
 
   const handleEditCategory = (data: IItem): void => {
-    console.log("ssssssssssss");
     const targetCategory = categories.find(
       (category) => category.id === data.id
     );
@@ -125,7 +124,7 @@ const Protocols: FC = () => {
     setShowModal(false);
   };
 
-    const handleRemoveProduct = (id: string): void => {
+  const handleRemoveProduct = (id: string): void => {
     for (let i = 0; i < protocols.length; i++) {
       const prods = protocols[i].products;
       for (let j = 0; j < prods.length; j++) {
@@ -135,8 +134,7 @@ const Protocols: FC = () => {
       }
     }
     setProtocols([...protocols]);
-  }; 
-
+  };
 
   return (
     <>

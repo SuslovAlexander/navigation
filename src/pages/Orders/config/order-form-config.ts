@@ -1,6 +1,6 @@
-import Dropdown from "../../components/UI/Dropdown/Dropdown";
-import Input from "../../components/UI/Input/Input";
-import Textarea from "../../components/UI/Textarea/Textarea";
+import Dropdown from "../../../components/UI/Dropdown/Dropdown";
+import Input from "../../../components/UI/Input/Input";
+import Textarea from "../../../components/UI/Textarea/Textarea";
 
 export const ORDER_CONFIG = [
   {

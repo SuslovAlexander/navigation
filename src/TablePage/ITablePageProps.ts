@@ -1,4 +1,4 @@
-export type TtableData = Record<string, any>[];
+export type TtableData = Record<string, any>[] | [];
 
 export interface ITablePageProps {
   tableBody: TtableData;
