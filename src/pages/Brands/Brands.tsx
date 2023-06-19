@@ -23,7 +23,7 @@ const Brands: FC = () => {
     setBrands(updatedBrands);
   };
 
-  const addnewBrand = (brand: any): void => {
+  const addnewBrand = (brand: IBrand): void => {
     const brandToAdd = { id: RANDOM.id, name: brand.name, icon: brand.icon };
     setBrands([brandToAdd, ...brands]);
   };

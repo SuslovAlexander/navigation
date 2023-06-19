@@ -1,1 +1,5 @@
-export type IFeature = Record<string, string>;
+export interface IFeature {
+  id: string;
+  key: string;
+  value: string;
+}

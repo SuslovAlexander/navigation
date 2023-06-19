@@ -10,6 +10,9 @@ import styles from "./Form.module.css";
 const Form: FC<IFormProps> = ({
   config,
   dropdownList,
+  images,
+  onRemoveImg,
+  onAddImage,
   onSetFormValues,
   values,
 }) => {
@@ -35,17 +38,18 @@ const Form: FC<IFormProps> = ({
     });
   };
 
-  const range = ["first", "second", "third"];
-
   return (
     <div className={styles.wrap}>
       {config.map((item: any) => {
-        const Component: any = item.component;
+        const Component = item.component;
         return (
-          <Field title={item.title} key={item.id} style={item.fieldStyle} blocks={range}>
+          <Field title={item.title} key={item.id} style={item.fieldStyle}>
             <Component
               {...item.inputProps}
               options={dropdowns[item.field]}
+              images={images}
+              onRemoveImg={onRemoveImg}
+              onAddImage={onAddImage}
               value={formValues[item.field]}
               onChange={(val: string) => handleChange(val, item.field)}
             />

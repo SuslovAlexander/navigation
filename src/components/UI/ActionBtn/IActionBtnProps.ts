@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
 export interface IActionBtnProps {
-  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  onClick?: () => void;
   children: ReactNode;
 }

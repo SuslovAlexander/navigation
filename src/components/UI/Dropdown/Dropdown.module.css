@@ -21,6 +21,7 @@
   cursor: pointer;
   position: relative;
   outline: none;
+  background: inherit;
 }
 
 .action:focus {
@@ -67,5 +68,10 @@
   width: 100%;
   height: 100vh;
   z-index: 10;
-  /* background-color: #eed9f2; */
+}
+
+.disabled {
+  pointer-events: none;
+  color: #aaafbd;
+  background: #f8f8fa;
 }

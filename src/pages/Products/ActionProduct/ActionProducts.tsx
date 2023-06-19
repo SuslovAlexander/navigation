@@ -1,12 +1,11 @@
 import { FC } from "react";
 
-import Images from "../../../components/Products/Images/Images";
+import ProductFeatures from "../../../components/Products/ProductFeatures/ProductFeatures";
+import ProductTags from "../../../components/Products/ProductTags/TagsBlock";
 import Button from "../../../components/UI/Button/Button";
 import Form from "../../../components/UI/Form/Field/Form";
-import { BRAND_LIST } from "../../../mock/brand-list";
+import { BRAND_LIST, CATEGORY_LIST } from "../../../mock/brand-list";
 import { PRODUCTS_CONFIG } from "../config/products-config";
-
-import Test from "./Test";
 
 import styles from "./ActionProducts.module.css";
 
@@ -15,6 +14,15 @@ const ActionProducts: FC<any> = ({
   onSetFormValue,
   onSaveAndClose,
   onSave,
+  images,
+  onAddImage,
+  tags,
+  features,
+  onRemoveImg,
+  onRemoveFeature,
+  OnAddFeature,
+  onRemoveTag,
+  onAddTag,
 }) => {
   return (
     <div className={styles.wrap}>
@@ -29,12 +37,26 @@ const ActionProducts: FC<any> = ({
       <div className={styles.form}>
         <Form
           config={PRODUCTS_CONFIG}
-          dropdownList={[BRAND_LIST]}
+          dropdownList={[BRAND_LIST, CATEGORY_LIST]}
+          images={images}
+          onRemoveImg={onRemoveImg}
           onSetFormValues={onSetFormValue}
+          onAddImage={onAddImage}
           values={formData}
         />
-{/*         <Images urlList={["sdsd", "ffdf", "dfdfI"]} /> */}
       </div>
+      <ProductFeatures
+        features={features}
+        onRemoveFeature={onRemoveFeature}
+        onAddFeature={OnAddFeature}
+      />
+      <ProductTags
+        maxTags={120}
+        title="Тэги товаров"
+        tags={tags}
+        onRemoveTag={onRemoveTag}
+        onAddTag={onAddTag}
+      />
     </div>
   );
 };

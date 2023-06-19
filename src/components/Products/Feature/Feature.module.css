@@ -4,8 +4,8 @@
   gap: 16px;
 }
 
-.bright,
-.pale {
+.bright {
   display: flex;
   gap: 8px;
+  align-items: center;
 }

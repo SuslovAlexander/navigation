@@ -8,6 +8,7 @@ import { IDropdownProps } from "./IDropdownProps";
 import styles from "./Dropdown.module.css";
 
 const Dropdown: FC<IDropdownProps> = ({
+  disabled,
   placeholder,
   options,
   value,
@@ -30,11 +31,11 @@ const Dropdown: FC<IDropdownProps> = ({
     closeDropdown();
     setBackdrop(false);
   };
- 
+
   return (
     <>
       {backdrop && <div className={styles.backdrop} onClick={handleBackdrop} />}
-      <div className={styles.wrap}>
+      <div className={`${styles.wrap} ${disabled ? styles.disabled : ""}`}>
         <div
           tabIndex={0}
           className={styles.action}
@@ -45,7 +46,9 @@ const Dropdown: FC<IDropdownProps> = ({
           }}
           onClick={handleActive}
         >
-          <p className={styles.active}>{value || placeholder}</p>
+          <p className={`${styles.active} ${disabled ? styles.disabled : ""}`}>
+            {value || placeholder}
+          </p>
           <div className={styles.arrow}>
             <Drop />
           </div>

@@ -16,7 +16,7 @@ const Textarea: FC<ITextareaProps> = ({
     }
   };
   return (
-    <div>
+    <div className={disabled ? styles.disabled : styles.wrap}>
       <textarea
         tabIndex={0}
         onChange={handleChange}

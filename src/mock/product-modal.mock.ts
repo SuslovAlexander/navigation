@@ -223,7 +223,7 @@ export const PRODUCT_MODAL = {
     {
       id: "9033b2fd-a2f4-4ade-9e5e-61e01af7e832",
       key: "Код товара",
-      value: "",
+      value: "9033b2fd",
     },
     {
       id: "55c30ef0-05c1-48e3-9d55-d31d01f240fd",
