@@ -1,3 +1,6 @@
+import { TBearValue } from "../../../shared/types/TBearValue";
+import { TEditParams } from "../EditCategoryItem/IEditCategoryProps";
+
 export type TTextUi = {
   inputText: string;
   titleCatText: string;
@@ -6,14 +9,14 @@ export type TTextUi = {
 };
 
 export interface ICategoryProps {
-  onHandleBlure: any;
+  onHandleBlure?: TBearValue;
   onRemove?: (val: string) => void;
-  onEdit: any;
+  onEdit?: (val: TEditParams) => void;
   onHandleClick?: any;
   items: any;
-  itemId?: any;
+  itemId?: string;
   textUi: TTextUi;
-  hasInput: any;
+  hasInput: boolean;
   onBtnClick?: any;
   changeable?: boolean;
 }

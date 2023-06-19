@@ -36,7 +36,10 @@ const ActionBanner: FC<IActionBannerProps> = ({
           values={formData}
         />
         {image && (
-          <TitledContent heading="Баннер">
+          <TitledContent
+            heading="Баннер"
+            note="Размер баннера 576x320 px PNG, JPG, JPEG"
+          >
             <ImageBlock url={image} onClick={onRemoveImage} />
           </TitledContent>
         )}

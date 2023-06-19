@@ -1,8 +1,7 @@
+import Images from "../../../components/Products/Images/Images";
 import Dropdown from "../../../components/UI/Dropdown/Dropdown";
 import Input from "../../../components/UI/Input/Input";
 import Textarea from "../../../components/UI/Textarea/Textarea";
-
-import List from "./List";
 
 export const PRODUCTS_CONFIG = [
   {
@@ -60,15 +59,14 @@ export const PRODUCTS_CONFIG = [
     fieldStyle: { width: "100%" },
     inputProps: {
       type: "text",
-      disabled: true,
+      disabled: false,
       placeholder: "Артикул",
     },
   },
   {
-    range: List,
     id: "55",
     title: "Изображения*",
-    component: Input,
+    component: Images,
     field: "images",
     fieldStyle: { width: "100%" },
     inputProps: {
@@ -76,6 +74,42 @@ export const PRODUCTS_CONFIG = [
       variant: "link",
       disabled: true,
       placeholder: "Артикул",
+    },
+  },
+  {
+    id: "56",
+    title: "Цена",
+    component: Input,
+    field: "price",
+    fieldStyle: { width: "100%" },
+    inputProps: {
+      type: "number",
+      disabled: true,
+      placeholder: "Цена",
+    },
+  },
+  {
+    id: "57",
+    title: "Категория*",
+    component: Dropdown,
+    field: "catalog_product",
+    fieldStyle: { width: "49%" },
+    inputProps: {
+      type: "text",
+      disabled: false,
+      placeholder: "Выберите категорию",
+    },
+  },
+  {
+    id: "58",
+    title: "Подкатегория*",
+    component: Dropdown,
+    field: "sub_catalog_product",
+    fieldStyle: { width: "49%" },
+    inputProps: {
+      type: "text",
+      disabled: true,
+      placeholder: "Выберите подкатегорию",
     },
   },
 ];

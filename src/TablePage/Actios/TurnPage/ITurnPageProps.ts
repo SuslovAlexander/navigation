@@ -1,6 +1,6 @@
 export interface ITurnPageProps {
   direction: Direction;
-  onBtnClick: any;
+  onBtnClick: () => void;
 }
 
 type Direction = "prev" | "next";

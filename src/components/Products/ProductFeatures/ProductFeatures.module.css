@@ -2,6 +2,13 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: fit-content;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .heading {
@@ -15,4 +22,10 @@
   font-size: 12px;
   line-height: 20px;
   color: #737680;
+}
+
+.pale {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }

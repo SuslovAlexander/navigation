@@ -15,6 +15,7 @@ const Input: FC<IInputProps> = ({
   onInputBlur,
   onChange,
   iconImg,
+  onAddImage,
 }) => {
   const [inputType, setInputType] = useState(type);
 
@@ -82,8 +83,10 @@ const Input: FC<IInputProps> = ({
         onBlur={handleInputBlur}
         onKeyDown={handleInputKeyDown}
       />
-      {type === "password" && passwordIcon}
-      {variant === "link" && <div className={styles.link}>{iconImg}</div>}
+      <div className={styles.link} onClick={onAddImage}>
+        {type === "password" && passwordIcon}
+        {variant === "link" && <div className={styles.link}>{iconImg}</div>}
+      </div>
     </div>
   );
 };

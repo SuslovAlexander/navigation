@@ -8,20 +8,27 @@ import { ITagsBlock } from "./ITagsBlockProps";
 
 import styles from "./TagsBlock.module.css";
 
-const ProductTags: FC<ITagsBlock> = ({ title, maxTags, tags }) => {
+const ProductTags: FC<ITagsBlock> = ({
+  title,
+  maxTags,
+  tags,
+  onRemoveTag,
+  onAddTag,
+}) => {
   const [isEditable, setIsEditable] = useState(true);
   const [insideTags, setInsideTags] = useState<any>();
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     setInsideTags(tags);
-  }, []);
+  }, [tags]);
 
   const addNewTag = (): void => {
     const newTag = { name: inputValue, id: RANDOM.id };
     setInsideTags([...insideTags, newTag]);
     setIsEditable(false);
     setInputValue("");
+    onAddTag(newTag);
   };
 
   const handleInputKeyDown: React.KeyboardEventHandler<HTMLSpanElement> = (
@@ -41,7 +48,11 @@ const ProductTags: FC<ITagsBlock> = ({ title, maxTags, tags }) => {
       <p className={styles.heading}>{title}</p>
       <div className={styles.content}>
         {insideTags?.map((tag: TTag) => (
-          <Tag name={tag.name} key={tag.id} />
+          <Tag
+            name={tag.name}
+            key={tag.id}
+            onRemove={() => onRemoveTag(tag.id)}
+          />
         ))}
         <input
           className={styles.input}

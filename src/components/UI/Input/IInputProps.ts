@@ -1,14 +1,16 @@
 import { ReactNode } from "react";
 
+import { TBearValue } from "../../../shared/types/TBearValue";
+
 export interface IInputProps {
   type: string;
   isClear?: boolean;
   variant?: "link";
   placeholder?: string;
   disabled?: boolean;
-  onInputBlur?: (val: string) => void;
-  onChange?: (val: string) => void;
+  onInputBlur?: TBearValue;
+  onChange?: TBearValue;
   iconImg?: ReactNode;
   value?: string;
-  F?: any;
+  onAddImage?: () => void;
 }
