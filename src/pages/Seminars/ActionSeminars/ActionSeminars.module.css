@@ -1,0 +1,22 @@
+.wrap {
+  width: 640px;
+  min-height: 100vh;
+  height: fit-content;
+  background-color: #fff;
+  gap: 34px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 27px;
+}

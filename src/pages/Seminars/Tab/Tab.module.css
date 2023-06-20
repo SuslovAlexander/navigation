@@ -1,0 +1,11 @@
+.item {
+  padding: 8px 0;
+  border: 2px solid transparent;
+  cursor: pointer;
+  height: 40px;
+}
+
+.item:hover,
+.active {
+  border-bottom-color: #c06ecc;
+}
