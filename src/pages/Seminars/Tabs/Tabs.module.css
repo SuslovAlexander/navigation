@@ -1,0 +1,10 @@
+.wrap {
+  display: flex;
+  width: 100%;
+  background: #fff;
+  gap: 24px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #37393d;
+  align-items: flex-end;
+}
