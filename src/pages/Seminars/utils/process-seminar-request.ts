@@ -9,9 +9,9 @@ interface SeminarRequest {
 
 export const processSeminarRequest = (obj: any): SeminarRequest[] => {
   return obj.data.map((seminar: any) => ({
-    seminar_name: seminar.seminar.name,
-    user: seminar.user.name + " " + seminar.user.lastName,
-    phone: formatPhoneNumber(seminar.user.phone),
-    date: seminar.date,
+    seminar_name: seminar?.seminar?.name,
+    user: seminar?.user?.name + " " + seminar?.user?.lastName,
+    phone: formatPhoneNumber(seminar?.user?.phone),
+    date: seminar?.date,
   }));
 };

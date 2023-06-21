@@ -15,7 +15,9 @@ const SeminarsHead: FC<ISeminarsHeadProps> = ({
   onSearch,
   onResetSearch,
   onSetActiveTab,
+  onAddSeminar,
   activeTab,
+  hasBtn,
 }) => {
   const [inputValue, setInputValue] = useState<string>("");
 
@@ -46,7 +48,7 @@ const SeminarsHead: FC<ISeminarsHeadProps> = ({
           </div>
         </div>
       </div>
-      <Button>Добавить семинар</Button>
+      {hasBtn && <Button onClick={onAddSeminar}>Добавить семинар</Button>}
     </div>
   );
 };

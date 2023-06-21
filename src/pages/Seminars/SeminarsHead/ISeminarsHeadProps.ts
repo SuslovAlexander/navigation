@@ -6,5 +6,7 @@ export interface ISeminarsHeadProps {
   onSearch: TBearValue;
   onResetSearch: () => void;
   onSetActiveTab: TBearValue;
+  onAddSeminar?: any;
   activeTab: string;
+  hasBtn: boolean;
 }
