@@ -5,7 +5,7 @@ interface SeminarFuture {
 }
 
 export const processSeminarFuture = (obj: any): SeminarFuture[] => {
-  return obj.data.map((future: any) => ({
+  return obj?.data?.map((future: any) => ({
     name: future?.name,
     speaker: future?.speaker,
     datetime: future?.datetime?.split(" ")[0],

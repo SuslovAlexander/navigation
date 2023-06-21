@@ -2,7 +2,6 @@ import { FC } from "react";
 
 import Button from "../../../components/UI/Button/Button";
 import Form from "../../../components/UI/Form/Field/Form";
-import { SEMINARS_CONFIG } from "../config/seminars-config";
 
 import styles from "./ActionSeminars.module.css";
 
@@ -14,6 +13,7 @@ const ActionSeminars: FC<any> = ({
   formData,
   onSave,
   onRemove,
+  formConfig,
 }) => {
   return (
     <div className={styles.wrap}>
@@ -27,7 +27,7 @@ const ActionSeminars: FC<any> = ({
       </div>
       <div className={styles.form}>
         <Form
-          config={SEMINARS_CONFIG}
+          config={formConfig}
           dropdownList={[]}
           onSetFormValues={onSetFormValue}
           values={formData}

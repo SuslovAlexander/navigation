@@ -3,7 +3,7 @@ import Dropdown from "../../../components/UI/Dropdown/Dropdown";
 import Input from "../../../components/UI/Input/Input";
 import Textarea from "../../../components/UI/Textarea/Textarea";
 
-export const SEMINARS_CONFIG = [
+export const SEMINARS_FUTURE_CONFIG = [
   {
     id: "60",
     title: "Название*",
@@ -75,20 +75,20 @@ export const SEMINARS_CONFIG = [
       placeholder: "dd.mm.yyyy",
     },
   },
-  /*   {
-    id: "66",
-    title: "Время*",
-    component: Input,
-    field: "percent",
-    fieldStyle: { width: "100%" },
-    inputProps: {
-      type: "number",
-      disabled: false,
-      placeholder: "% скидки",
-    },
-  }, */
   {
     id: "67",
+    title: "Время*",
+    component: Input,
+    field: "time",
+    fieldStyle: { width: "49%" },
+    inputProps: {
+      type: "time",
+      disabled: false,
+      placeholder: "dd.mm.yyyy",
+    },
+  },
+  {
+    id: "68",
     title: "Фото",
     component: Images,
     field: "image",
