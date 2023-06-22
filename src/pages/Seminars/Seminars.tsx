@@ -1,179 +1,84 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 import ConfirmAlert from "../../components/ConfirmAlert/ConfirmAlert";
 import Modal from "../../components/UI/Modal/Modal";
 import Table from "../../components/UI/Table/Table";
-import { SEMINAR_FUTURE } from "../../mock/seminar_future.mock";
-import { SEMINAR_HISTORY } from "../../mock/seminar_history.mock";
-import { SEMINAR_REQUEST } from "../../mock/seminar-request.mock";
 import { RANDOM } from "../../shared/utils/random-id";
 import SelectedAlert from "../../TablePage/SelectedAlert/SelectedAlert";
 
 import ActionSeminars from "./ActionSeminars/ActionSeminars";
-import { SEMINARS_FUTURE_CONFIG } from "./config/seminars-future-config copy";
-import { SEMINARS_HISTORY_CONFIG } from "./config/seminars-history-config";
 import SeminarsHead from "./SeminarsHead/SeminarsHead";
-import { processSeminarFuture } from "./utils/process-seminar-future";
-import { processSeminarHistory } from "./utils/process-seminar-history";
-import { processSeminarRequest } from "./utils/process-seminar-request";
+import { useToggleTab } from "./use-toggle-tab";
 
 import styles from "./Seminars.module.css";
 
 const Seminars: FC = () => {
-  const [seminars, setSeminars] = useState<any>(SEMINAR_FUTURE);
   const [editMode, setEditMode] = useState<boolean>(false);
 
-  const [activeTab, setActiveTab] = useState("future");
-  const [tableEmptyText, setTableEmptyText] = useState("");
-  const [canBeDeleted, setCanBeDeleted] = useState<boolean>(false);
-  const [hasCheckbox, setHasCheckbox] = useState<boolean>(false);
-  const [hasBtnToAdd, setHasBtnToAdd] = useState(true);
-  const [tdWidths, setTdWidth] = useState<string[]>(["33%", "33%", "33%"]);
-  const [idName, setIdName] = useState("id");
   const [selected, setSelected] = useState<string[]>([]);
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const [toggleSelectAll, setToggleSelectAll] = useState(true);
-  const [tableHead, setTableHead] = useState<string[]>([]);
-  const [tableBody, setTableBody] = useState<any>([]);
-  const [showModal, setShowModal] = useState(false);
-  const [selectedSeminar, setSelectedSeminar] = useState<any>();
   const [formData, setFormData] = useState<any>({});
-  const [formSeminar, setFormSeminar] = useState({});
-  const [formConfig, setFormConfig] = useState<any>({});
 
+  const [showModalForm, setShowModalForm] = useState(false);
   const [showModalRemove, setShowModalRemove] = useState(false);
 
   const [targetId, setTargetId] = useState<string>("");
 
-  const formSeminarHistory = {
-    name: selectedSeminar?.name,
-    description: selectedSeminar?.description,
-    date: selectedSeminar?.date,
-    image: selectedSeminar?.image,
-  };
+  const {
+    idName,
+    activeTab,
+    initFormState,
+    initTableDataState,
+    setActiveTab,
+    setSelectedSeminar,
+    setInitFormState,
+    setInitTableState,
+    initSettingsTableState,
+    seminars,
+    selectedSeminar,
+    setSeminars,
+  } = useToggleTab();
 
-  const immutableBodyFuture = useRef(
-    processSeminarFuture(SEMINAR_FUTURE)
-  ).current;
-  const immutableBodyHistory = useRef(
-    processSeminarHistory(SEMINAR_HISTORY)
-  ).current;
-  const immutableBodyRequest = useRef(
-    processSeminarRequest(SEMINAR_REQUEST)
-  ).current;
-  const [immutableBody, setImmutableBody] = useState<any>();
-
-  const handleSetActiveTab = (tab: string): void => {
-    setActiveTab(tab);
+  const clearBehavior = (): void => {
+    setInitFormState({ ...initFormState, formSeminar: {} });
+    setSelectedSeminar({});
+    setEditMode(false);
   };
 
   useEffect(() => {
     if (!selectedSeminar) {
       return;
     }
-    setShowModal(true);
-    if (!editMode) {
-      setFormData({});
-    } else {
-      setFormData(formSeminar);
-    }
-  }, [selectedSeminar, editMode]);
-
-  useEffect(() => {
-    if (!selected.length) {
-      setShowAlert(false);
-    }
-  }, [selected]);
-
-  useEffect(() => {
-    if (activeTab === "future") {
-      setTableBody(processSeminarFuture(seminars));
-    }
-    if (activeTab === "history") {
-      setTableBody(processSeminarHistory(seminars));
-    }
-    if (activeTab === "applications") {
-      setTableBody(processSeminarRequest(seminars));
-    }
-  }, [seminars]);
-
-  useEffect(() => {
-    if (activeTab === "future") {
-      setFormConfig(SEMINARS_FUTURE_CONFIG);
-      setHasBtnToAdd(true);
-      setImmutableBody(immutableBodyFuture);
-      setTableEmptyText("Здесь пока нет семинаров");
-      setHasCheckbox(true);
-      setCanBeDeleted(true);
-      setTableHead(["Название", "Спикер", "Дата"]);
-      setSeminars(SEMINAR_FUTURE);
-      setIdName("name");
-      setTdWidth(["33%", "33%", "33%"]);
-      return;
-    }
-    if (activeTab === "history") {
-      setFormConfig(SEMINARS_HISTORY_CONFIG);
-      setFormSeminar(formSeminarHistory);
-      setHasBtnToAdd(true);
-      setImmutableBody(immutableBodyHistory);
-      setTableEmptyText("Здесь пока нет истории семинаров");
-      setHasCheckbox(true);
-      setCanBeDeleted(true);
-      setTableHead(["Название", "Дата", ""]);
-      setSeminars(SEMINAR_HISTORY);
-      setIdName("name");
-      setTdWidth(["70%", "30%"]);
-      return;
-    }
-    if (activeTab === "applications") {
-      setHasBtnToAdd(false);
-      setImmutableBody(immutableBodyRequest);
-      setTableEmptyText("Здесь пока нет запросов на семинары");
-      setHasCheckbox(false);
-      setTableHead([
-        "Название семинара",
-        "Пользователь",
-        "Номер телефона",
-        "Дата",
-      ]);
-      setSeminars(SEMINAR_REQUEST);
-      setIdName("seminar_name");
-      setTdWidth(["25%", "25%", "25%", "25%"]);
-    }
-  }, [activeTab]);
-
-  const clearBehavior = (): void => {
-    setFormData({});
-    setSelectedSeminar({});
-    setEditMode(false);
-  };
+    setShowModalForm(true);
+  }, [selectedSeminar]);
 
   const handleAddSeminar = (): void => {
     clearBehavior();
-    setShowModal(true);
+    setShowModalForm(true);
   };
 
   const handleSearch = (str: string): void => {
-    const updatedBody = immutableBody.filter(
+    const updatedBody = initSettingsTableState.immutableBody.filter(
       (item: any) =>
         item[idName] && item[idName].toLowerCase().includes(str.toLowerCase())
     );
-    setTableBody(updatedBody);
+    setInitTableState({ ...initTableDataState, tableBody: updatedBody });
   };
 
   const handleToggleSelectAll = (): void => {
     setShowAlert(!showAlert);
     setToggleSelectAll(!toggleSelectAll);
     const updatedSelected = toggleSelectAll
-      ? tableBody.map((item: any) => item[idName])
+      ? initTableDataState.tableBody.map((item: any) => item[idName])
       : [];
     setSelected(updatedSelected);
   };
 
-  const handleEditSeminar = (data: string): void => {
+  const handleSeminarClick = (seminarId: string): void => {
     const clickedSeminar = seminars.data.find(
-      (seminar: any) => seminar[idName] === data
+      (seminar: any) => seminar[idName] === seminarId
     );
     setSelectedSeminar(clickedSeminar);
     setEditMode(true);
@@ -184,13 +89,15 @@ const Seminars: FC = () => {
       const seminarToEdit = seminars?.data.find(
         (seminar: any) => seminar.id === selectedSeminar.id
       );
-      seminarToEdit.name = formData.name;
-      seminarToEdit.datetime = formData.date;
-      seminarToEdit.image = formData.image;
-      seminarToEdit.description = formData.description;
-      seminarToEdit.speaker = formData.speaker;
-      seminarToEdit.speaker_speciality = formData.speaker_speciality;
-      seminarToEdit.city = { ...seminarToEdit.city, name: formData.city };
+      if (seminarToEdit) {
+        seminarToEdit.name = formData.name;
+        seminarToEdit.datetime = formData.date;
+        seminarToEdit.image = formData.image;
+        seminarToEdit.description = formData.description;
+        seminarToEdit.speaker = formData.speaker;
+        seminarToEdit.speaker_speciality = formData.speaker_speciality;
+        seminarToEdit.city = { ...seminarToEdit.city, name: formData.city };
+      }
     } else {
       const newSeminar = {
         id: RANDOM.id,
@@ -206,7 +113,7 @@ const Seminars: FC = () => {
     }
 
     setSeminars({ ...seminars });
-    setShowModal(false);
+    setShowModalForm(false);
   };
 
   const handleRemoveSeminar = (id: string): void => {
@@ -214,7 +121,7 @@ const Seminars: FC = () => {
       data: seminars.data.filter((item: any) => item[idName] !== id),
     };
     setSeminars(updatedSeminars);
-    setShowModal(false);
+    setShowModalForm(false);
   };
 
   const handleSelect = (val: string): void => {
@@ -243,29 +150,29 @@ const Seminars: FC = () => {
         onResetSearch={() => handleSearch("")}
         onSearch={handleSearch}
         setCurrentSlice={() => null}
-        tableData={tableBody}
-        onSetActiveTab={handleSetActiveTab}
+        tableData={initTableDataState.tableBody}
+        onSetActiveTab={setActiveTab}
         activeTab={activeTab}
         onAddSeminar={handleAddSeminar}
-        hasBtn={hasBtnToAdd}
+        hasBtn={initSettingsTableState.hasBtnToAdd}
       />
       <div className={styles.content}>
         <Table
-          emptyText={tableEmptyText}
-          heading={tableHead}
-          tableData={tableBody}
+          emptyText={initSettingsTableState.tableEmptyText}
+          heading={initTableDataState.tableHead}
+          tableData={initTableDataState.tableBody}
           idName={idName}
-          canBeDeleted={canBeDeleted}
-          hasCheckbox={hasCheckbox}
+          canBeDeleted={initSettingsTableState.canBeDeleted}
+          hasCheckbox={initSettingsTableState.hasCheckbox}
           onRemove={(id: string) => {
             setShowModalRemove(true);
             setTargetId(id);
           }}
           onSelect={handleSelect}
           onSelectAll={handleToggleSelectAll}
-          onTrClick={handleEditSeminar}
+          onTrClick={handleSeminarClick}
           selectedItems={selected}
-          tdWidths={tdWidths}
+          tdWidths={initSettingsTableState.tdWidths}
         />
         <div className={styles.popup}>
           <SelectedAlert
@@ -275,16 +182,16 @@ const Seminars: FC = () => {
             onClose={() => setShowAlert(false)}
           />
         </div>
-        {showModal &&
+        {showModalForm &&
           createPortal(
             <Modal
-              active={showModal}
-              setActive={() => setShowModal(false)}
+              active={showModalForm}
+              setActive={() => setShowModalForm(false)}
               align="left"
             >
               <ActionSeminars
-                formConfig={formConfig}
-                formData={formData}
+                formConfig={initFormState.formConfig}
+                formData={initFormState.formSeminar}
                 onSetFormValue={setFormData}
                 onRemove={() => null}
                 onSave={handleSaveSeminar}
