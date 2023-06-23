@@ -12,25 +12,21 @@ import { IBrandProps } from "./IBrandProps";
 
 import styles from "./Brand.module.css";
 
-const Brand: FC<IBrandProps> = ({ url, text, id, onEdit, onRemove }) => {
+const Brand: FC<IBrandProps> = ({ text, id, onEdit, onRemove }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const handleEdit = (): void => {
     if (onEdit) {
       onEdit(id);
     }
-    //do something when Edit is clicked
   };
 
   const handleRemove = (): void => {
     setShowModal(true);
-    //if (onRemove) onRemove(id);
-    //do something when Remove is clicked
   };
 
   return (
     <div className={styles.wrap}>
       <div className={styles["image-wrap"]}>
-        {/*  <img src={url} width="100%" height="100%" /> */}
         <div className={styles.image}>
           <Image />
         </div>

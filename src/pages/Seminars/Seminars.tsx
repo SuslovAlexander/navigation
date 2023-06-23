@@ -6,6 +6,7 @@ import Modal from "../../components/UI/Modal/Modal";
 import Table from "../../components/UI/Table/Table";
 import { RANDOM } from "../../shared/utils/random-id";
 import SelectedAlert from "../../TablePage/SelectedAlert/SelectedAlert";
+import { IFormValues } from "../Protocols/ActionProtocol/IActionProtocolProps";
 
 import ActionSeminars from "./ActionSeminars/ActionSeminars";
 import SeminarsHead from "./SeminarsHead/SeminarsHead";
@@ -16,13 +17,13 @@ import styles from "./Seminars.module.css";
 const Seminars: FC = () => {
   const [editMode, setEditMode] = useState<boolean>(false);
 
+  const [toggleSelectAll, setToggleSelectAll] = useState(true);
   const [selected, setSelected] = useState<string[]>([]);
   const [showAlert, setShowAlert] = useState<boolean>(false);
-  const [toggleSelectAll, setToggleSelectAll] = useState(true);
-  const [formData, setFormData] = useState<any>({});
+  const [formData, setFormData] = useState<IFormValues>({});
 
-  const [showModalForm, setShowModalForm] = useState(false);
-  const [showModalRemove, setShowModalRemove] = useState(false);
+  const [showModalForm, setShowModalForm] = useState<boolean>(false);
+  const [showModalRemove, setShowModalRemove] = useState<boolean>(false);
 
   const [targetId, setTargetId] = useState<string>("");
 
@@ -92,7 +93,6 @@ const Seminars: FC = () => {
       if (seminarToEdit) {
         seminarToEdit.name = formData.name;
         seminarToEdit.datetime = formData.date;
-        seminarToEdit.image = formData.image;
         seminarToEdit.description = formData.description;
         seminarToEdit.speaker = formData.speaker;
         seminarToEdit.speaker_speciality = formData.speaker_speciality;
@@ -142,6 +142,20 @@ const Seminars: FC = () => {
     setSelected([]);
     setSeminars({ data: updatedSeminarsData });
     setShowAlert(false);
+  };
+
+  const handleRemoveImg = (img: string): void => {
+    const target = seminars?.data.find((item: any) => item.image === img);
+    target.image = "";
+    setSeminars({ ...seminars, target });
+  };
+
+  const handleAddImage = (img: string): void => {
+    const target = seminars?.data.find(
+      (item: any) => item.name === selectedSeminar.name
+    );
+    target.image = img;
+    setSeminars({ ...seminars, target });
   };
 
   return (
@@ -196,8 +210,8 @@ const Seminars: FC = () => {
                 onRemove={() => null}
                 onSave={handleSaveSeminar}
                 images={[selectedSeminar?.image]}
-                onRemoveImg={() => null}
-                onAddImage={() => null}
+                onRemoveImg={handleRemoveImg}
+                onAddImage={handleAddImage}
               />
             </Modal>,
             document.body
@@ -211,9 +225,9 @@ const Seminars: FC = () => {
             >
               <ConfirmAlert
                 header="Вы действительно хотите удалить семинар"
-                text={selectedSeminar?.name}
+                text={targetId}
                 onConfirm={() => {
-                  handleRemoveSeminar(targetId);
+                  handleRemoveSeminar(selectedSeminar?.id);
                   setShowModalRemove(false);
                 }}
                 onCancel={() => setShowModalRemove(false)}

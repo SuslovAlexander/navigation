@@ -22,6 +22,6 @@ export const ROUTES = [
   { path: "banners", element: <Banners /> },
   { path: "seminars", element: <Seminars /> },
   { path: "promocode", element: <Promocode /> },
-  /*   { path: "auth/register", element: <Register /> },
-  { path: "auth/login", element: <Login /> }, */
+  { path: "auth/register", element: <Register /> },
+  { path: "auth/login", element: <Login /> },
 ];
