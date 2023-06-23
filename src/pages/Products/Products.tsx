@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-import { IProdTag, ITag } from "../../components/Products/Tag/ITagProps";
+import { IProdTag } from "../../components/Products/Tag/ITagProps";
 import Modal from "../../components/UI/Modal/Modal";
 import Table from "../../components/UI/Table/Table";
 import { GOODS_MOCK } from "../../mock/goods.mock";
@@ -90,8 +90,6 @@ const Products: FC = () => {
     setSelected(updatedSelected);
   };
 
-  ///////////////////////////////////////////////////////////
-
   const handleRemoveImg = (img: string): void => {
     const updatedProduct = {
       ...activeProduct,
@@ -131,8 +129,6 @@ const Products: FC = () => {
     setActiveProduct({ ...activeProduct });
   };
 
-  ////////////////////////////////////////////////////////////
-
   return (
     <div className={styles.wrap}>
       <ProductsHead
@@ -171,7 +167,7 @@ const Products: FC = () => {
             <ActionProducts
               formData={formData}
               onSetFormValue={setFormData}
-              onSaveAndClose={() => null}
+              onSaveAndClose={() => setShowModal(false)}
               onSave={() => null}
               images={activeProduct.images}
               features={activeProduct.characteristics}

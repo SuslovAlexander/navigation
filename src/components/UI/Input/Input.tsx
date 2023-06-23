@@ -7,15 +7,15 @@ import { IInputProps } from "./IInputProps";
 import styles from "./Input.module.css";
 
 const Input: FC<IInputProps> = ({
-  value,
-  type,
-  placeholder,
   disabled = false,
-  variant,
-  onInputBlur,
-  onChange,
+  type,
+  value,
+  placeholder,
   iconImg,
+  variant,
+  onChange,
   onAddImage,
+  onInputBlur,
 }) => {
   const [inputType, setInputType] = useState(type);
 

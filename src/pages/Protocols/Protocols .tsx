@@ -61,11 +61,6 @@ const Protocols: FC = () => {
     setCategories(updatedCategories);
   };
 
-  const handleRemoveProtocol = (id: string): void => {
-    const updateProtocols = protocols.filter((protocol) => protocol.id !== id);
-    setProtocols(updateProtocols);
-  };
-
   const handleEditCategory = (data: IItem): void => {
     const targetCategory = categories.find(
       (category) => category.id === data.id
@@ -73,6 +68,11 @@ const Protocols: FC = () => {
     if (targetCategory) {
       targetCategory.name = data.name;
     }
+  };
+
+  const handleRemoveProtocol = (id: string): void => {
+    const updateProtocols = protocols.filter((protocol) => protocol.id !== id);
+    setProtocols(updateProtocols);
   };
 
   const handleProtocolBtnClick = (): void => {

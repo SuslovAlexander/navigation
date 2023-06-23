@@ -17,7 +17,7 @@ const Images: FC<IImagesProps> = ({
   onChange,
 }) => {
   const handleAddImage = (): void => {
-    onAddImage();
+    onAddImage(value);
     onChange("");
   };
   return (

@@ -13,3 +13,5 @@ export const SEMINAR_HISTORY = {
     },
   ],
 };
+
+

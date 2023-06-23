@@ -11,9 +11,9 @@ import { processSeminarHistory } from "./utils/process-seminar-history";
 import { processSeminarRequest } from "./utils/process-seminar-request";
 
 export const useToggleTab = (): any => {
-  const [idName, setIdName] = useState("name");
+  const [idName, setIdName] = useState<string>("name");
   const [seminars, setSeminars] = useState<any>(SEMINAR_FUTURE);
-  const [activeTab, setActiveTab] = useState("future");
+  const [activeTab, setActiveTab] = useState<string>("future");
   const [selectedSeminar, setSelectedSeminar] = useState<any>();
 
   const [initTableDataState, setInitTableState] = useState<any>({
